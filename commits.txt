@@ -1,0 +1,11 @@
+commit c8ba66749e52fcf7739777315a5dd124bb21d354
+Author: soujiro27 <jc.raus27@gmail.com>
+Date:   Thu Mar 30 12:31:32 2017 -0600
+
+    antes de hacer pruebas con bable para usar yoyo en ie11
+
+commit 3d6a88192148077c0229f6bdd83318710bad1a4e
+Author: soujiro27 <jc.raus27@gmail.com>
+Date:   Wed Mar 29 18:28:09 2017 -0600
+
+    trabajando en los modals de registro duplicado

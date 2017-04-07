@@ -1,0 +1,32 @@
+@import "../../../css/font-awesome.min.css";
+@import "../../../css/bootstrap.min.css"
+@import "../../../css/style-dashboard.css";
+
+
+table
+	overflow-y: hidden
+
+
+form#Remitentes,form#UpdateRemitentes,form#Caracteres,form#UpdateCaracteres,form#Turnados,form#UpdateTurnados,form#Acciones,form#UpdateAcciones
+	div.saludo,div.nombre,div.cargo,div.siglas,div.procedencia,div.estatus
+		margin-right 10px
+		margin-bottom 15px
+	div
+		label,input[type=text]
+			width 100%
+	div.saludo,div.siglas
+		width 10%
+	div.nombre,div.procedencia
+		width 40%
+	div.cargo
+		width 40%
+	div.send
+		display block
+		margin-top 20px
+		input[type=submit]
+			margin-right 10px
+
+
+form#Volantes
+	div.subDocumento
+		display none
