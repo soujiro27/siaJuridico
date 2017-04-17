@@ -24,7 +24,10 @@
   },
   "dependencies": {
     "axios": "^0.16.0",
+    "bootstrap-datepicker": "^1.6.4",
     "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "jquery-ui-browserify": "^1.11.0-pre-seelio",
     "noty": "^2.4.1",
     "yo-yo": "^1.4.0",
     "yo-yoify-standalone": "^0.1.0"

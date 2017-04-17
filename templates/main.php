@@ -28,6 +28,7 @@
 
 </script>
 <script src="./Dashboard - MacAdmin_files/bootstrap.min.js"></script>
+
 <script type="text/javascript" src="juridico/assets/js/app.js"></script>
 </body>
 </html>

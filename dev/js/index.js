@@ -11,5 +11,5 @@ $(function(){
 	evento.btnAgregar();
 	//funcion.cargaTabla();
 	var datosTabla;
-	var id;
+	var  id;
 });

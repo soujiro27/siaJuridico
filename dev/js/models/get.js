@@ -55,6 +55,17 @@ var getAll=function(){
 					$('form#Volantes select#idDocumento').on('change',function(){
 						doc=$(this).val();
 						combo.comboSubDocumentos(doc);
+						$('select#subDocumento').on('change',function(){
+							var subTipoDoc=$(this).val();
+							
+							if(subTipoDoc=='DTC-FRA' || subTipoDoc=='DTC-FRE'){
+								
+								$('form#Volantes div.Promocion').show('slow');
+							}else{
+								$('form#Volantes div.Promocion').hide('slow');
+
+							}
+						});
 					});
 				}
 			})

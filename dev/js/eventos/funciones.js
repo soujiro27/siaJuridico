@@ -1,3 +1,4 @@
+
 var template=require('./../templates/forms/Remitentes.js');
 var Caracteres=require('./../templates/forms/Caracteres.js');
 var Turnados=require('./../templates/forms/Turnados.js');
@@ -7,6 +8,8 @@ var Volantes=require('./../templates/forms/Volantes.js');
 var modals=require('./../templates/modals/duplicado.js');
 var modelos=require('./../models/insert.js');
 var getAll=require('./../models/get.js');
+
+var bootstrapDatepicker = require("bootstrap-datepicker")
 
 var model=new modelos(); 
 var get= new getAll();
@@ -30,6 +33,7 @@ var funciones=function(){
 			this.muestraForm();
 			if (ruta=='Volantes' || ruta=="SubTiposDocumentos"){
 				this.cargaComboTipoDocumento();
+				 $( "input#datepicker" ).datepicker();
 			}
 
 

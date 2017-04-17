@@ -48,7 +48,6 @@ var update=function(){
 					location.href="http://localhost:88/cat"+ruta;
 				});
 				
-				console.log(ruta);
 				$('form#Update'+ruta).on('submit',function(e){
 					e.preventDefault();
 					var datos=$(this).serialize();
