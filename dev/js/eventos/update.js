@@ -5,6 +5,7 @@ var caracteres=require('./../templates/forms/updateCaracteres.js');
 var turnados=require('./../templates/forms/updateTurnados.js');
 var acciones=require('./../templates/forms/updateAcciones.js');
 var SubTiposDocumentos=require('./../templates/forms/updateSubTiposDocumentos.js');
+var volantes=require('./../templates/forms/UpdateVolantes.js');
 var models=require('./../models/update.js');
 var modals=require('./../templates/modals/duplicado.js');
 
@@ -23,6 +24,7 @@ var update=function(){
 				else if(ruta=='Turnados'){all=turnados(response.data[0]);}
 				else if(ruta=='Acciones'){all=acciones(response.data[0]);}
 				else if(ruta=='SubTiposDocumentos'){all=SubTiposDocumentos(response.data[0]);}
+				else if(ruta=='Volantes'){all=volantes(response.data[0]);}
 
 
 				var msgDuplicado=modals();

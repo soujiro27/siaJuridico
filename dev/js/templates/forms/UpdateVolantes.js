@@ -6,7 +6,7 @@ return (function () {
       var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js')
       var bel72 = document.createElement("form")
 bel72.setAttribute("method", "POST")
-bel72.setAttribute("id", "Volantes")
+bel72.setAttribute("id", "UpdateVolantes")
 bel72.setAttribute("class", "form-inline")
 var bel15 = document.createElement("div")
 bel15.setAttribute("class", "headerVolante")

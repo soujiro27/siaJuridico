@@ -9,7 +9,7 @@ var funcion=new funciones;
 $(function(){
 	menu();
 	evento.btnAgregar();
-	//funcion.cargaTabla();
+	funcion.cargaTabla();
 	var datosTabla;
 	var  id;
 });

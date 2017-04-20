@@ -61,6 +61,7 @@ gulp.task('templates',function(){
  yoyoify('dev/js/yoyoTemplates/forms/updateSubTiposDocumentos.js','dev/js/templates/forms/updateSubTiposDocumentos.js');
 /*--------------------volantes-----------------------*/
   yoyoify('dev/js/yoyoTemplates/forms/Volantes.js','dev/js/templates/forms/Volantes.js');
+    yoyoify('dev/js/yoyoTemplates/forms/UpdateVolantes.js','dev/js/templates/forms/UpdateVolantes.js');
 
 
 
@@ -76,9 +77,10 @@ gulp.task('templates',function(){
   yoyoify('dev/js/yoyoTemplates/tables/tbody/Turnados.js','dev/js/templates/tables/tbody/Turnados.js');
   yoyoify('dev/js/yoyoTemplates/tables/Acciones.js','dev/js/templates/tables/Acciones.js');
   yoyoify('dev/js/yoyoTemplates/tables/tbody/Acciones.js','dev/js/templates/tables/tbody/Acciones.js');
-   yoyoify('dev/js/yoyoTemplates/tables/SubTiposDocumentos.js','dev/js/templates/tables/SubTiposDocumentos.js');
+  yoyoify('dev/js/yoyoTemplates/tables/SubTiposDocumentos.js','dev/js/templates/tables/SubTiposDocumentos.js');
   yoyoify('dev/js/yoyoTemplates/tables/tbody/SubTiposDocumentos.js','dev/js/templates/tables/tbody/SubTiposDocumentos.js');
-
+  yoyoify('dev/js/yoyoTemplates/tables/Volantes.js','dev/js/templates/tables/Volantes.js');
+  yoyoify('dev/js/yoyoTemplates/tables/tbody/Volantes.js','dev/js/templates/tables/tbody/Volantes.js');
 });
 
 

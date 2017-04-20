@@ -24,6 +24,17 @@ class Insert{
 		//echo "\nPDO::errorInfo():\n";
     	//print_r($dbQuery->errorInfo());
 	}
+
+	public function insertTable($tabla,$campos,$valores,$pdo)
+	{
+		$db=$this->conecta();
+		$sql="INSERT INTO sia_".$tabla."(".$campos."usrAlta, fAlta) VALUES(".$valores.":usrAlta, getdate())";
+		$dbQuery = $db->prepare($sql);
+		$pdo[':usrAlta']=$_SESSION ["idUsuario"];
+		$dbQuery->execute($pdo);
+		//echo "\nPDO::errorInfo():\n";
+    	//print_r($dbQuery->errorInfo());
+	}
 }
 
 

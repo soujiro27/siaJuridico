@@ -1,7 +1,7 @@
 var yo=require('yo-yo');
 
 module.exports=function(){
-return yo`<form method="POST" class="form-inline" id="Volantes">
+return yo`<form method="POST" class="form-inline" id="UpdateVolantes">
 <div class="headerVolante">
 <div class="form-group idDocumento">
     <label for="idDocumento">Tipo de Documento</label>

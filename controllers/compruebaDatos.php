@@ -20,6 +20,27 @@ class CompruebaDatos extends ProcesaDatos{
 	if($cantidad>0){return false;}else{return true;}
 	}
 
+
+	public function compruebaTabla($tabla,$campos,$datos,$db){
+		$sql="SELECT * FROM sia_".$tabla." WHERE ".$campos;
+		$dbQuery = $db->prepare($sql);
+		$dbQuery->execute($datos);
+		$res=$dbQuery->fetchAll(PDO::FETCH_ASSOC);
+		$cantidad=count($res);
+		if($cantidad>0){return false;}else{return true;}
+		}
+
+
+
+	public function realizaComprobacionVolante(array $datos, $nombre){
+		$db=$this->conecta();
+		$datos=$this->separaDatosVolante($datos);
+		$campos=$this->procesaCampos($datos);
+		$valores=$this->obtieneArrayPdo($datos);
+		$valida=$this->compruebaTabla($nombre,$campos,$valores,$db);
+		return $valida;
+	}
+
 	public function conecta(){
 		try{
 			require 'src/conexion.php';

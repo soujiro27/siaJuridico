@@ -2098,6 +2098,68 @@ form#UpdateAcciones div.send input[type=submit] {
   margin-right: 10px;
 }
 form#Volantes div.subDocumento,
-form#Volantes div.Promocion {
+form#Volantes div.Promocion,
+form#Volantes div.cveAuditoria,
+form#Volantes div.datosAuditoria {
   display: none;
+}
+form#Volantes div.headerVolante {
+  display: flex;
+  flex-wrap: wrap;
+}
+form#Volantes div.contentVolante {
+  margin-top: 20px;
+  display: none;
+}
+form#Volantes div.contentVolante div {
+  margin-bottom: 10px;
+}
+form#Volantes div.Folio {
+  width: 100px;
+}
+form#Volantes div.numDocumento,
+form#Volantes div.fDocumento,
+form#Volantes div.fRecepcion,
+form#Volantes div.anexos,
+form#Volantes div.hRecepcion {
+  width: 135px;
+}
+form#Volantes div.idRemitente,
+form#Volantes div.Destinatario,
+form#Volantes div.Asunto,
+form#Volantes div.send {
+  display: block;
+}
+form#Volantes div.Destinatario {
+  width: 28%;
+}
+form#Volantes div.Asunto {
+  width: 57%;
+}
+form#Volantes div.send input[type=submit] {
+  width: 7% !important;
+  margin-right: 15px;
+}
+form#Volantes div.NombreRemitente,
+form#Volantes div.cargo,
+form#Volantes div.dependencia {
+  width: 28%;
+}
+form#Volantes div {
+  margin-right: 10px;
+}
+form#Volantes div label,
+form#Volantes div input,
+form#Volantes div textarea {
+  width: 100%;
+}
+form#Volantes div.idDocumento,
+form#Volantes div.subDocumento,
+form#Volantes div.Promocion {
+  width: 15%;
+}
+form#Volantes div.idUnidad,
+form#Volantes div.idObjeto {
+  width: 60%;
+  display: block;
 }

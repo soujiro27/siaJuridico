@@ -23,12 +23,14 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
+    "air-datepicker": "^2.2.3",
     "axios": "^0.16.0",
     "bootstrap-datepicker": "^1.6.4",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",
     "jquery-ui-browserify": "^1.11.0-pre-seelio",
     "noty": "^2.4.1",
+    "pikaday": "^1.5.1",
     "yo-yo": "^1.4.0",
     "yo-yoify-standalone": "^0.1.0"
   }

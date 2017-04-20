@@ -43,6 +43,19 @@ class ProcesaDatos{
 		return $set;
 	}
 
+	public function separaDatosVolante($data){
+		$comprobar=['idDocumento','numDocumento','folio','fDocumento','idRemitente','destinatario','asunto','idCaracter','idTurnado','idAccion'];
+		$cont=count($comprobar);
+		foreach ($data as $key => $value) {
+			for ($i=0; $i <$cont ; $i++) { 
+				if($key==$comprobar[$i]){
+					$datosComprobacion[$key]=$value;
+				}
+			}
+		}
+		return $datosComprobacion;
+	}
+
 
 
 
@@ -65,6 +78,33 @@ public function campoId($url)
 
 		return $id;
 
+	}
+
+
+	public function separaDatosInsertVolante(array $data){
+		$comprobar=['idDocumento','folio','numDocumento','fDocumento','anexos','idRemitente','destinatario','asunto','idCaracter','idTurnado','idAccion','fRecepcion','hRecepcion'];
+		$cont=count($comprobar);
+		foreach ($data as $key => $value) {
+			for ($i=0; $i <$cont ; $i++) { 
+				if($key==$comprobar[$i]){
+					$datosComprobacion[$key]=$value;
+				}
+			}
+		}
+		return $datosComprobacion;
+	}
+
+	public function separaDatosInsertVolantesDocumentos(array $data){
+		$comprobar=['idSubTipoDocumento','promocion','cveAuditoria'];
+		$cont=count($comprobar);
+		foreach ($data as $key => $value) {
+			for ($i=0; $i <$cont ; $i++) { 
+				if($key==$comprobar[$i]){
+					$datosComprobacion[$key]=$value;
+				}
+			}
+		}
+		return $datosComprobacion;
 	}
 
 function limpiaUrlGet($url){

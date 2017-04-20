@@ -217,11 +217,33 @@ $app->map('/catVolantes',function() use($app){
 	}
 	elseif($app->request->isPost()){
 		$insercion= new Add();
-		$insercion->insertaEnCatalogo($app->request->post(),$nombre);
+		$insercion->insertaEnVolantes($app->request->post(),$nombre);
 	}
 	
 
 })->via('GET','POST','PUT');
+
+
+
+$app->get('/getVolantes',function() use ($app){
+	$nombre=limpiaUrlGet($_SERVER["REQUEST_URI"]);
+	$obtieneDatos=new GetData();
+	$obtieneDatos->getTable($nombre);
+});
+
+
+$app->get('/getVolantes/:tabla/:campo/:id',function($tabla,$campo,$id) use ($app){
+	$nombre=limpiaUrlGet($_SERVER["REQUEST_URI"]);
+	$obtieneDatos=new GetData();
+	$obtieneDatos->getTableById($tabla,$campo,$id);
+});
+
+$app->post('/getVolantes/:tabla/:campo/:id',function($tabla,$campo,$id) use ($app){
+	$nombre=limpiaUrlGet($_SERVER["REQUEST_URI"]);
+		$update= new Update();
+		$datos=$app->request->post();
+		$update->updateEnCatalogo($tabla,$campo,$id,$datos);
+});
 
 
 
@@ -237,6 +259,49 @@ $app->get('/subtiposdocumentos/:doc',function($doc) use ($app){
 	$obtieneDatos->getComboSubTiposDocumentos($doc);
 });
 
+
+$app->get('/getComboRemitente',function() use ($app){
+	$obtieneDatos=new GetData();
+	$obtieneDatos->getComboRemitente();
+});
+
+
+
+
+$app->get('/getDatosRemitente/:id',function($id) use ($app){
+	$obtieneDatos=new GetData();
+	$obtieneDatos->getCatById('Remitentes','idRemitente',$id);
+});
+
+
+$app->get('/getComboCaracter',function() use ($app){
+	$obtieneDatos=new GetData();
+	$obtieneDatos->getComboCaracter();
+});
+
+
+$app->get('/getComboTurnado',function() use ($app){
+	$obtieneDatos=new GetData();
+	$obtieneDatos->getComboTurnado();
+});
+
+
+$app->get('/getComboAccion',function() use ($app){
+	$obtieneDatos=new GetData();
+	$obtieneDatos->getComboAccion();
+});
+
+
+$app->get('/getComboAuditoria',function() use ($app){
+	$obtieneDatos=new GetData();
+	$obtieneDatos->getComboAuditoria();
+});
+
+
+$app->get('/getDatosAuditoria/:id',function($id) use ($app){
+	$obtieneDatos=new GetData();
+	$obtieneDatos->getDatosAuditoriaById($id);
+});
 
 
 /*-----------------------funciones----------------------*/
