@@ -1,60 +1,22 @@
 var yo=require('yo-yo');
 
-module.exports=function(){
+module.exports=function(data){
+
+if(data.estatus=='ACTIVO')
+{
+    var opuesto='INACTIVO'
+}
+else {
+ var opuesto='ACTIVO'   
+}
+
 return yo`<form method="POST" class="form-inline" id="UpdateVolantes">
-<div class="headerVolante">
-<div class="form-group idDocumento">
-    <label for="idDocumento">Tipo de Documento</label>
-    <select class=form-control name=idDocumento id="idDocumento" required>
-    </select>
-</div>
-
-<div class="form-group subDocumento">
-    <label for="subDocumento">Tipo de SubDocumento</label>
-    <select class=form-control name=idSubTipoDocumento id="subDocumento" required>
-    </select>
-</div>
-
-<div class="form-group Promocion">
-    <label for="subDocumento">Promocion de Accion</label>
-    <select class="form-control" name="promocion" id="promocion" required>
-        <option value="NO"> Escoga Opcion </option>
-        <option value="SI"> SI </option>
-        <option value="NO"> NO </option>
-    </select>
-</div>
-
-
-
-<div class="form-group cveAuditoria">
-    <label for="cveAuditoria">Clave de Auditoria</label>
-    <select class=form-control name=cveAuditoria id="cveAuditoria" required>
-    </select>
-</div>
-
-</div>
-
-<div class="datosAuditoria">
-
-<div class="form-group idUnidad">
-    <label for="idUnidad">Sujeto de Fiscalizacion</label>
-    <input type="text" id="idUnidad"  class="form-control" disabled="true">
-</div>
-
-<div class="form-group idObjeto">
-    <label for="idObjeto">Rubro</label>
-    <input type="text" id="idObjeto"  class="form-control" disabled="true">
-</div>
-
-</div>
-
-
 
 <div class="contentVolante">
 
 <div class="form-group Folio">
     <label for="Folio">Folio</label>
-    <input type="number" id="Folio" name="folio" required class="form-control">
+    <input type="number" id="Folio" name="folio" required class="form-control" value="${data.folio}" disabled="true">
 </div>
 
 

@@ -2163,3 +2163,7 @@ form#Volantes div.idObjeto {
   width: 60%;
   display: block;
 }
+form#UpdateVolantes div.headerVolante,
+form#UpdateVolantes div.datosAuditoria {
+  display: none;
+}
