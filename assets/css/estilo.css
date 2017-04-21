@@ -1961,6 +1961,12 @@ footer .copy{
 table {
   overflow-y: hidden;
 }
+table tr {
+  cursor: pointer;
+}
+input:invalid {
+  border-color: #f00;
+}
 form#Remitentes div.saludo,
 form#UpdateRemitentes div.saludo,
 form#Caracteres div.saludo,
@@ -2166,4 +2172,56 @@ form#Volantes div.idObjeto {
 form#UpdateVolantes div.headerVolante,
 form#UpdateVolantes div.datosAuditoria {
   display: none;
+}
+form#UpdateVolantes div.Folio {
+  width: 100px;
+}
+form#UpdateVolantes div.numDocumento,
+form#UpdateVolantes div.fDocumento,
+form#UpdateVolantes div.fRecepcion,
+form#UpdateVolantes div.anexos,
+form#UpdateVolantes div.hRecepcion {
+  width: 135px;
+}
+form#UpdateVolantes div.idRemitente,
+form#UpdateVolantes div.Destinatario,
+form#UpdateVolantes div.Asunto,
+form#UpdateVolantes div.send {
+  display: block;
+}
+form#UpdateVolantes div.Destinatario {
+  width: 28%;
+}
+form#UpdateVolantes div.Asunto {
+  width: 57%;
+}
+form#UpdateVolantes div.send input[type=submit] {
+  width: 7% !important;
+  margin-right: 15px;
+}
+form#UpdateVolantes div.NombreRemitente,
+form#UpdateVolantes div.cargo,
+form#UpdateVolantes div.dependencia {
+  width: 28%;
+}
+form#UpdateVolantes div {
+  margin-right: 10px;
+}
+form#UpdateVolantes div label,
+form#UpdateVolantes div input,
+form#UpdateVolantes div textarea {
+  width: 100%;
+}
+form#UpdateVolantes div.idDocumento,
+form#UpdateVolantes div.subDocumento,
+form#UpdateVolantes div.Promocion {
+  width: 15%;
+}
+form#UpdateVolantes div.idUnidad,
+form#UpdateVolantes div.idObjeto {
+  width: 60%;
+  display: block;
+}
+form#UpdateVolantes div.send {
+  margin-top: 15px;
 }

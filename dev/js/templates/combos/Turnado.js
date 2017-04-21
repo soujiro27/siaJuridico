@@ -1,9 +1,9 @@
 var yo=require('yo-yo');
 
 module.exports=function(data){
-var option="<option value=0>Seleccione Opcion</option>";
+var option="<option value=''>Seleccione Opcion</option>";
 $.each(data, function(index, val) {
-     option+='<option value='+data[index].idTurnado+'>'+data[index].siglas+'</option>';
+     option+='<option value='+data[index].idTurnado+' id='+data[index].idTurnado+'>'+data[index].siglas+'</option>';
     });
 
 return option;

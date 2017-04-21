@@ -35,6 +35,28 @@ function consultaRetorno($sql){
 		echo json_encode($datos);
 	}
 
+	public function getTableVolantes($tabla){
+		$db=$this->conecta();
+		$sql="select sia_Volantes.idVolante, sia_Volantes.idDocumento,sia_Volantes.numDocumento,
+sia_CatRemitentes.nombre as idRemitente,
+sia_Volantes.asunto,
+sia_CatCaracteres.nombre as idCaracter,
+sia_CatTurnados.nombre as idTurnado,
+sia_CatAcciones.nombre as idAccion,
+sia_VolantesDocumentos.idSubTipoDocumento
+from sia_Volantes 
+inner join sia_CatRemitentes
+on sia_Volantes.idRemitente=sia_CatRemitentes.idRemitente
+inner join sia_CatCaracteres on sia_Volantes.idCaracter=sia_CatCaracteres.idCaracter
+inner join sia_CatTurnados on sia_Volantes.idTurnado=sia_CatTurnados.idTurnado
+inner join sia_CatAcciones on sia_Volantes.idAccion=sia_CatAcciones.idAccion
+inner join sia_VolantesDocumentos on sia_Volantes.idVolante=sia_VolantesDocumentos.idVolante";
+		$datos=$this->consultaRetorno($sql);
+		echo json_encode($datos);
+	}
+
+
+
 	public function getCatById($tabla,$campo,$id){
 		$db=$this->conecta();
 		$sql="SELECT * FROM sia_Cat".$tabla." WHERE ".$campo."='".$id."'";

@@ -5,6 +5,7 @@ class Add extends CompruebaDatos{
 	
 	public function insertaEnCatalogo(array $datos,$tabla){
 		$res=$this->realizaComprobacion($datos,$tabla);
+		//var_dump($res);
 		if($res==true)
 		{
 			$campos=$this->obtieneCamposQuery($datos);
@@ -50,7 +51,7 @@ class Add extends CompruebaDatos{
 		}else{
 			$salida['salida']="false";
 		}
-		
+		echo json_encode($salida);
 	}
 }
 

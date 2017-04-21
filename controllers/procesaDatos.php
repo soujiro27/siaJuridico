@@ -44,7 +44,7 @@ class ProcesaDatos{
 	}
 
 	public function separaDatosVolante($data){
-		$comprobar=['idDocumento','numDocumento','folio','fDocumento','idRemitente','destinatario','asunto','idCaracter','idTurnado','idAccion'];
+		$comprobar=['idDocumento','numDocumento','folio','fDocumento','idRemitente','destinatario','idCaracter','idTurnado','idAccion'];
 		$cont=count($comprobar);
 		foreach ($data as $key => $value) {
 			for ($i=0; $i <$cont ; $i++) { 

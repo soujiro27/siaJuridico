@@ -8,7 +8,11 @@
 
 table
 	overflow-y: hidden
+table tr
+	cursor pointer
 
+input:invalid
+	border-color red
 
 form#Remitentes,form#UpdateRemitentes,form#Caracteres,form#UpdateCaracteres,form#Turnados,form#UpdateTurnados,form#Acciones,form#UpdateAcciones
 	div.saludo,div.nombre,div.cargo,div.siglas,div.procedencia,div.estatus
@@ -65,6 +69,36 @@ form#Volantes
 	div.idUnidad,div.idObjeto
 		width 60%;
 		display block
+
+
 form#UpdateVolantes
 	div.headerVolante,div.datosAuditoria
 		display none
+	div.Folio
+		width 100px
+	div.numDocumento,div.fDocumento,div.fRecepcion,div.anexos,div.hRecepcion
+		width 135px
+	div.idRemitente,div.Destinatario, div.Asunto,div.send
+		display block
+	div.Destinatario
+		width 28%
+	div.Asunto
+		width 57%
+	div.send input[type=submit]
+		width 7% !important
+		margin-right 15px; 
+	div.NombreRemitente,div.cargo,div.dependencia
+		width 28%
+	div
+		margin-right 10px
+		label,input,textarea
+			width 100%
+	div.idDocumento,div.subDocumento,div.Promocion
+		width 15%
+	div.idUnidad,div.idObjeto
+		width 60%;
+		display block
+	div.send
+		margin-top 15px
+
+		

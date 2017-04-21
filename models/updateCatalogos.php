@@ -22,6 +22,15 @@ class UpdateCatalogos{
 		$pdo[':usrModificacion']=$_SESSION ["idUsuario"];
 		$dbQuery->execute($pdo);
 	}
+
+	public function updateTable($tabla,$campos,$campoId,$id,$pdo)
+	{
+		$db=$this->conecta();
+		$sql="UPDATE sia_".$tabla." SET ".$campos."usrModificacion=:usrModificacion, fModificacion=getdate() WHERE ".$campoId."=".$id;
+		$dbQuery = $db->prepare($sql);
+		$pdo[':usrModificacion']=$_SESSION ["idUsuario"];
+		$dbQuery->execute($pdo);
+	}
 }
 
 

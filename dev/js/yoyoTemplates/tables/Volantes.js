@@ -4,8 +4,9 @@ module.exports=function(datos){
 var cont=0;
 var el=yo`<table class="table table-striped table-bordered table-hover principal"><thead>
 	<th>Documento</th>
+	<th>Tipo Documento</th>
 	<th>Num. Oficio</th>
-	<th>Fecha</th>
+	<th>Remitente</th>
 	<th>Asunto</th>
 	<th>Caracter</th>
 	<th>Turnado</th>
@@ -21,9 +22,3 @@ ${datos.map(function(datos,index,arr){
 return el;
 }
 
-/*
-${datos.map(function(){
-	body(datos[cont]);
-	cont++;
-})}
-*/

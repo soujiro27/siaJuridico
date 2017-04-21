@@ -54,7 +54,7 @@ return yo`<form method="POST" class="form-inline" id="Volantes">
 
 <div class="form-group Folio">
     <label for="Folio">Folio</label>
-    <input type="number" id="Folio" name="folio" required class="form-control">
+    <input type="number" id="Folio" name="folio" required class="form-control" pattern="[0-9]{1,16}" title="Solo Numeros">
 </div>
 
 
@@ -70,7 +70,7 @@ return yo`<form method="POST" class="form-inline" id="Volantes">
 
 <div class="form-group anexos">
     <label for="anexos">Numero de Anexos</label>
-    <input type="number" id="anexos" name="anexos" required class="form-control">
+    <input type="number" id="anexos" name="anexos" required class="form-control" pattern="[0-9]{1,16}">
 </div>
 
 <div class="form-group fRecepcion">
@@ -80,7 +80,7 @@ return yo`<form method="POST" class="form-inline" id="Volantes">
 
 <div class="form-group hRecepcion">
     <label for="hRecepcion">Hora de Recepcion</label>
-    <input type="time" id="hRecepcion" name="hRecepcion" required class="form-control">
+    <input type="time" id="hRecepcion" name="hRecepcion" required class="form-control" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" placeholder="00:00" title="Formato de 24 horas 00:00">
 </div>
 
 
@@ -108,7 +108,7 @@ return yo`<form method="POST" class="form-inline" id="Volantes">
 
 <div class="form-group Destinatario">
     <label for="Destinatario">Destinatario</label>
-    <input type="text" id="Destinatario"  name="destinatario" class="form-control" placeholder="Destinatario">
+    <input type="text" id="Destinatario"  name="destinatario" class="form-control" placeholder="Destinatario" pattern="[a-zA-Z._- ]" required title="Unicamente letras" >
 </div>
 
 <div class="form-group Asunto">

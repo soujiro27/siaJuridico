@@ -6,10 +6,23 @@ class CompruebaDatos extends ProcesaDatos{
 		$db=$this->conecta();
 		$campos=$this->procesaCampos($datos);
 		$valores=$this->obtieneArrayPdo($datos);
+		//var_dump($campos);
+		//echo '<br><br>';
+		//var_dump($valores);
 		$valida=$this->compruebaCat($nombre,$campos,$valores,$db);
 		return $valida;
 	}
 
+	public function realizaComprobacionTabla(array $datos,$nombre){
+		$db=$this->conecta();
+		$campos=$this->procesaCampos($datos);
+		$valores=$this->obtieneArrayPdo($datos);
+		//var_dump($campos);
+		//echo '<br><br>';
+		//var_dump($valores);
+		$valida=$this->compruebaTabla($nombre,$campos,$valores,$db);
+		return $valida;
+	}
 
 	public function compruebaCat($tabla,$campos,$datos,$db){
 	$sql="SELECT * FROM sia_Cat".$tabla." WHERE ".$campos;

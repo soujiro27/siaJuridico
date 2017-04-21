@@ -38,6 +38,36 @@ var update=function(){
 					var valorSelect=(response.data[0].idTipoDocto);
 					$('select#idDocumento option#'+valorSelect).attr('selected',true);
 				}
+				else if(ruta=='Volantes'){
+					var valorSelect=(response.data[0].idRemitente);
+					$('select#idRemitente option#'+valorSelect).attr('selected',true);
+					
+					var valorCaracter=response.data[0].idCaracter;
+					$('select#idCaracter option#'+valorCaracter).attr('selected',true);
+
+					var valorTurnado=response.data[0].idTurnado;
+					$('select#idTurnado option#'+valorTurnado).attr('selected',true);
+
+					var valorAccion=response.data[0].idAccion;
+					$('select#idAccion option#'+valorAccion).attr('selected',true);
+					
+
+
+
+					$('select#idRemitente').on('change',function(){
+						idRemitente=$(this).val();
+						$.get({
+							url:'/getDatosRemitente/'+idRemitente,
+							success:function(data){
+								data=$.parseJSON(data);
+								
+								$('input#NombreRemitente').val(data[0].nombre);
+								$('input#cargo').val(data[0].cargo);
+								$('input#dependencia').val(data[0].procedencia);
+							}
+						});
+					});
+				}
 
 				$('form input[type=text]').on('keyup',function(){
 					var letra=$(this).val();

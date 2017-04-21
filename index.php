@@ -228,7 +228,7 @@ $app->map('/catVolantes',function() use($app){
 $app->get('/getVolantes',function() use ($app){
 	$nombre=limpiaUrlGet($_SERVER["REQUEST_URI"]);
 	$obtieneDatos=new GetData();
-	$obtieneDatos->getTable($nombre);
+	$obtieneDatos->getTableVolantes($nombre);
 });
 
 
@@ -242,7 +242,7 @@ $app->post('/getVolantes/:tabla/:campo/:id',function($tabla,$campo,$id) use ($ap
 	$nombre=limpiaUrlGet($_SERVER["REQUEST_URI"]);
 		$update= new Update();
 		$datos=$app->request->post();
-		$update->updateEnCatalogo($tabla,$campo,$id,$datos);
+		$update->updateEnVolantes($tabla,$campo,$id,$datos);
 });
 
 
