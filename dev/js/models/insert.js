@@ -1,39 +1,66 @@
-var $ = require('jquery');
-var noty=require('noty');
+module.exports=class Insert{
 
-var insert=function(){
 
-	return{
-		insertCat:function(datos,tabla){
+	inicio(datos){
+		if(ruta=='Volantes'){
+			this.insertVolantes(datos);
+			
+		}
+		else
+		{
+			this.insert(datos)
+		}
+	}
+
+
+	insertVolantes(datos){
+		let insert= new Promise((resolve,reject) => {
+
 			$.post({
-				url:'/cat'+tabla,
+				url:'/tableVolantes/'+ruta,
 				data:datos,
 				success:function(data){
-					salida=JSON.parse(data);
-					console.log(salida);
-					if(salida.salida=='false')
-					{
-						var n = $('.noty_message').noty({
-							layout:'center',
-							text: 'Error: Registro Duplicado',
-							type:'error',
-							dismissQueue: true, 
-							force: false,
-							maxVisible:1,
-							timeout: 5000,
-							progressBar: true
-						});
-					}
-					else if (salida.salida=='true') {
-						 location.href="http://localhost:88/cat"+tabla;
-					}
+					resolve(data);
 				}
 			});
-		},
 
-
-		
+		});
+		return insert;
 	}
-}
 
-module.exports=insert;
+
+	insert(datos)
+	{
+		let insert= new Promise((resolve,reject) => {
+
+			$.post({
+				url:'/table/'+ruta,
+				data:datos,
+				success:function(data){
+					resolve(data);
+				}
+			});
+
+		});
+		return insert;
+	}
+
+	update(datos)
+	{
+		let insert= new Promise((resolve,reject) => {
+			
+			$.post({
+				url:'/update/'+ruta,
+				data:datos,
+				success:function(data){
+					resolve(data);
+				}
+			});
+
+		});
+		return insert;
+	}
+
+
+
+}

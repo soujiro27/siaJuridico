@@ -1,15 +1,21 @@
-var menu=require('./eventos/menu.js');
-var eventos=require('./eventos/eventos.js');
-var $=require('jquery');
-var funciones=require('./eventos/funciones.js');
+/*--------------- LIBRERIAS ARCHIVOS EXTERNOS -------------*/
+require('babelify-es6-polyfill');
+var drawTable=require('./controllers/drawTable.js');
+//var eventos=require('./controllers/forms.js');
+var menu=require('./controllers/menu.js');
+/*-----------variables globales --------------------*/
 
-var evento = new eventos;
-var funcion=new funciones;
+var ruta=localStorage.getItem('ruta');
+/*--------------inicializar clases---------------------*/
+var tabla=new drawTable();
+//var form= new eventos();
 
-$(function(){
-	menu();
-	evento.btnAgregar();
-	funcion.cargaTabla();
-	var datosTabla;
-	var  id;
-});
+/*----------------funciones --------------------------*/
+menu();
+tabla.tablaPrincipal();
+//form.formularioAgregar();
+
+
+
+
+

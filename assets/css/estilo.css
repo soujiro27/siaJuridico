@@ -2137,7 +2137,15 @@ form#Volantes div.send {
   display: block;
 }
 form#Volantes div.Destinatario {
-  width: 28%;
+  width: 58%;
+}
+form#Volantes div.Destinatario input {
+  width: 60%;
+}
+form#Volantes div.Destinatario button {
+  display: inline-block;
+  width: 20%;
+  margin-left: 10px;
 }
 form#Volantes div.Asunto {
   width: 57%;
@@ -2168,6 +2176,16 @@ form#Volantes div.idUnidad,
 form#Volantes div.idObjeto {
   width: 60%;
   display: block;
+}
+form#Volantes div.datosAuditoria {
+  border-bottom: 1px solid #808080;
+  border-top: 1px solid #808080;
+  margin-top: 20px;
+}
+form#Volantes div.datosAuditoria label {
+  margin-top: 10px;
+  background-color: #efefef;
+  color: #000;
 }
 form#UpdateVolantes div.headerVolante,
 form#UpdateVolantes div.datosAuditoria {

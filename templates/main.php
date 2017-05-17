@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Sistema Integral de Auditoría</title>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="juridico/assets/css/estilo.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/estilo.css">
 </head>
 <body>
 <header>
@@ -27,8 +27,7 @@
 	localStorage.setItem("ruta", ruta);
 
 </script>
-<script src="./Dashboard - MacAdmin_files/bootstrap.min.js"></script>
-
-<script type="text/javascript" src="juridico/assets/js/app.js"></script>
+<script src="../Dashboard - MacAdmin_files/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/app.js"></script>
 </body>
 </html>

@@ -5,7 +5,7 @@ $header='
 		<div class="container-fluid">
 			<nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">			
 				<div class="col-xs-12">
-					<div class="col-xs-2"><a href="/"><img src="img/logo-top.png"></a></div>				
+					<div class="col-xs-2"><a href="/"><img src="../img/logo-top.png"></a></div>				
 					<div class="col-xs-2">
 						<ul class="nav navbar-nav "><li><a href="#"><i class="fa fa-th-list"></i> '. $_SESSION["sCuentaActual"].'</a></li></ul>
 					</div>					
