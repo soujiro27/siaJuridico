@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 require 'juridico/php/controllers/procesaDatos.php';
 
@@ -43,17 +43,24 @@ class Insert{
 
 
 	public function insertaVolantes($modulo,$datos){
-		
+
 		$db=$this->conecta();
 		$procesa=new procesaDatosQuery();
 		$datosVolante=$procesa->separaDatosVolante($datos);
+
 		$campos=$procesa->obtieneCamposInsert($datosVolante);
+
 		$valores=$procesa->obtieneValoresQuery($datosVolante);
+
 		$pdo=$procesa->obtieneArregloPdo($datosVolante);
+
 		$sql='INSERT INTO sia_'.$modulo.'('.$campos.'usrAlta, fAlta) VALUES('.$valores.':usrAlta, getdate())';
+
 		$dbQuery = $db->prepare($sql);
 		$pdo[':usrAlta']=$_SESSION ["idUsuario"];
 		$dbQuery->execute($pdo);
+		//echo "\nPDO::errorInfo():\n";
+	 	//print_r($dbQuery->errorInfo());
 		$obt=new Get();
 		$folio=$obt->getLastFolioVolantes();
 		$idVolante=$folio[0]['folio'];
@@ -64,10 +71,10 @@ class Insert{
 		$valores=$procesa->obtieneValoresQuery($datosDocumentosVolante);
 		$pdo=$procesa->obtieneArregloPdo($datosDocumentosVolante);
 		$sql='INSERT INTO sia_'.$tabla.'('.$campos.'usrAlta, fAlta) VALUES('.$valores.':usrAlta, getdate())';
-		
+
 		$dbQuery = $db->prepare($sql);
 		$pdo[':usrAlta']=$_SESSION ["idUsuario"];
-		
+
 		$dbQuery->execute($pdo);
 		$salida['insert']='true';
 		echo json_encode($salida);
@@ -93,6 +100,7 @@ class Insert{
 		$dbQuery = $db->prepare($sql);
 		$pdo[':usrModificacion']=$_SESSION ["idUsuario"];
 		$dbQuery->execute($pdo);
+
 		$salida['insert']='true';
 		echo json_encode($salida);
 		}

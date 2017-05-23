@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 class procesaDatosQuery{
@@ -32,7 +32,7 @@ class procesaDatosQuery{
 			$cont++;
 			$valores=$valores.$key.'=:'.$key.', ';
 		}
-		
+
 		return $valores;
 	}
 
@@ -73,7 +73,7 @@ class procesaDatosQuery{
 	$comprobar=['idTipoDocto','numDocumento','folio','fDocumento','idRemitente','destinatario','idCaracter','idTurnado','idAccion','anexos','hRecepcion','fRecepcion','asunto'];
 	$cont=count($comprobar);
 	foreach ($data as $key => $value) {
-		for ($i=0; $i <$cont ; $i++) { 
+		for ($i=0; $i <$cont ; $i++) {
 			if($key==$comprobar[$i]){
 				$datosComprobacion[$key]=$value;
 			}
@@ -84,10 +84,10 @@ class procesaDatosQuery{
 
 
 	public function separaDatosInsertVolantesDocumentos(array $data){
-		$comprobar=['idSubTipoDocumento','cveAuditoria'];
+		$comprobar=['idSubTipoDocumento','cveAuditoria','promocion'];
 		$cont=count($comprobar);
 		foreach ($data as $key => $value) {
-			for ($i=0; $i <$cont ; $i++) { 
+			for ($i=0; $i <$cont ; $i++) {
 				if($key==$comprobar[$i]){
 					$datosComprobacion[$key]=$value;
 				}
@@ -96,7 +96,7 @@ class procesaDatosQuery{
 		return $datosComprobacion;
 	}
 
-	
+
 }
 
 

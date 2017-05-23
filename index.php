@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 require 'juridico/php/controllers/rutas.php';
 require 'juridico/php/controllers/tables.php';
@@ -13,7 +13,7 @@ require 'juridico/php/models/insert.php';
 $app->get('/juridico/:modulo',function($modulo) use ($app){
 	$rutas=new Rutas();
 	$rutas->render($modulo,$app);
-	
+
 });
 
 /*-----------------carga la tabla principal -----------------*/
@@ -32,11 +32,40 @@ $app->get('/get/:modulo',function($modulo) use ($app){
 });
 
 
+/*-----------------hace el update ------------------*/
+$app->post('/update/:modulo',function($modulo) use ($app){
+	$rutas=new Rutas();
+	$modulo=$rutas->separaModulo($modulo);
+	$inserta=new Insert();
+	$inserta->update($modulo,$app->request->post());
+
+});
+
+
+
+/*-------------------manda a insertar nuevo registro --------------*/
+
+$app->post('/insert/:modulo',function($modulo) use ($app){
+	$rutas=new Rutas();
+	$modulo=$rutas->separaModulo($modulo);
+	$inserta=new Insert();
+	if($modulo=='Volantes'){
+			$inserta->insertaVolantes($modulo,$app->request->post());
+	}else{
+		$inserta->insertaBd($modulo,$app->request->post());
+	}
+
+});
+
+
+
+
+
 /*-------------- Obtiene un combo -------------------*/
 
-$app->get('/combo/:modulo',function($modulo) use ($app){
+$app->get('/getCombo',function() use ($app){
 	$camposTabla=new Combos();
-	$camposTabla->obtenerCombo($modulo,$app->request->get());
+	$camposTabla->obtenerCombo($app->request->get());
 
 });
 
@@ -56,8 +85,6 @@ $app->get('/folio/:modulo/:campo',function($modulo,$campo) use ($app){
 
 
 
-
-
 /*------------------obitiene las auditorias -----------------*/
 $app->get('/getCombo/auditorias',function() use ($app){
 	$obtiene=new Get();
@@ -74,26 +101,12 @@ $app->get('/auditorias/:id',function($id) use ($app){
 });
 
 
-/*-----------------hace el update ------------------*/
-$app->post('/update/:modulo',function($modulo) use ($app){
-	$rutas=new Rutas();
-	$modulo=$rutas->separaModulo($modulo);
-	$inserta=new Insert();
-	$inserta->update($modulo,$app->request->post());
-
-});
 
 
 
-/*-------------------manda a insertar nuevo registro --------------*/
-$app->post('/table/:modulo',function($modulo) use ($app){
-	$rutas=new Rutas();
-	$modulo=$rutas->separaModulo($modulo);
-	$inserta=new Insert();
-	$inserta->insertaBd($modulo,$app->request->post());
 
-});
 
+/*----------inserta en volantes ---------------------*/
 
 $app->post('/tableVolantes/:modulo',function($modulo) use ($app){
 	$rutas=new Rutas();

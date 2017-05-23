@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 
 
@@ -50,12 +50,14 @@ class Get{
 	}
 
 
-	public function getCombo($tabla,$campos,$datos){
+	public function getCombo($tabla,$campos,$where,$pdo){
 		$db=$this->conecta();
-		$procesa=new procesaDatosQuery();
-		$sql=$procesa->obtieneCamposWhere($datos);
-		$sql="SELECT ".$campos." FROM sia_".$tabla." WHERE ".$sql;
-		$pdo=$procesa->obtieneArregloPdo($datos);
+		if($tabla=='auditorias'){
+			$sql="SELECT ".$campos." FROM sia_".$tabla." WHERE ".$where." AND clave<>'NULL' ";
+		}else{
+			$sql="SELECT ".$campos." FROM sia_".$tabla." WHERE ".$where;
+		}
+
 		$datos=$this->consultaRetornoPDO($sql,$pdo);
 		echo json_encode($datos);
 	}
@@ -76,7 +78,7 @@ class Get{
 		$cuenta=$_SESSION["idCuentaActual"];
 
 		$sql="SELECT idAuditoria,clave,idUnidad from sia_auditorias where idCuenta='$cuenta' and clave <>'NULL'";
-		
+
 		$datos=$this->consultaRetorno($sql);
 		echo json_encode($datos);
 	}
@@ -85,7 +87,7 @@ class Get{
 	public function getAuditoriaById($id){
 		$cuenta=$_SESSION["idCuentaActual"];
 		$db=$this->conecta();
-		$sql="SELECT a.idAuditoria auditoria,ta.nombre tipo, COALESCE(convert(varchar(20),a.clave),convert(varchar(20),a.idAuditoria)) claveAuditoria, 
+		$sql="SELECT a.idAuditoria auditoria,ta.nombre tipo, COALESCE(convert(varchar(20),a.clave),convert(varchar(20),a.idAuditoria)) claveAuditoria,
  dbo.lstSujetosByAuditoria(a.idAuditoria) sujeto, dbo.lstObjetosByAuditoria(a.idAuditoria) objeto
  FROM sia_programas p
  INNER JOIN sia_auditorias a on p.idCuenta=a.idCuenta and p.idPrograma=a.idPrograma

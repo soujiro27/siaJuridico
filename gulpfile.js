@@ -5,11 +5,11 @@ var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var rename = require('gulp-rename');
 var yoyoify = require('yo-yoify-standalone');
-
-
-
 var babelify   = require('babelify');
 var buffer     = require('vinyl-buffer');
+
+
+
 
 
 gulp.task('build:js', function () {
@@ -23,23 +23,6 @@ gulp.task('build:js', function () {
 });
 
 
-/*
-return browserify("./script.js")
-  .transform("babelify", {presets: ["es2015"]})
-  .bundle()
-  */
-
-
-
-
-
-
-
-
-
-
-
-
 gulp.task('stylus',function(){
 	 gulp.src('dev/stylus/estilo.styl')
 	 .pipe(stylus({
@@ -51,14 +34,14 @@ gulp.task('stylus',function(){
 
 
 function compile(watch) {
-  var bundle = watchify(browserify('./dev/js/index.js', {debug: true}));
+  var bundle = watchify(browserify('./dev/js/index.js'));
 
   function rebundle() {
     bundle
-      .transform(babel)
+      .transform("babelify", {presets: ["es2015"]})
       .bundle()
-      .on('error', function (err) { console.log(err); this.emit('end') })
-      .pipe(source('/dev/js/index.js'))
+      .pipe(source('app.js'))
+      .pipe(buffer())
       .pipe(rename('app.js'))
       .pipe(gulp.dest('assets/js/'));
   }
@@ -79,7 +62,7 @@ gulp.task('build', function () {
 
 gulp.task('watch', function () { return compile(true); });
 
-
+/*
 gulp.task('templates',function(){
 
   yoyoify('dev/js/yoyoTemplates/tables/head/table.js','dev/js/templates/tables/head/table.js');
@@ -96,6 +79,6 @@ yoyoify('dev/js/yoyoTemplates/forms/update/Volantes.js','dev/js/templates/forms/
 
 
 });
+*/
 
-
-gulp.task('default',['stylus','templates','build:js']);
+gulp.task('default',['stylus','build:js']);

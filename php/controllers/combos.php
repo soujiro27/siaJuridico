@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 
@@ -6,65 +6,62 @@ class Combos extends Rutas{
 
 
 
-	public function obtenerCombo($modulo,$data){
-		$tabla=$this->separaModulo($modulo);
-		$campos=$this->camposComboObjeto($data);
-		$campos=$this->camposQueryTabla($campos);
-		$where=$this->whereComboObjeto($data);
-		$obtener= new Get();
-		$obtener->getCombo($tabla,$campos,$where);
-
-	}
-
-
-
-	public function obtenerComboCampo($modulo,$campo){
-		if($modulo=='SubTiposDocumentos'){
-			$campos=$this->SubTiposDocumentos;
-			$where=$this->SubTiposDocumentosWhere;
-			$where['idTipoDocto']=$campo;
+	public function obtenerCombo($data){
+		$tabla=$this->obtenerTabla($data);
+		$campos=$this->obtenerCampos($data);
+		$where=$this->obtenerWhere($data);
+		$pdo=$this->creaPdoCombo($data);
+		$get= new Get();
+		if($tabla=='remitentes'){
+			$tabla='areas';
+			$where='idAreaSuperior=:idAreaSuperior OR idAreaSuperior=:idAreaMenor';
 		}
-		$tabla=$this->separaModulo($modulo);
-		$campos=$this->camposQueryTabla($campos);
-		$obtener= new Get();
-		$obtener->getCombo($tabla,$campos,$where);
+		$get->getCombo($tabla,$campos,$where,$pdo);
 
 	}
 
 
+	public function obtenerTabla($data){
+		$tabla=$data['tabla'];
+		return $tabla;
 
-
-	public function camposQueryTabla($campos){
-		$sql="";
-		foreach ($campos as $key => $value) {
-			$sql=$sql.$value.', ';
-		}
-		$sql=substr($sql,0,-2);
-		return $sql;
 	}
 
-
-	public function camposComboObjeto($data){
+	public function obtenerCampos($data){
+		$campos="";
 		foreach ($data['campos'] as $key => $value) {
-			$campos[$key]=$value;
-		}
+				$campos=$campos.$value.', ';
+			}
+		$campos=substr($campos,0,-2);
 		return $campos;
 	}
 
-	public function whereComboObjeto($data){
-		$cont=0;
-		foreach ($data as $key => $value) {
-			if($cont==1){
-				$where[$key]=$value;
-			}
-			$cont++;	
-		}
-		return $where;
 
+	public function obtenerWhere($data){
+		$where='';
+		foreach ($data['where'] as $key => $value) {
+			$where=$where.$key.'=:'.$key.' AND ';
+		}
+		$where=substr($where,0,-4);
+
+		return $where;
 	}
 
+
+
+
+
+
+	public function creaPdoCombo($data){
+		$pdo= array();
+		foreach ($data['where'] as $key => $value) {
+			$pdo[':'.$key]=$value;
+		}
+		return $pdo;
+	}
+
+
+
 }
-
-
 
  ?>

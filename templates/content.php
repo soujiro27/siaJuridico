@@ -9,13 +9,14 @@ $main='
 				  <div class="pull-left">Lista de '.$nombre.' registrados</div>
 				  <div class="widget-icons pull-right">
 				 <div class="archivo" id="archivos"></div>
-            <button type="button" class="btn btn-primary btn-sm" data-formload="'.$nombre.'" id=agregar>Agregar '.$nombre.'</button>
+
+            <a href="/juridico/'.$nombre.'/Add" class="btn btn-primary btn-sm" data-formload="'.$nombre.'" id=agregar>Agregar '.$nombre.'</a>
           </div>  
           <div class="clearfix"></div>
 			</div>
 		</div>
 
-<div class="widget-content">	
+<div class="widget-content" id="main-content">
 	<div class="table-responsive" style="height: 400px; overflow: auto; overflow-x:hidden;">		
     </div>
     <div class="formularioPrincipal">
@@ -24,4 +25,6 @@ $main='
 </div>';
 
 echo $main;
+
+// <button type="button" class="btn btn-primary btn-sm" data-formload="'.$nombre.'" id=agregar>Agregar '.$nombre.'</button>
 ?>

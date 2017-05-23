@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 
 
@@ -6,9 +6,9 @@ class Tables extends Rutas{
 
 	private $Caracteres=['idCaracter','siglas','nombre','estatus'];
 	private $Acciones=['idAccion','nombre','estatus'];
-	private $SubTiposDocumentos=['idSubTipoDocumento','idTipoDocto','nombre','promocion','estatus'];
+	private $SubTiposDocumentos=['idSubTipoDocumento','idTipoDocto','nombre','estatus'];
 	private $Volantes=['idVolante','idTipoDocto','numDocumento','idRemitente','idTurnado','estatus'];
-	
+
 
 	public function obtenerTabla($modulo){
 		if($modulo=='Caracteres'){$campos=$this->Caracteres;}

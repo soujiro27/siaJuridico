@@ -2130,14 +2130,12 @@ form#Volantes div.anexos,
 form#Volantes div.hRecepcion {
   width: 135px;
 }
-form#Volantes div.idRemitente,
-form#Volantes div.Destinatario,
 form#Volantes div.Asunto,
 form#Volantes div.send {
   display: block;
 }
 form#Volantes div.Destinatario {
-  width: 58%;
+  width: 50%;
 }
 form#Volantes div.Destinatario input {
   width: 60%;
@@ -2149,6 +2147,9 @@ form#Volantes div.Destinatario button {
 }
 form#Volantes div.Asunto {
   width: 57%;
+}
+form#Volantes div.idRemitente {
+  width: 45%;
 }
 form#Volantes div.send input[type=submit] {
   width: 7% !important;
@@ -2174,13 +2175,32 @@ form#Volantes div.Promocion {
 }
 form#Volantes div.idUnidad,
 form#Volantes div.idObjeto {
-  width: 60%;
+  width: 35%;
   display: block;
 }
+form#Volantes div.idUnidad ul,
+form#Volantes div.idObjeto ul {
+  padding: 1px 15px;
+}
 form#Volantes div.datosAuditoria {
+  position: relative;
   border-bottom: 1px solid #808080;
   border-top: 1px solid #808080;
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+form#Volantes div.datosAuditoria p {
+  position: absolute;
+  font-size: 25px;
+  top: 5px;
+  right: 0;
+  transition: all 0.5s;
+}
+form#Volantes div.datosAuditoria span {
+  position: absolute;
+  top: 5px;
+  right: 30px;
+  display: none;
 }
 form#Volantes div.datosAuditoria label {
   margin-top: 10px;
@@ -2242,4 +2262,18 @@ form#UpdateVolantes div.idObjeto {
 }
 form#UpdateVolantes div.send {
   margin-top: 15px;
+}
+td#idAccion,
+td#idCaracter,
+td#idSubTipoDocumento {
+  display: none;
+}
+th#idAccion,
+th#idCaracter,
+th#idSubTipoDocumento {
+  display: none;
+}
+.rotaFlecha {
+  transform: rotate(180deg);
+  transition: all 0.5s;
 }

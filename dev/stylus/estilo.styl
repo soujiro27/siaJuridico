@@ -49,10 +49,10 @@ form#Volantes
 		width 100px
 	div.numDocumento,div.fDocumento,div.fRecepcion,div.anexos,div.hRecepcion
 		width 135px
-	div.idRemitente,div.Destinatario, div.Asunto,div.send
+	div.Asunto,div.send
 		display block
 	div.Destinatario
-		width 58%
+		width 50%
 		input
 			width 60% 
 		button
@@ -61,6 +61,8 @@ form#Volantes
 			margin-left 10px
 	div.Asunto
 		width 57%
+	div.idRemitente
+		width 45%;
 	div.send input[type=submit]
 		width 7% !important
 		margin-right 15px; 
@@ -73,12 +75,27 @@ form#Volantes
 	div.idDocumento,div.subDocumento,div.Promocion
 		width 15%
 	div.idUnidad,div.idObjeto
-		width 60%;
+		width 35%;
 		display block
+		ul
+			padding 1px 15px
 	div.datosAuditoria
+		position relative
 		border-bottom 1px solid grey
 		border-top 1px solid grey
-		margin-top 20px
+		margin-top 30px
+		margin-bottom 30px
+		p
+			position absolute
+			font-size 25px
+			top 5px
+			right 0
+			transition all .5s
+		span
+			position absolute
+			top 5px
+			right 30px
+			display none
 		label
 			margin-top 10px
 			background-color #efefef
@@ -117,4 +134,11 @@ form#UpdateVolantes
 	div.send
 		margin-top 15px
 
-		
+
+td#idAccion,td#idCaracter,td#idSubTipoDocumento
+	display none
+th#idAccion,th#idCaracter,th#idSubTipoDocumento
+	display none
+.rotaFlecha
+	transform rotate(180deg);
+	transition all .5s

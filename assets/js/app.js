@@ -1,389 +1,543 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _templateObject = _taggedTemplateLiteral(['\n<form method="POST" class="form-inline" id="Acciones">\n<div class="form-group nombre">\n    <label for="nombre">Nombre </label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,10}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n</form>'], ['\n<form method="POST" class="form-inline" id="Acciones">\n<div class="form-group nombre">\n    <label for="nombre">Nombre </label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,10}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n</form>']);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
-var $ = require('jquery');
-var empty = require('empty-element');
-var get = require('./../models/get.js');
-var table = require('./../templates/tables/head/table.js');
-var formUpdate = require('./../controllers/forms.js');
-var form = new formUpdate();
+/**
+ * Created by JCRAMIREZO on 17/05/2017 formulario insert acciones
+ */
+var yo = require('yo-yo');
 
 module.exports = function () {
-	function drawTable() {
-		_classCallCheck(this, drawTable);
-	}
+    return yo(_templateObject);
+};
 
-	_createClass(drawTable, [{
-		key: 'tablaPrincipal',
-		value: function tablaPrincipal() {
-			get = new get();
-			get.getAll(ruta).then(function (response) {
-				var tablePrincipal = table(response);
-				var dom = document.querySelector('div.widget-content');
-				empty(dom).appendChild(tablePrincipal);
-				form.formularioAgregar();
-			}).then(function (response) {
-				$('table tr').click(function () {
-					var obj = {};
-					obj[$(this).data('nombre')] = $(this).data('id');
-					var campo = $(this).data('nombre');
-					var id = $(this).data('id');
-					form.formularioUpdate(obj, campo, id);
-				});
-			});
-		}
-	}]);
-
-	return drawTable;
-}();
-
-},{"./../controllers/forms.js":3,"./../models/get.js":9,"./../templates/tables/head/table.js":23,"empty-element":184,"jquery":191}],2:[function(require,module,exports){
+},{"yo-yo":195}],2:[function(require,module,exports){
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="Caracteres">\n   <div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required pattern="[A-Za-z]" name="siglas" title="Inserta una Sigla">\n</div>\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,10}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n</form>'], ['<form method="POST" class="form-inline" id="Caracteres">\n   <div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required pattern="[A-Za-z]" name="siglas" title="Inserta una Sigla">\n</div>\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,10}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n</form>']);
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
+var yo = require('yo-yo');
+
+module.exports = function () {
+    return yo(_templateObject);
+};
+
+},{"yo-yo":195}],3:[function(require,module,exports){
+'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="SubTiposDocumentos">\n   <div class="form-group idDocumento">\n    <label for="idDocumento">Tipo de Documento</label>\n    <select name="idTipoDocto" id="idDocumento" required="required" class="form-control">\n    \n    </select>\n</div>\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n<div class="form-group promocion">\n    <label for="estatus">Promocion</label>\n    <select id="promocion" name="promocion" class="form-control" required>\n    <option value="">Escoga Opcion</option>\n    <option value="SI">SI</option>\n    <option value="NO">NO</option>\n    </select>\n</div>\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>'], ['<form method="POST" class="form-inline" id="SubTiposDocumentos">\n   <div class="form-group idDocumento">\n    <label for="idDocumento">Tipo de Documento</label>\n    <select name="idTipoDocto" id="idDocumento" required="required" class="form-control">\n    \n    </select>\n</div>\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n<div class="form-group promocion">\n    <label for="estatus">Promocion</label>\n    <select id="promocion" name="promocion" class="form-control" required>\n    <option value="">Escoga Opcion</option>\n    <option value="SI">SI</option>\n    <option value="NO">NO</option>\n    </select>\n</div>\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var yo = require('yo-yo');
+
+module.exports = function () {
+
+    return yo(_templateObject);
+};
+
+function test() {
+    alert('no se que onda');
+}
+
+},{"yo-yo":195}],4:[function(require,module,exports){
+'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="Volantes">\n\n<div class="headerVolante">\n\n<div class="form-group idDocumento">\n    <label for="idDocumento">Tipo de Documento</label>\n    <select name="idTipoDocto" id="idDocumento" required="required" class="form-control">\n   </select>\n</div>\n\n<div class="form-group subDocumento">\n    <label for="subDocumento">Tipo de SubDocumento</label>\n    <select name="idSubTipoDocumento" id="subDocumento" required="required" class="form-control" >\n    </select>\n</div>\n\n<div class="form-group Promocion">\n    <label for="subDocumento">Promocion de Accion</label>\n    <select name="promocion" id="promocion" required="required" class="form-control">\n    </select>\n</div>\n\n\n\n<div class="form-group cveAuditoria">\n    <label for="cveAuditoria">Clave de Auditoria</label>\n    <select name="cveAuditoria" id="cveAuditoria" required="required" class="form-control">\n    </select>\n</div>\n\n</div>\n\n<div class="datosAuditoria">\n\n<div class="form-group idUnidad">\n    <label for="idUnidad">Sujeto de Fiscalizacion</label>\n    <ul id="idUnidad" ></ul>\n</div>\n\n<div class="form-group idObjeto">\n    <label for="idObjeto">Rubro</label>\n    <ul id="idObjeto" >\n    </ul>\n</div>\n\n<div class="form-group tipoAuditoria">\n    <label for="tipoAuditoria">Tipo de Auditoria</label>\n    \n     <ul id="tipoAuditoria" >\n    </ul>\n</div>\n\n    \n</div>\n\n\n\n<div class="contentVolante">\n\n<div class="form-group Folio">\n    <label for="Folio">Folio</label>\n    <input type="number" readonly id="Folio" name="folio" required class="form-control" />\n</div>\n\n\n<div class="form-group numDocumento">\n    <label for="numDocumento">Numero de Documento</label>\n    <input type="text" id="numDocumento" name="numDocumento" required class="form-control">\n</div>\n\n<div class="form-group fDocumento">\n    <label for="fDocumento">Fecha de Documento</label>\n    <input type="text" id="fDocumento" name="fDocumento" required class="form-control" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">\n</div>\n\n<div class="form-group anexos">\n    <label for="anexos">Numero de Anexos</label>\n    <input type="number" id="anexos" name="anexos" required class="form-control" pattern="[0-9]{1,16}">\n</div>\n\n<div class="form-group fRecepcion">\n    <label for="fRecepcion">Fecha de Recepcion</label>\n    <input type="text" id="fRecepcion" name="fRecepcion" required class="form-control" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">\n</div>\n\n<div class="form-group hRecepcion">\n    <label for="hRecepcion">Hora de Recepcion</label>\n    <input type="time" id="hRecepcion" name="hRecepcion" required class="form-control" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" placeholder="00:00" title="Formato de 24 horas 00:00">\n</div>\n\n\n<div class="form-group idRemitente">\n    <label for="idRemitente">Remitente</label>\n     <select name="idRemitente" id="idRemitente" required="required" class="form-control">\n    </select>\n\n   \n</div>\n\n\n<div class="form-group Destinatario">\n    <label for="Destinatario">Destinatario</label>\n    <input type="text" id="Destinatario"  name="destinatario" class="form-control" placeholder="Destinatario" pattern="[a-zA-Z._- ]" required title="Unicamente letras" value="DR. IV\xC1N DE JES\xDAS OLMOS CANSINO" readonly />\n\n</div>\n\n<div class="form-group Asunto">\n    <label for="Asunto">Asunto</label>\n    <textarea class="form-control" rows="3" name="asunto" required placeholder="Asunto"></textarea>\n</div>\n\n<div class="form-group idCaracter">\n    <label for="idCaracter">Caracter</label>\n    <select name="idCaracter" id="idCaracter" required="required" class="form-control" >\n   </select>\n   \n    \n</div>\n\n<div class="form-group idTurnado">\n    <label for="idTurnado">Turnado a:</label>\n     <select name="idTurnado" id="idTurnado" required="required" class="form-control" >\n    </select>\n</div>\n\n<div class="form-group idAccion">\n    <label for="idAccion">Instruccion</label>\n     <select name="idAccion" id="idAccion" required="required" class="form-control" >\n    </select>\n</div>\n\n\n\n\n\n\n\n\n\n\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n\n</div>\n</form>'], ['<form method="POST" class="form-inline" id="Volantes">\n\n<div class="headerVolante">\n\n<div class="form-group idDocumento">\n    <label for="idDocumento">Tipo de Documento</label>\n    <select name="idTipoDocto" id="idDocumento" required="required" class="form-control">\n   </select>\n</div>\n\n<div class="form-group subDocumento">\n    <label for="subDocumento">Tipo de SubDocumento</label>\n    <select name="idSubTipoDocumento" id="subDocumento" required="required" class="form-control" >\n    </select>\n</div>\n\n<div class="form-group Promocion">\n    <label for="subDocumento">Promocion de Accion</label>\n    <select name="promocion" id="promocion" required="required" class="form-control">\n    </select>\n</div>\n\n\n\n<div class="form-group cveAuditoria">\n    <label for="cveAuditoria">Clave de Auditoria</label>\n    <select name="cveAuditoria" id="cveAuditoria" required="required" class="form-control">\n    </select>\n</div>\n\n</div>\n\n<div class="datosAuditoria">\n\n<div class="form-group idUnidad">\n    <label for="idUnidad">Sujeto de Fiscalizacion</label>\n    <ul id="idUnidad" ></ul>\n</div>\n\n<div class="form-group idObjeto">\n    <label for="idObjeto">Rubro</label>\n    <ul id="idObjeto" >\n    </ul>\n</div>\n\n<div class="form-group tipoAuditoria">\n    <label for="tipoAuditoria">Tipo de Auditoria</label>\n    \n     <ul id="tipoAuditoria" >\n    </ul>\n</div>\n\n    \n</div>\n\n\n\n<div class="contentVolante">\n\n<div class="form-group Folio">\n    <label for="Folio">Folio</label>\n    <input type="number" readonly id="Folio" name="folio" required class="form-control" />\n</div>\n\n\n<div class="form-group numDocumento">\n    <label for="numDocumento">Numero de Documento</label>\n    <input type="text" id="numDocumento" name="numDocumento" required class="form-control">\n</div>\n\n<div class="form-group fDocumento">\n    <label for="fDocumento">Fecha de Documento</label>\n    <input type="text" id="fDocumento" name="fDocumento" required class="form-control" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">\n</div>\n\n<div class="form-group anexos">\n    <label for="anexos">Numero de Anexos</label>\n    <input type="number" id="anexos" name="anexos" required class="form-control" pattern="[0-9]{1,16}">\n</div>\n\n<div class="form-group fRecepcion">\n    <label for="fRecepcion">Fecha de Recepcion</label>\n    <input type="text" id="fRecepcion" name="fRecepcion" required class="form-control" pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))">\n</div>\n\n<div class="form-group hRecepcion">\n    <label for="hRecepcion">Hora de Recepcion</label>\n    <input type="time" id="hRecepcion" name="hRecepcion" required class="form-control" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" placeholder="00:00" title="Formato de 24 horas 00:00">\n</div>\n\n\n<div class="form-group idRemitente">\n    <label for="idRemitente">Remitente</label>\n     <select name="idRemitente" id="idRemitente" required="required" class="form-control">\n    </select>\n\n   \n</div>\n\n\n<div class="form-group Destinatario">\n    <label for="Destinatario">Destinatario</label>\n    <input type="text" id="Destinatario"  name="destinatario" class="form-control" placeholder="Destinatario" pattern="[a-zA-Z._- ]" required title="Unicamente letras" value="DR. IV\xC1N DE JES\xDAS OLMOS CANSINO" readonly />\n\n</div>\n\n<div class="form-group Asunto">\n    <label for="Asunto">Asunto</label>\n    <textarea class="form-control" rows="3" name="asunto" required placeholder="Asunto"></textarea>\n</div>\n\n<div class="form-group idCaracter">\n    <label for="idCaracter">Caracter</label>\n    <select name="idCaracter" id="idCaracter" required="required" class="form-control" >\n   </select>\n   \n    \n</div>\n\n<div class="form-group idTurnado">\n    <label for="idTurnado">Turnado a:</label>\n     <select name="idTurnado" id="idTurnado" required="required" class="form-control" >\n    </select>\n</div>\n\n<div class="form-group idAccion">\n    <label for="idAccion">Instruccion</label>\n     <select name="idAccion" id="idAccion" required="required" class="form-control" >\n    </select>\n</div>\n\n\n\n\n\n\n\n\n\n\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n\n</div>\n</form>']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var yo = require('yo-yo');
+module.exports = function () {
+
+    return yo(_templateObject);
+};
+
+},{"yo-yo":195}],5:[function(require,module,exports){
+'use strict';
+
+var page = require('page');
+var empty = require('empty-element');
 require("jquery-ui-browserify");
 
-var objCombo = require('./../models/objetoCombos.js');
-var comboObj = new objCombo();
+var Acciones = require('./Acciones');
+var Caracteres = require('./Caracteres');
+var SubtiposDocumentos = require('./SubTiposDocumentos');
+var Volantes = require('./Volantes');
 
-var cpm = require('./../templates/componentes/Components.js');;
-var componente = new cpm();
+var url = require('./../Redireccion/Urls');
+var notfications = require('./../Notificaciones/noty');
+var objCombo = require('./../jsonCombos');
 
-var empty = require('empty-element');
+var jsonCombo = new objCombo();
+var link = new url();
+var noty = new notfications();
+var jsonCombo = new objCombo();
 
-module.exports = function () {
-	function eventsVolantes() {
-		_classCallCheck(this, eventsVolantes);
-	}
+/*-------------RUTAS-------------*/
 
-	_createClass(eventsVolantes, [{
-		key: 'inicio',
-		value: function inicio(ruta) {
-			if (ruta == 'Volantes') {
-				this.header();
-			}
-		}
-	}, {
-		key: 'header',
-		value: function header() {
-			$('select#idDocumento').on('change', this.cargaSubDocumento);
-		}
-	}, {
-		key: 'cargaSubDocumento',
-		value: function cargaSubDocumento() {
-			var selec;
-			var docto = $(this).val();
-			var combo = comboObj.subDocumentos(docto);
+page('/juridico/Acciones/Add', function (ctx, next) {
+  render(Acciones);
+  sendData();
+});
 
-			$.ajax({
-				url: '/combo/' + 'SubTiposDocumentos',
-				data: combo,
-				async: false,
-				success: function success(data) {
-					data = $.parseJSON(data);
-					selec = data;
-				}
-			});
-			var render = componente.selectSubTipoDoc('idSubTipoDocumento', 'subDocumento', selec);
+page('/juridico/Caracteres/Add', function (ctx, next) {
+  render(Caracteres);
+  sendData();
+});
 
-			$('div.selectSubDocumento').html(render);
-			$('div.subDocumento').show();
+page('/juridico/SubtiposDocumentos/Add', function (ctx, next) {
+  render(SubtiposDocumentos);
+  var objeto = jsonCombo.tiposDocumentos();
+  cargaCombo(objeto).then(function (response) {
+    creaSelect(response, 'idDocumento');
+  });
+  sendData();
+});
 
-			$('select#subDocumento').on('change', function () {
-				var promo = $(this).val();
-				if (promo != 1) {
-					cargaPromo();
-					$('div.cveAuditoria').hide();
-					$('div.datosAuditoria').hide();
-				} else {
-					$('div.Promocion').hide();
-					$('div.cveAuditoria').hide();
-					cargaComboAuditoria();
-				}
-			});
+page('/juridico/Volantes/Add', function (ctx, next) {
+  render(Volantes);
+  cargaCombosInicio();
+  cargaSubDocumento();
+  obtieneFolio().then(function (response) {
+    $('input#Folio').val(response[0].folio);
+  });
+  sendData();
+});
 
-			function cargaPromo() {
-				$('div.contentVolante').hide();
-				$('div.Promocion').show();
-				var selectPromo = '<select class="form-control" name="promocion" id="promocion" required>';
-				selectPromo += '<option value=""> Escoga Opcion </option>';
-				selectPromo += '<option value="SI"> SI </option>';
-				selectPromo += '<option value="NO"> NO </option></select>';
-				$('div.selectPromo').html(selectPromo);
-				$('select#promocion').on('change', function () {
-					if ($(this).val() == 'SI' || $(this).val() == 'NO') {
-						cargaComboAuditoria();
-					}
-				});
-			}
+/*---------------FUNCIONES-----------------*/
 
-			function cargaForm() {
+function render(form) {
+  var main = document.getElementById('main-content');
+  empty(main);
+  $('div#main-content').append(form);
+  $('input#fDocumento').datepicker({ dateFormat: "yy-mm-dd" });
+  $('input#fRecepcion').datepicker({ dateFormat: "yy-mm-dd" });
+  cancelar();
+}
 
-				$('div.contentVolante').show();
-				$('input#fDocumento').datepicker({ dateFormat: "yy-mm-dd" });
-				$('input#fRecepcion').datepicker({ dateFormat: "yy-mm-dd" });
-			}
+function sendData() {
+  $('form#' + ruta).on('submit', function (e) {
+    e.preventDefault();
+    var datos = $(this).serialize();
+    guardaRegistro(datos);
+  });
+}
 
-			function cargaComboAuditoria() {
-				var datos;
-				$.ajax({
-					url: '/getCombo/auditorias',
-					async: false,
-					success: function success(data) {
-						data = $.parseJSON(data);
-						datos = data;
-					}
-				});
-				var render = componente.selectAuditorias('cveAuditoria', 'cveAuditoria', datos);
-				$('div.selectAuditoria').html(render);
-				$('div.cveAuditoria').show();
+function cancelar() {
+  $('button#cancelar').click(function (e) {
+    e.preventDefault();
+    link.Main();
+  });
+}
 
-				$('select#cveAuditoria').on('change', cargaDatosAuditoria);
-			}
+function guardaRegistro(datos) {
+  var save = new Promise(function (resolve, reject) {
+    $.post({
+      url: '/insert/' + ruta,
+      data: datos,
+      success: function success(response) {
+        var data = $.parseJSON(response);
+        if (data.insert == 'false') {
+          noty.Error();
+        } else {
+          link.Main();
+        }
+      }
+    });
+  });
+  return save;
+}
 
-			function cargaDatosAuditoria() {
-				var idAudi = $(this).val();
-				var datos;
-				$.ajax({
-					url: '/auditorias/' + idAudi,
-					async: false,
-					success: function success(data) {
-						data = $.parseJSON(data);
-						datos = data;
-					}
-				});
+function cargaCombo(obj) {
+  var combo = new Promise(function (resolve, reject) {
+    $.get({
+      url: '/getCombo',
+      data: obj,
+      success: function success(data) {
+        var datos = $.parseJSON(data);
+        //var option=$.parseHTML(creaSelect(datos));
+        //resolve(option);
+        resolve(datos);
+      }
+    });
+  });
+  return combo;
+}
 
-				var objetoAudi = separaDatosAuditoria(datos[0].objeto);
-				$('ul#idObjeto').html(objetoAudi);
-				var rubroAudi = separaDatosAuditoria(datos[0].sujeto);
-				$('ul#idUnidad').html(rubroAudi);
+function creaSelect(datos, id) {
+  var cont = 1;
+  var opt = '<option value="">Escoge una Opcion</option>';
+  $.each(datos, function (index, val) {
+    cont = 1;
+    for (var x in datos[index]) {
+      if (cont < 2) {
+        opt += '<option value=' + datos[index][x] + '>';
+        cont = 5;
+      } else {
+        opt += datos[index][x] + '</option>';
+      }
+    }
+  });
 
-				$('ul#tipoAuditoria').html(datos[0].tipo);
+  opt = $.parseHTML(opt);
+  $('select#' + id).html(opt);
+}
 
-				$('div.datosAuditoria').show();
-				$('div.datosAuditoria').css('display', 'flex');
-				cargaForm();
-				var numFolio = cargaUltimoFolio();
-				console.log(numFolio);
-				$('input#Folio').val(numFolio);
-				cargaCombos();
-			}
+function cargaCombosInicio() {
+  var tiposDocumentos = jsonCombo.tiposDocumentos();
+  //var auditorias=jsonCombo.auditorias();
+  var remitente = jsonCombo.remitentes();
+  var caracter = jsonCombo.caracteres();
+  var turnado = jsonCombo.turnados();
+  var accion = jsonCombo.acciones();
 
-			function separaDatosAuditoria(cadena) {
-				var array = cadena.split('/');
-				var li = '';
-				$.each(array, function (index, val) {
-					li += '<li>' + val + '</li>';
-				});
+  var objetos = {
+    idDocumento: [tiposDocumentos],
+    //cveAuditoria:[auditorias],
+    idRemitente: [remitente],
+    idCaracter: [caracter],
+    idTurnado: [turnado],
+    idAccion: [accion]
+  };
 
-				return li;
-			}
+  $.each(objetos, function (index, val) {
+    val.map(function (data) {
+      cargaCombo(data).then(function (response) {
+        creaSelect(response, index);
+      });
+    });
+  });
+}
 
-			function cargaUltimoFolio() {
-				var folio;
-				$.ajax({
-					url: '/folio/Volantes/idVolante',
-					async: false,
-					success: function success(data) {
-						data = $.parseJSON(data);
-						folio = data[0].folio;
-					}
-				});
-				return folio;
-			}
+function cargaSubDocumento() {
+  $('select#idDocumento').change(function () {
+    var id = $(this).val();
+    var sub = jsonCombo.subTipoDocumentos(id);
+    cargaCombo(sub).then(function (response) {
+      creaSelect(response, 'subDocumento');
+      if ($('select#subDocumento option').length > 1) {
+        $('div.contentVolante').hide();
+        $('div.subDocumento').show();
+        $('div.datosAuditoria').slideUp('slow');
+        $('select#subDocumento').on('change', cargaPromocion);
+      } else {
+        $('div.subDocumento').hide();
+        $('div.Promocion').hide();
+        $('div.cveAuditoria').hide();
 
-			function folioActual(folio) {
-				var idFolio;
-				if (folio == 'null') {
-					idFolio = 1;
-				} else {
-					var num = parseInt(folio);
-					idFolio = num++;
-				}
-				return idFolio;
-			}
+        $('div.contentVolante').show();
+        $('div.datosAuditoria').slideUp('slow');
+      }
+    });
+  });
+}
 
-			function cargaCombos() {
-				var objeto = comboObj.remitentes('UTSFFA');
-				var datosAjax = obtieneCombo('areas', objeto);
-				var render = componente.selectAreas('idRemitente', 'idRemitente', datosAjax);
-				$('div.selectRemitente').html(render);
+function cargaPromocion() {
+  var sub = $(this).val();
+  var optPromo = '<option value="">Escoge Opcion</option>';
+  optPromo += '<option value="SI">SI</option>';
+  optPromo += '<option value="NO">NO</option>';
+  if (sub == ' ') {
+    $('div.Promocion').hide();
+  }
+  $('div.cveAuditoria').hide();
 
-				objeto = comboObj.caracteres();
-				datosAjax = obtieneCombo('Caracteres', objeto);
-				render = componente.selectCaracter('idCaracter', 'idCaracter', datosAjax);
-				$('div.selectCaracter').html(render);
+  $('select#promocion').html(optPromo);
+  $('div.Promocion').show();
+  $('div.datosAuditoria').slideUp('slow');
+  $('select#promocion').on('change', cargaComboAuditoria);
+}
 
-				objeto = comboObj.remitentes('DGAJ');
-				datosAjax = obtieneCombo('areas', objeto);
-				render = componente.selectAreas('idTurnado', 'idTurnado', datosAjax);
-				$('div.selectTurnado').html(render);
+function cargaComboAuditoria() {
+  $('div.datosAuditoria').slideUp('slow');
+  var promo = $(this).val();
+  var auditorias = jsonCombo.auditorias();
+  cargaCombo(auditorias).then(function (response) {
+    creaSelect(response, 'cveAuditoria');
+  });
 
-				objeto = comboObj.acciones();
-				datosAjax = obtieneCombo('Acciones', objeto);
-				render = componente.selectAccion('idAccion', 'idAccion', datosAjax);
-				$('div.selectAccion').html(render);
-			}
+  if (promo == '') {
+    $('div.cveAuditoria').hide();
+  }
+  $('div.cveAuditoria').show();
+  $('select#cveAuditoria').on('change', cargaDatosAuditoria);
+}
 
-			function obtieneCombo(combo, datos) {
-				var datos;
-				$.ajax({
-					url: '/combo/' + combo,
-					data: datos,
-					async: false,
-					success: function success(data) {
-						data = $.parseJSON(data);
-						datos = data;
-					}
-				});
-				return datos;
-			}
-		}
-	}]);
+function cargaDatosAuditoria() {
+  var id = $(this).val();
+  datosAuditoria(id).then(function (response) {
+    separaDatosAuditoria(response[0].sujeto, 'idUnidad');
+    separaDatosAuditoria(response[0].objeto, 'idObjeto');
+    $('ul#tipoAuditoria').html('<li>' + response[0].tipo + '</li>');
+    $('div.datosAuditoria').css('display', 'flex');
+    $('div.datosAuditoria').slideDown('slow');
+    $('div.contentVolante').show('slow');
+    //escondeDatos();
+  });
+}
 
-	return eventsVolantes;
-}();
+function datosAuditoria(id) {
+  var combo = new Promise(function (resolve, reject) {
+    $.get({
+      url: '/auditorias/' + id,
+      success: function success(data) {
+        var datos = $.parseJSON(data);
+        //var option=$.parseHTML(creaSelect(datos));
+        //resolve(option);
+        resolve(datos);
+      }
+    });
+  });
+  return combo;
+}
 
-},{"./../models/objetoCombos.js":11,"./../templates/componentes/Components.js":13,"empty-element":184,"jquery-ui-browserify":190}],3:[function(require,module,exports){
+function separaDatosAuditoria(palabra, id) {
+  var arreglo = palabra.split("/");
+  var li = "";
+  $.each(arreglo, function (index, val) {
+    li += '<li>' + val + '</li>';
+  });
+  $('ul#' + id).html(li);
+}
+
+function obtieneFolio() {
+  var folio = new Promise(function (resolve, reject) {
+    $.get({
+      url: '/folio/Volantes/idVolante',
+      success: function success(data) {
+        var datos = $.parseJSON(data);
+        //var option=$.parseHTML(creaSelect(datos));
+        //resolve(option);
+        resolve(datos);
+      }
+    });
+  });
+  return folio;
+}
+
+function escondeDatos() {
+  var cont = 0;
+  $('div.datosAuditoria p.escondeDatos').click(function () {
+    $('div.idUnidad').toggle();
+    $('div.idObjeto').toggle();
+    $('div.tipoAuditoria').toggle();
+    $('div.datosAuditoria span').toggle();
+    if (cont == 0) {
+      $(this).addClass('rotaFlecha');
+      cont = 1;
+    } else {
+      $(this).removeClass('rotaFlecha');
+      cont = 0;
+    }
+  });
+}
+
+},{"./../Notificaciones/noty":6,"./../Redireccion/Urls":7,"./../jsonCombos":9,"./Acciones":1,"./Caracteres":2,"./SubTiposDocumentos":3,"./Volantes":4,"empty-element":179,"jquery-ui-browserify":186,"page":191}],6:[function(require,module,exports){
 'use strict';
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-/*--------------librerias ------------------*/
-var $ = require('jquery');
-var empty = require('empty-element');
-/*--------------formularios Insert------------------*/
-var form = require('./../templates/forms/insert/Caracteres.js');
-var formAcciones = require('./../templates/forms/insert/Acciones.js');
-var formSubTiposDocumentos = require('./../templates/forms/insert/SubTiposDocumentos.js');
-var formVolantes = require('./../templates/forms/insert/Volantes.js');
-/*--------------Formularios Update---------------*/
+var Noty = require('noty');
 
-var formUpdate = require('./../templates/forms/update/Caracteres.js');
-var formAccionesUpdate = require('./../templates/forms/update/Acciones.js');
-var formSubTiposDocumentosUpdate = require('./../templates/forms/update/SubTiposDocumentos.js');
-var formVolantesUpdate = require('./../templates/forms/update/Volantes.js');
-/*-----------------Modelos--------------------*/
-var inserta = require('./../models/insert.js');
-var obtiene = require('./../models/get.js');
-
-/*-------------------Controllers---------------*/
-var noti = require('./../controllers/noty.js');
-var redirect = require('./../controllers/redireccion.js');
-var event = require('./eventsVolantes.js');
-
-/*---------------------eventos---------------------*/
-
-var inst = new inserta();
-var noty = new noti();
-var link = new redirect();
-var get = new obtiene();
-var volanteEvents = new event();
 module.exports = function () {
-	function _class() {
-		_classCallCheck(this, _class);
+	function notificaciones() {
+		_classCallCheck(this, notificaciones);
 	}
 
-	_createClass(_class, [{
-		key: 'obtenerFormularioInsert',
-		value: function obtenerFormularioInsert() {
-			var formAdd;
-			if (ruta == 'Caracteres') {
-				formAdd = form();
-			} else if (ruta == 'Acciones') {
-				formAdd = formAcciones();
-			} else if (ruta == 'SubTiposDocumentos') {
-				formAdd = formSubTiposDocumentos();
-			} else if (ruta == 'Volantes') {
-				formAdd = formVolantes();
-			}
-			return formAdd;
+	_createClass(notificaciones, [{
+		key: 'Error',
+		value: function Error() {
+			new Noty({
+				text: 'Registro Duplicado',
+				type: 'error',
+				layout: 'center',
+				theme: 'metroui',
+				timeout: 2000,
+				progressBar: true
+			}).show();
 		}
 	}, {
-		key: 'obtenerFormularioUpdate',
-		value: function obtenerFormularioUpdate(data) {
-			var formAdd;
-			if (ruta == 'Caracteres') {
-				formAdd = formUpdate(data);
-			} else if (ruta == 'Acciones') {
-				formAdd = formAccionesUpdate(data);
-			} else if (ruta == 'SubTiposDocumentos') {
-				formAdd = formSubTiposDocumentosUpdate(data);
-			}
-			return formAdd;
-		}
-	}, {
-		key: 'formularioAgregar',
-		value: function formularioAgregar() {
-			var formulario = this.obtenerFormularioInsert();
-			$('button#agregar').click(function (event) {
-				var dom = document.querySelector('div.widget-content');
-				empty(dom).appendChild(formulario);
-				volanteEvents.inicio(ruta);
-				$('form#' + ruta).on('submit', function (e) {
-					e.preventDefault();
-					var datos = $(this).serialize();
-					inst.inicio(datos).then(function (response) {
-						var data = $.parseJSON(response);
-						if (data.insert == 'false') {
-							//noty.notyError();
-						} else {
-								//link.rutaDefault();
-							}
-					});
-				});
-
-				$('button#cancelar').click(function (e) {
-					e.preventDefault();
-					link.rutaDefault();
-				});
-			});
-		}
-	}, {
-		key: 'formularioUpdate',
-		value: function formularioUpdate(objeto, campo, id) {
-			var _this = this;
-
-			get.getUpdate(objeto).then(function (response) {
-
-				var formulario = _this.obtenerFormularioUpdate(response[0]);
-				var dom = document.querySelector('div.widget-content');
-				empty(dom).appendChild(formulario);
-			}).then(function (response) {
-				$('form#Update' + ruta).submit(function (e) {
-					e.preventDefault();
-					var datos = $(this).serialize() + '&' + campo + '=' + id;
-					inst.update(datos).then(function (response) {
-						var data = $.parseJSON(response);
-						if (data.insert == 'false') {
-							noty.notyError();
-						} else {
-							link.rutaDefault();
-						}
-					});
-				});
-
-				$('button#cancelar').click(function (e) {
-					e.preventDefault();
-					link.rutaDefault();
-				});
-			});
+		key: 'Success',
+		value: function Success() {
+			new Noty({
+				text: 'Registro Guardado Correctamente',
+				type: 'success',
+				layout: 'center',
+				theme: 'metroui',
+				timeout: 1000,
+				progressBar: true,
+				callbacks: {
+					afterClose: function afterClose() {
+						alert("works");
+					}
+				}
+			}).show();
 		}
 	}]);
 
-	return _class;
+	return notificaciones;
 }();
 
-},{"./../controllers/noty.js":5,"./../controllers/redireccion.js":6,"./../models/get.js":9,"./../models/insert.js":10,"./../templates/forms/insert/Acciones.js":14,"./../templates/forms/insert/Caracteres.js":15,"./../templates/forms/insert/SubTiposDocumentos.js":16,"./../templates/forms/insert/Volantes.js":17,"./../templates/forms/update/Acciones.js":18,"./../templates/forms/update/Caracteres.js":19,"./../templates/forms/update/SubTiposDocumentos.js":20,"./../templates/forms/update/Volantes.js":21,"./eventsVolantes.js":2,"empty-element":184,"jquery":191}],4:[function(require,module,exports){
+},{"noty":189}],7:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Created by JCRAMIREZO on 17/05/2017.
+ */
+
+module.exports = function () {
+    function Redirecionar() {
+        _classCallCheck(this, Redirecionar);
+    }
+
+    _createClass(Redirecionar, [{
+        key: "Main",
+        value: function Main() {
+            location.href = "http://localhost:88/juridico/" + ruta;
+        }
+    }, {
+        key: "updateForm",
+        value: function updateForm(id) {
+            location.href = "http://localhost:88/juridico/update/" + ruta + "/" + id;
+        }
+    }]);
+
+    return Redirecionar;
+}();
+
+},{}],8:[function(require,module,exports){
+'use strict';
+
+/*--------------- LIBRERIAS ARCHIVOS EXTERNOS -------------*/
+require('babelify-es6-polyfill');
+var page = require('page');
+var menu = require('./menu/menu');
+
+menu();
+require('./Add');
+require('./table');
+require('./update');
+
+page();
+
+},{"./Add":5,"./menu/menu":10,"./table":13,"./update":18,"babelify-es6-polyfill":175,"page":191}],9:[function(require,module,exports){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+module.exports = function () {
+	function comboJson() {
+		_classCallCheck(this, comboJson);
+	}
+
+	_createClass(comboJson, [{
+		key: 'tiposDocumentos',
+		value: function tiposDocumentos() {
+			var obj = {
+				tabla: 'tiposdocumentos',
+				campos: ['idTipoDocto', 'nombre'],
+				where: {
+					estatus: 'ACTIVO',
+					tipo: 'JURIDICO'
+				}
+			};
+
+			return obj;
+		}
+	}, {
+		key: 'subTipoDocumentos',
+		value: function subTipoDocumentos(valor) {
+			var obj = {
+				tabla: 'CatSubTiposDocumentos',
+				campos: ['idSubTipoDocumento', 'nombre'],
+				where: {
+					estatus: 'ACTIVO',
+					idTipoDocto: valor
+				}
+			};
+			return obj;
+		}
+	}, {
+		key: 'auditorias',
+		value: function auditorias() {
+			var obj = {
+				tabla: 'auditorias',
+				campos: ['idAuditoria', 'clave'],
+				where: {
+					idCuenta: nCampana
+				}
+			};
+			return obj;
+		}
+	}, {
+		key: 'remitentes',
+		value: function remitentes() {
+			var obj = {
+				tabla: 'remitentes',
+				campos: ['idArea', 'nombre'],
+				where: {
+					idAreaSuperior: 'UTSFFA',
+					idAreaMenor: 'UTSFEAJ'
+				}
+			};
+			return obj;
+		}
+	}, {
+		key: 'caracteres',
+		value: function caracteres() {
+			var obj = {
+				tabla: 'catcaracteres',
+				campos: ['idCaracter', 'nombre'],
+				where: {
+					estatus: 'ACTIVO'
+				}
+			};
+			return obj;
+		}
+	}, {
+		key: 'turnados',
+		value: function turnados() {
+			var obj = {
+				tabla: 'areas',
+				campos: ['idArea', 'nombre'],
+				where: {
+					idAreasuperior: 'DGAJ'
+				}
+			};
+			return obj;
+		}
+	}, {
+		key: 'acciones',
+		value: function acciones() {
+			var obj = {
+				tabla: 'catAcciones',
+				campos: ['idAccion', 'nombre'],
+				where: {
+					estatus: 'ACTIVO'
+				}
+			};
+			return obj;
+		}
+	}]);
+
+	return comboJson;
+}();
+
+},{}],10:[function(require,module,exports){
 "use strict";
 
 var menu = function loadMenu() {
@@ -457,1129 +611,161 @@ var menu = function loadMenu() {
 
 module.exports = menu;
 
-},{}],5:[function(require,module,exports){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Noty = require('noty');
-
-module.exports = function () {
-	function notificaciones() {
-		_classCallCheck(this, notificaciones);
-	}
-
-	_createClass(notificaciones, [{
-		key: 'notyError',
-		value: function notyError() {
-			new Noty({
-				text: 'Registro Duplicado',
-				type: 'error',
-				layout: 'center',
-				theme: 'metroui',
-				timeout: 2000,
-				progressBar: true
-			}).show();
-		}
-	}, {
-		key: 'notySuccess',
-		value: function notySuccess() {
-			new Noty({
-				text: 'Registro Guardado Correctamente',
-				type: 'success',
-				layout: 'center',
-				theme: 'metroui',
-				timeout: 1000,
-				progressBar: true,
-				callbacks: {
-					afterClose: function afterClose() {
-						alert("works");
-					}
-				}
-			}).show();
-		}
-	}]);
-
-	return notificaciones;
-}();
-
-},{"noty":193}],6:[function(require,module,exports){
-"use strict";
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-module.exports = function () {
-	function link() {
-		_classCallCheck(this, link);
-	}
-
-	_createClass(link, [{
-		key: "rutaDefault",
-		value: function rutaDefault() {
-
-			location.href = "http://localhost:88/juridico/" + ruta;
-		}
-	}, {
-		key: "rutaParametro",
-		value: function rutaParametro(link) {
-			location.href = "http://localhost:88/juridico/" + link;
-		}
-	}]);
-
-	return link;
-}();
-
-},{}],7:[function(require,module,exports){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-module.exports = function () {
-	function cadenas() {
-		_classCallCheck(this, cadenas);
-	}
-
-	_createClass(cadenas, [{
-		key: 'datosTabla',
-		value: function datosTabla() {
-			var caracteres = ['idCaracter']; //poner los campos que no apareceran en el thead;
-			var Acciones = ['idAccion'];
-			var SubTiposDocumentos = ['idSubTipoDocumento'];
-			var Volante = ['idVolante'];
-			if (ruta == 'Caracteres') {
-				var thead = caracteres;
-			} else if (ruta == 'Acciones') {
-				var thead = Acciones;
-			} else if (ruta == 'SubTiposDocumentos') {
-				var thead = SubTiposDocumentos;
-			} else if (ruta == 'Volantes') {
-				var thead = Volante;
-			}
-			return thead;
-		}
-	}, {
-		key: 'encabezadoTabla',
-		value: function encabezadoTabla(datos) {
-
-			var thead = this.datosTabla();
-			var header = Array();
-			$.each(datos[0], function (index, val) {
-				header.push(index);
-			});
-			for (var x in thead) {
-				var pos = header.indexOf(thead[x]);
-				header.splice(pos, 1);
-			}
-
-			return header;
-		}
-	}]);
-
-	return cadenas;
-}();
-
-},{}],8:[function(require,module,exports){
-'use strict';
-
-/*--------------- LIBRERIAS ARCHIVOS EXTERNOS -------------*/
-require('babelify-es6-polyfill');
-var drawTable = require('./controllers/drawTable.js');
-//var eventos=require('./controllers/forms.js');
-var menu = require('./controllers/menu.js');
-/*-----------variables globales --------------------*/
-
-var ruta = localStorage.getItem('ruta');
-/*--------------inicializar clases---------------------*/
-var tabla = new drawTable();
-//var form= new eventos();
-
-/*----------------funciones --------------------------*/
-menu();
-tabla.tablaPrincipal();
-//form.formularioAgregar();
-
-},{"./controllers/drawTable.js":1,"./controllers/menu.js":4,"babelify-es6-polyfill":180}],9:[function(require,module,exports){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var combo = require('./../templates/combos/combos.js');
-
-module.exports = function () {
-	function Get() {
-		_classCallCheck(this, Get);
-	}
-
-	_createClass(Get, [{
-		key: 'getAll',
-		value: function getAll(tabla) {
-			var get = new Promise(function (resolve, reject) {
-
-				$.get({
-					url: '/table/' + tabla,
-					success: function success(data) {
-						data = $.parseJSON(data);
-
-						resolve(data);
-					}
-				});
-			});
-			return get;
-		}
-	}, {
-		key: 'getUpdate',
-		value: function getUpdate(json) {
-			var get = new Promise(function (resolve, reject) {
-				$.ajax({
-					url: '/get/' + ruta,
-					data: json,
-					success: function success(data) {
-						data = $.parseJSON(data);
-						resolve(data);
-					}
-				});
-			});
-			return get;
-		}
-	}, {
-		key: 'getCombos',
-		value: function getCombos(table) {
-
-			var get = new Promise(function (resolve, reject) {
-				$.ajax({
-					url: '/combo/' + table,
-					success: function success(data) {
-						data = $.parseJSON(data);
-						resolve(data);
-					}
-				});
-			});
-			return get;
-		}
-	}, {
-		key: 'getCombosCampo',
-		value: function getCombosCampo(table, campo) {
-
-			var get = new Promise(function (resolve, reject) {
-				$.ajax({
-					url: '/combo/' + table + '/' + campo,
-					success: function success(data) {
-						data = $.parseJSON(data);
-						resolve(data);
-					}
-				});
-			});
-			return get;
-		}
-	}, {
-		key: 'getDatosAuditoria',
-		value: function getDatosAuditoria(id) {
-			var get = new Promise(function (resolve, reject) {
-				$.ajax({
-					url: '/auditorias/' + id,
-					success: function success(data) {
-						data = $.parseJSON(data);
-						resolve(data);
-					}
-				});
-			});
-			return get;
-		}
-	}, {
-		key: 'getComboTest',
-		value: function getComboTest(tabla, data) {
-			var get = new Promise(function (resolve, reject) {
-				$.ajax({
-					url: '/combo/' + tabla,
-					data: data,
-					success: function success(data) {
-						data = $.parseJSON(data);
-						resolve(data);
-					}
-				});
-			});
-			return get;
-		}
-	}]);
-
-	return Get;
-}();
-
-},{"./../templates/combos/combos.js":12}],10:[function(require,module,exports){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-module.exports = function () {
-	function Insert() {
-		_classCallCheck(this, Insert);
-	}
-
-	_createClass(Insert, [{
-		key: 'inicio',
-		value: function inicio(datos) {
-			if (ruta == 'Volantes') {
-				this.insertVolantes(datos);
-			} else {
-				this.insert(datos);
-			}
-		}
-	}, {
-		key: 'insertVolantes',
-		value: function insertVolantes(datos) {
-			var insert = new Promise(function (resolve, reject) {
-
-				$.post({
-					url: '/tableVolantes/' + ruta,
-					data: datos,
-					success: function success(data) {
-						resolve(data);
-					}
-				});
-			});
-			return insert;
-		}
-	}, {
-		key: 'insert',
-		value: function insert(datos) {
-			var insert = new Promise(function (resolve, reject) {
-
-				$.post({
-					url: '/table/' + ruta,
-					data: datos,
-					success: function success(data) {
-						resolve(data);
-					}
-				});
-			});
-			return insert;
-		}
-	}, {
-		key: 'update',
-		value: function update(datos) {
-			var insert = new Promise(function (resolve, reject) {
-
-				$.post({
-					url: '/update/' + ruta,
-					data: datos,
-					success: function success(data) {
-						resolve(data);
-					}
-				});
-			});
-			return insert;
-		}
-	}]);
-
-	return Insert;
-}();
-
 },{}],11:[function(require,module,exports){
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var yo = require('yo-yo');
+module.exports = function (data) {
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	function render(data) {
+		var tr = '';
+		var td = '';
+		//tr+='<tr>';
+		for (var x in data) {
+			tr += '<tr data-id=' + data[x] + ' data-nombre=' + x + '>';
+			break;
+		}
 
-module.exports = function () {
-	function objetoCombo() {
-		_classCallCheck(this, objetoCombo);
+		$.each(data, function (index, val) {
+			td += '<td id=' + index + '>' + val + '</td>';
+		});
+		tr += td + '</tr>';
+
+		return tr;
 	}
 
-	_createClass(objetoCombo, [{
-		key: 'tiposDocumentos',
-		value: function tiposDocumentos() {
-			var objeto = {
-				campos: ['idTipoDocto', 'nombre'],
-				tipo: 'JURIDICO'
-			};
-			return objeto;
-		}
-	}, {
-		key: 'subDocumentos',
-		value: function subDocumentos(valor) {
-			var objeto = {
-				campos: ['idSubTipoDocumento', 'nombre'],
-				idTipoDocto: valor
-			};
-			return objeto;
-		}
-	}, {
-		key: 'remitentes',
-		value: function remitentes(valor) {
-			var objeto = {
-				campos: ['idArea', 'nombre'],
-				idAreaSuperior: valor
-			};
-			return objeto;
-		}
-	}, {
-		key: 'caracteres',
-		value: function caracteres() {
-			var objeto = {
-				campos: ['idCaracter', 'nombre'],
-				estatus: 'ACTIVO'
-			};
-			return objeto;
-		}
-	}, {
-		key: 'acciones',
-		value: function acciones() {
-			var objeto = {
-				campos: ['idAccion', 'nombre'],
-				estatus: 'ACTIVO'
-			};
-			return objeto;
-		}
-	}]);
+	return $.parseHTML(render(data));
+};
 
-	return objetoCombo;
-}();
-
-},{}],12:[function(require,module,exports){
-"use strict";
-
-},{}],13:[function(require,module,exports){
+},{"yo-yo":195}],12:[function(require,module,exports){
 'use strict';
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+var yo = require('yo-yo');
+module.exports = function (data) {
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-module.exports = function () {
-	function Components() {
-		_classCallCheck(this, Components);
+	function render(llave) {
+		return '<th id=' + llave + '>' + llave + '</th>';
 	}
 
-	_createClass(Components, [{
-		key: 'label',
-		value: function label(obj) {
-			var labelForm = '<label for="' + obj.for + '">' + obj.text + '</label>';
-			return $.parseHTML(labelForm);
-		}
-	}, {
-		key: 'selectTipoDoc',
-		value: function selectTipoDoc(name, id, data) {
-			var select = '<select class=form-control name=' + name + ' id=' + id + ' required>';
-			select += '<option value=" ">Escoga una Opcion</option>';
-			$.each(data, function (index, val) {
-				select += '<option value=' + data[index].idTipoDocto + '>' + data[index].nombre + '</option>';
-			});
-			select += '</select>';
-			return $.parseHTML(select);
-		}
-	}, {
-		key: 'selectTipoDocUpdate',
-		value: function selectTipoDocUpdate(name, id, data, defalt) {
-			var select = '<select class=form-control name=' + name + ' id=' + id + ' required>';
-			select += '<option value="">Escoga una Opcion</option>';
-			$.each(data, function (index, val) {
-				if (defalt == data[index].idTipoDocto) {
-					select += '<option value=' + data[index].idTipoDocto + ' selected>' + data[index].nombre + '</option>';
-				} else {
-					select += '<option value=' + data[index].idTipoDocto + '>' + data[index].nombre + '</option>';
-				}
-			});
-			select += '</select>';
-			return $.parseHTML(select);
-		}
-	}, {
-		key: 'selectSubTipoDoc',
-		value: function selectSubTipoDoc(name, id, data) {
-			var select = '<select class=form-control name=' + name + ' id=' + id + ' required>';
-			select += '<option value=" ">Escoga una Opcion</option>';
-			$.each(data, function (index, val) {
-				select += '<option value=' + data[index].idSubTipoDocumento + '>' + data[index].nombre + '</option>';
-			});
-			select += '</select>';
-			return $.parseHTML(select);
-		}
-	}, {
-		key: 'selectAuditorias',
-		value: function selectAuditorias(name, id, data) {
-			var select = '<select class=form-control name=' + name + ' id=' + id + ' required>';
-			select += '<option value=" ">Escoga una Opcion</option>';
-			$.each(data, function (index, val) {
-				select += '<option value=' + data[index].idAuditoria + '>' + data[index].clave + '</option>';
-			});
-			select += '</select>';
-			return $.parseHTML(select);
-		}
-	}, {
-		key: 'selectAreas',
-		value: function selectAreas(name, id, data) {
-			var select = '<select class=form-control name=' + name + ' id=' + id + ' required>';
-			select += '<option value=" ">Escoga una Opcion</option>';
-			$.each(data, function (index, val) {
-				select += '<option value=' + data[index].idArea + '>' + data[index].nombre + '</option>';
-			});
-			select += '</select>';
-			return $.parseHTML(select);
-		}
-	}, {
-		key: 'selectCaracter',
-		value: function selectCaracter(name, id, data) {
-			var select = '<select class=form-control name=' + name + ' id=' + id + ' required>';
-			select += '<option value=" ">Escoga una Opcion</option>';
-			$.each(data, function (index, val) {
-				select += '<option value=' + data[index].idCaracter + '>' + data[index].nombre + '</option>';
-			});
-			select += '</select>';
-			return $.parseHTML(select);
-		}
-	}, {
-		key: 'selectAccion',
-		value: function selectAccion(name, id, data) {
-			var select = '<select class=form-control name=' + name + ' id=' + id + ' required>';
-			select += '<option value=" ">Escoga una Opcion</option>';
-			$.each(data, function (index, val) {
-				select += '<option value=' + data[index].idAccion + '>' + data[index].nombre + '</option>';
-			});
-			select += '</select>';
-			return $.parseHTML(select);
-		}
-	}]);
+	var el = '';
+	$.each(data, function (index, val) {
+		el += render(index);
+	});
 
-	return Components;
-}();
-
-},{}],14:[function(require,module,exports){
-'use strict';
-
-var yo = require('yo-yo');
-
-module.exports = function () {
-      return function () {
-
-            var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js');
-            var bel6 = document.createElement("form");
-            bel6.setAttribute("method", "POST");
-            bel6.setAttribute("id", "Acciones");
-            bel6.setAttribute("class", "form-inline");
-            var bel2 = document.createElement("div");
-            bel2.setAttribute("class", "form-group nombre");
-            var bel0 = document.createElement("label");
-            bel0.setAttribute("htmlFor", "nombre");
-            ac(bel0, ["Nombre "]);
-            var bel1 = document.createElement("input");
-            bel1.setAttribute("type", "text");
-            bel1.setAttribute("id", "nombre");
-            bel1.setAttribute("placeholder", "Nombre");
-            bel1.setAttribute("required", "required");
-            bel1.setAttribute("pattern", "[A-Za-z].{1,10}");
-            bel1.setAttribute("name", "nombre");
-            bel1.setAttribute("title", "Nombre Incorrecto o Caracteres maximos");
-            bel1.setAttribute("class", "form-control");
-            ac(bel2, ["\n    ", bel0, "\n    ", bel1, "\n"]);
-            var bel5 = document.createElement("div");
-            bel5.setAttribute("class", "form-group send");
-            var bel3 = document.createElement("input");
-            bel3.setAttribute("type", "submit");
-            bel3.setAttribute("value", "Guardar");
-            bel3.setAttribute("class", "btn btn-primary btn-sm");
-            var bel4 = document.createElement("button");
-            bel4.setAttribute("id", "cancelar");
-            bel4.setAttribute("class", "btn btn-default btn-sm");
-            ac(bel4, ["Cancelar"]);
-            ac(bel5, ["\n    ", bel3, "\n    ", bel4, "\n"]);
-            ac(bel6, ["\n", bel2, "\n\n", bel5, "\n"]);
-            return bel6;
-      }();
+	return el;
 };
 
-},{"c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js":199,"yo-yo":197}],15:[function(require,module,exports){
+},{"yo-yo":195}],13:[function(require,module,exports){
 'use strict';
 
-var yo = require('yo-yo');
+var page = require('page');
+var empty = require('empty-element');
+var template = require('./template');
+var url = require('./../Redireccion/Urls');
 
-module.exports = function () {
-      return function () {
+var link = new url();
 
-            var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js');
-            var bel9 = document.createElement("form");
-            bel9.setAttribute("method", "POST");
-            bel9.setAttribute("id", "Caracteres");
-            bel9.setAttribute("class", "form-inline");
-            var bel2 = document.createElement("div");
-            bel2.setAttribute("class", "form-group siglas");
-            var bel0 = document.createElement("label");
-            bel0.setAttribute("htmlFor", "siglas");
-            ac(bel0, ["Siglas"]);
-            var bel1 = document.createElement("input");
-            bel1.setAttribute("type", "text");
-            bel1.setAttribute("id", "siglas");
-            bel1.setAttribute("placeholder", "siglas");
-            bel1.setAttribute("required", "required");
-            bel1.setAttribute("pattern", "[A-Za-z]");
-            bel1.setAttribute("name", "siglas");
-            bel1.setAttribute("title", "Inserta una Sigla");
-            bel1.setAttribute("class", "form-control");
-            ac(bel2, ["\n    ", bel0, "\n    ", bel1, "\n"]);
-            var bel5 = document.createElement("div");
-            bel5.setAttribute("class", "form-group nombre");
-            var bel3 = document.createElement("label");
-            bel3.setAttribute("htmlFor", "nombre");
-            ac(bel3, ["Nombre"]);
-            var bel4 = document.createElement("input");
-            bel4.setAttribute("type", "text");
-            bel4.setAttribute("id", "nombre");
-            bel4.setAttribute("placeholder", "Nombre");
-            bel4.setAttribute("required", "required");
-            bel4.setAttribute("pattern", "[A-Za-z].{1,10}");
-            bel4.setAttribute("name", "nombre");
-            bel4.setAttribute("title", "Nombre Incorrecto o Caracteres maximos");
-            bel4.setAttribute("class", "form-control");
-            ac(bel5, ["\n    ", bel3, "\n    ", bel4, "\n"]);
-            var bel8 = document.createElement("div");
-            bel8.setAttribute("class", "form-group send");
-            var bel6 = document.createElement("input");
-            bel6.setAttribute("type", "submit");
-            bel6.setAttribute("value", "Guardar");
-            bel6.setAttribute("class", "btn btn-primary btn-sm");
-            var bel7 = document.createElement("button");
-            bel7.setAttribute("id", "cancelar");
-            bel7.setAttribute("class", "btn btn-default btn-sm");
-            ac(bel7, ["Cancelar"]);
-            ac(bel8, ["\n    ", bel6, "\n    ", bel7, "\n"]);
-            ac(bel9, ["\n   ", bel2, "\n", bel5, "\n\n", bel8, "\n"]);
-            return bel9;
-      }();
-};
+page('/juridico/' + ruta, function (ctx, next) {
+	cargaDatos(ruta).then(function (response) {
+		var table = template(response);
+		$('div.table-responsive').html(table);
+		$('table tbody tr').click(function () {
+			var id = $(this).data('id');
+			var campo = $(this).data('nombre');
+			$('table').remove();
+			page.redirect('/juridico/' + ruta + '/update/' + campo + '/' + id);
+		});
+	});
+});
 
-},{"c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js":199,"yo-yo":197}],16:[function(require,module,exports){
-'use strict';
-
-var yo = require('yo-yo');
-
-var objCombo = require('./../../../models/objetoCombos.js');
-var comboObj = new objCombo();
-
-var cpm = require('./../../componentes/Components.js');
-var componente = new cpm();
-
-module.exports = function () {
-
-    var selec;
-    var combo = comboObj.tiposDocumentos();
-
-    $.ajax({
-        url: '/combo/' + 'tiposdocumentos',
-        data: combo,
-        async: false,
-        success: function success(data) {
-            data = $.parseJSON(data);
-            selec = data;
-        }
-    });
-
-    var render = componente.selectTipoDoc('idTipoDocto', 'idDocumento', selec);
-
-    return function () {
-
-        var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js');
-        var bel14 = document.createElement("form");
-        bel14.setAttribute("method", "POST");
-        bel14.setAttribute("id", "SubTiposDocumentos");
-        bel14.setAttribute("class", "form-inline");
-        var bel1 = document.createElement("div");
-        bel1.setAttribute("class", "form-group idDocumento");
-        var bel0 = document.createElement("label");
-        bel0.setAttribute("htmlFor", "idDocumento");
-        ac(bel0, ["Tipo de Documento"]);
-        ac(bel1, ["\n    ", bel0, "\n    ", arguments[0], "\n"]);
-        var bel4 = document.createElement("div");
-        bel4.setAttribute("class", "form-group nombre");
-        var bel2 = document.createElement("label");
-        bel2.setAttribute("htmlFor", "nombre");
-        ac(bel2, ["Nombre"]);
-        var bel3 = document.createElement("input");
-        bel3.setAttribute("type", "text");
-        bel3.setAttribute("id", "nombre");
-        bel3.setAttribute("placeholder", "Nombre");
-        bel3.setAttribute("required", "required");
-        bel3.setAttribute("pattern", "[A-Za-z].{1,49}");
-        bel3.setAttribute("name", "nombre");
-        bel3.setAttribute("title", "Nombre Incorrecto o Caracteres maximos");
-        bel3.setAttribute("class", "form-control");
-        ac(bel4, ["\n    ", bel2, "\n    ", bel3, "\n"]);
-        var bel10 = document.createElement("div");
-        bel10.setAttribute("class", "form-group promocion");
-        var bel5 = document.createElement("label");
-        bel5.setAttribute("htmlFor", "estatus");
-        ac(bel5, ["Promocion"]);
-        var bel9 = document.createElement("select");
-        bel9.setAttribute("id", "promocion");
-        bel9.setAttribute("name", "promocion");
-        bel9.setAttribute("required", "required");
-        bel9.setAttribute("class", "form-control");
-        var bel6 = document.createElement("option");
-        bel6.setAttribute("value", "");
-        ac(bel6, ["Escoga Opcion"]);
-        var bel7 = document.createElement("option");
-        bel7.setAttribute("value", "SI");
-        ac(bel7, ["SI"]);
-        var bel8 = document.createElement("option");
-        bel8.setAttribute("value", "NO");
-        ac(bel8, ["NO"]);
-        ac(bel9, ["\n    ", bel6, "\n    ", bel7, "\n    ", bel8, "\n    "]);
-        ac(bel10, ["\n    ", bel5, "\n    ", bel9, "\n"]);
-        var bel13 = document.createElement("div");
-        bel13.setAttribute("class", "form-group send");
-        var bel11 = document.createElement("input");
-        bel11.setAttribute("type", "submit");
-        bel11.setAttribute("value", "Guardar");
-        bel11.setAttribute("class", "btn btn-primary btn-sm");
-        var bel12 = document.createElement("button");
-        bel12.setAttribute("id", "cancelar");
-        bel12.setAttribute("class", "btn btn-default btn-sm");
-        ac(bel12, ["Cancelar"]);
-        ac(bel13, ["\n    ", bel11, "\n    ", bel12, "\n"]);
-        ac(bel14, ["\n   ", bel1, "\n", bel4, "\n\n", bel10, "\n", bel13, "\n\n"]);
-        return bel14;
-    }(render);
-};
-
-function test() {
-    alert('no se que onda');
+function cargaDatos(tabla) {
+	var get = new Promise(function (resolve, reject) {
+		$.get({
+			url: '/table/' + tabla,
+			success: function success(data) {
+				data = $.parseJSON(data);
+				resolve(data);
+			}
+		});
+	});
+	return get;
 }
 
-},{"./../../../models/objetoCombos.js":11,"./../../componentes/Components.js":13,"c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js":199,"yo-yo":197}],17:[function(require,module,exports){
+},{"./../Redireccion/Urls":7,"./template":14,"empty-element":179,"page":191}],14:[function(require,module,exports){
 'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['\n\t<table class="table table-striped table-bordered table-hover principal">\n\t<thead>\n\t\t<tr>\n\t\t\t', '\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t', '\n\t</tbody>\n\t</table>'], ['\n\t<table class="table table-striped table-bordered table-hover principal">\n\t<thead>\n\t\t<tr>\n\t\t\t', '\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t', '\n\t</tbody>\n\t</table>']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var yo = require('yo-yo');
-var objCombo = require('./../../../models/objetoCombos.js');
-var comboObj = new objCombo();
+var headers = require('./headers');
+var body = require('./body');
+module.exports = function (data) {
 
-var cpm = require('./../../componentes/Components.js');
-var componente = new cpm();
-
-module.exports = function () {
-
-    var selec;
-    var combo = comboObj.tiposDocumentos();
-
-    $.ajax({
-        url: '/combo/' + 'tiposdocumentos',
-        data: combo,
-        async: false,
-        success: function success(data) {
-            data = $.parseJSON(data);
-            selec = data;
-        }
-    });
-
-    var render = componente.selectTipoDoc('idTipoDocto', 'idDocumento', selec);
-
-    return function () {
-
-        var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js');
-        var bel63 = document.createElement("form");
-        bel63.setAttribute("method", "POST");
-        bel63.setAttribute("id", "Volantes");
-        bel63.setAttribute("class", "form-inline");
-        var bel11 = document.createElement("div");
-        bel11.setAttribute("class", "headerVolante");
-        var bel1 = document.createElement("div");
-        bel1.setAttribute("class", "form-group idDocumento");
-        var bel0 = document.createElement("label");
-        bel0.setAttribute("htmlFor", "idDocumento");
-        ac(bel0, ["Tipo de Documento"]);
-        ac(bel1, ["\n    ", bel0, "\n    ", arguments[0], "\n"]);
-        var bel4 = document.createElement("div");
-        bel4.setAttribute("class", "form-group subDocumento");
-        var bel2 = document.createElement("label");
-        bel2.setAttribute("htmlFor", "subDocumento");
-        ac(bel2, ["Tipo de SubDocumento"]);
-        var bel3 = document.createElement("div");
-        bel3.setAttribute("class", "selectSubDocumento");
-        ac(bel3, ["\n    "]);
-        ac(bel4, ["\n    ", bel2, "\n    ", bel3, "\n"]);
-        var bel7 = document.createElement("div");
-        bel7.setAttribute("class", "form-group Promocion");
-        var bel5 = document.createElement("label");
-        bel5.setAttribute("htmlFor", "subDocumento");
-        ac(bel5, ["Promocion de Accion"]);
-        var bel6 = document.createElement("div");
-        bel6.setAttribute("class", "selectPromo");
-        ac(bel7, ["\n    ", bel5, "\n    ", bel6, "\n"]);
-        var bel10 = document.createElement("div");
-        bel10.setAttribute("class", "form-group cveAuditoria");
-        var bel8 = document.createElement("label");
-        bel8.setAttribute("htmlFor", "cveAuditoria");
-        ac(bel8, ["Clave de Auditoria"]);
-        var bel9 = document.createElement("div");
-        bel9.setAttribute("class", "selectAuditoria");
-        ac(bel10, ["\n    ", bel8, "\n    ", bel9, "\n"]);
-        ac(bel11, ["\n\n", bel1, "\n\n", bel4, "\n\n", bel7, "\n\n\n\n", bel10, "\n\n"]);
-        var bel21 = document.createElement("div");
-        bel21.setAttribute("class", "datosAuditoria");
-        var bel14 = document.createElement("div");
-        bel14.setAttribute("class", "form-group idUnidad");
-        var bel12 = document.createElement("label");
-        bel12.setAttribute("htmlFor", "idUnidad");
-        ac(bel12, ["Sujeto de Fiscalizacion"]);
-        var bel13 = document.createElement("ul");
-        bel13.setAttribute("id", "idUnidad");
-        ac(bel14, ["\n    ", bel12, "\n    ", bel13, "\n"]);
-        var bel17 = document.createElement("div");
-        bel17.setAttribute("class", "form-group idObjeto");
-        var bel15 = document.createElement("label");
-        bel15.setAttribute("htmlFor", "idObjeto");
-        ac(bel15, ["Rubro"]);
-        var bel16 = document.createElement("ul");
-        bel16.setAttribute("id", "idObjeto");
-        ac(bel16, ["\n    "]);
-        ac(bel17, ["\n    ", bel15, "\n    ", bel16, "\n"]);
-        var bel20 = document.createElement("div");
-        bel20.setAttribute("class", "form-group tipoAuditoria");
-        var bel18 = document.createElement("label");
-        bel18.setAttribute("htmlFor", "tipoAuditoria");
-        ac(bel18, ["Tipo de Auditoria"]);
-        var bel19 = document.createElement("ul");
-        bel19.setAttribute("id", "tipoAuditoria");
-        ac(bel19, ["\n    "]);
-        ac(bel20, ["\n    ", bel18, "\n    \n     ", bel19, "\n"]);
-        ac(bel21, ["\n\n", bel14, "\n\n", bel17, "\n\n", bel20, "\n\n\n\n"]);
-        var bel62 = document.createElement("div");
-        bel62.setAttribute("class", "contentVolante");
-        var bel24 = document.createElement("div");
-        bel24.setAttribute("class", "form-group Folio");
-        var bel22 = document.createElement("label");
-        bel22.setAttribute("htmlFor", "Folio");
-        ac(bel22, ["Folio"]);
-        var bel23 = document.createElement("input");
-        bel23.setAttribute("type", "number");
-        bel23.setAttribute("readonly", "readonly");
-        bel23.setAttribute("id", "Folio");
-        bel23.setAttribute("name", "folio");
-        bel23.setAttribute("required", "required");
-        bel23.setAttribute("class", "form-control");
-        ac(bel24, ["\n    ", bel22, "\n    ", bel23, "\n"]);
-        var bel27 = document.createElement("div");
-        bel27.setAttribute("class", "form-group numDocumento");
-        var bel25 = document.createElement("label");
-        bel25.setAttribute("htmlFor", "numDocumento");
-        ac(bel25, ["Numero de Documento"]);
-        var bel26 = document.createElement("input");
-        bel26.setAttribute("type", "text");
-        bel26.setAttribute("id", "numDocumento");
-        bel26.setAttribute("name", "numDocumento");
-        bel26.setAttribute("required", "required");
-        bel26.setAttribute("class", "form-control");
-        ac(bel27, ["\n    ", bel25, "\n    ", bel26, "\n"]);
-        var bel30 = document.createElement("div");
-        bel30.setAttribute("class", "form-group fDocumento");
-        var bel28 = document.createElement("label");
-        bel28.setAttribute("htmlFor", "fDocumento");
-        ac(bel28, ["Fecha de Documento"]);
-        var bel29 = document.createElement("input");
-        bel29.setAttribute("type", "text");
-        bel29.setAttribute("id", "fDocumento");
-        bel29.setAttribute("name", "fDocumento");
-        bel29.setAttribute("required", "required");
-        bel29.setAttribute("pattern", "(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))");
-        bel29.setAttribute("class", "form-control");
-        ac(bel30, ["\n    ", bel28, "\n    ", bel29, "\n"]);
-        var bel33 = document.createElement("div");
-        bel33.setAttribute("class", "form-group anexos");
-        var bel31 = document.createElement("label");
-        bel31.setAttribute("htmlFor", "anexos");
-        ac(bel31, ["Numero de Anexos"]);
-        var bel32 = document.createElement("input");
-        bel32.setAttribute("type", "number");
-        bel32.setAttribute("id", "anexos");
-        bel32.setAttribute("name", "anexos");
-        bel32.setAttribute("required", "required");
-        bel32.setAttribute("pattern", "[0-9]{1,16}");
-        bel32.setAttribute("class", "form-control");
-        ac(bel33, ["\n    ", bel31, "\n    ", bel32, "\n"]);
-        var bel36 = document.createElement("div");
-        bel36.setAttribute("class", "form-group fRecepcion");
-        var bel34 = document.createElement("label");
-        bel34.setAttribute("htmlFor", "fRecepcion");
-        ac(bel34, ["Fecha de Recepcion"]);
-        var bel35 = document.createElement("input");
-        bel35.setAttribute("type", "text");
-        bel35.setAttribute("id", "fRecepcion");
-        bel35.setAttribute("name", "fRecepcion");
-        bel35.setAttribute("required", "required");
-        bel35.setAttribute("pattern", "(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))");
-        bel35.setAttribute("class", "form-control");
-        ac(bel36, ["\n    ", bel34, "\n    ", bel35, "\n"]);
-        var bel39 = document.createElement("div");
-        bel39.setAttribute("class", "form-group hRecepcion");
-        var bel37 = document.createElement("label");
-        bel37.setAttribute("htmlFor", "hRecepcion");
-        ac(bel37, ["Hora de Recepcion"]);
-        var bel38 = document.createElement("input");
-        bel38.setAttribute("type", "time");
-        bel38.setAttribute("id", "hRecepcion");
-        bel38.setAttribute("name", "hRecepcion");
-        bel38.setAttribute("required", "required");
-        bel38.setAttribute("pattern", "([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}");
-        bel38.setAttribute("placeholder", "00:00");
-        bel38.setAttribute("title", "Formato de 24 horas 00:00");
-        bel38.setAttribute("class", "form-control");
-        ac(bel39, ["\n    ", bel37, "\n    ", bel38, "\n"]);
-        var bel42 = document.createElement("div");
-        bel42.setAttribute("class", "form-group idRemitente");
-        var bel40 = document.createElement("label");
-        bel40.setAttribute("htmlFor", "idRemitente");
-        ac(bel40, ["Remitente"]);
-        var bel41 = document.createElement("div");
-        bel41.setAttribute("class", "selectRemitente");
-        ac(bel42, ["\n    ", bel40, "\n     ", bel41, "\n\n   \n"]);
-        var bel46 = document.createElement("div");
-        bel46.setAttribute("class", "form-group Destinatario");
-        var bel43 = document.createElement("label");
-        bel43.setAttribute("htmlFor", "Destinatario");
-        ac(bel43, ["Destinatario"]);
-        var bel44 = document.createElement("input");
-        bel44.setAttribute("type", "text");
-        bel44.setAttribute("id", "Destinatario");
-        bel44.setAttribute("name", "destinatario");
-        bel44.setAttribute("placeholder", "Destinatario");
-        bel44.setAttribute("pattern", "[a-zA-Z._- ]");
-        bel44.setAttribute("required", "required");
-        bel44.setAttribute("title", "Unicamente letras");
-        bel44.setAttribute("value", "DR. IVÁN DE JESÚS OLMOS CANSINO");
-        bel44.setAttribute("readonly", "readonly");
-        bel44.setAttribute("class", "form-control");
-        var bel45 = document.createElement("button");
-        bel45.setAttribute("id", "destinatario");
-        bel45.setAttribute("class", "btn btn-info");
-        ac(bel45, ["Editar Destinatario"]);
-        ac(bel46, ["\n    ", bel43, "\n    ", bel44, "\n    ", bel45, "\n\n"]);
-        var bel49 = document.createElement("div");
-        bel49.setAttribute("class", "form-group Asunto");
-        var bel47 = document.createElement("label");
-        bel47.setAttribute("htmlFor", "Asunto");
-        ac(bel47, ["Asunto"]);
-        var bel48 = document.createElement("textarea");
-        bel48.setAttribute("rows", "3");
-        bel48.setAttribute("name", "asunto");
-        bel48.setAttribute("required", "required");
-        bel48.setAttribute("placeholder", "Asunto");
-        bel48.setAttribute("class", "form-control");
-        ac(bel49, ["\n    ", bel47, "\n    ", bel48, "\n"]);
-        var bel52 = document.createElement("div");
-        bel52.setAttribute("class", "form-group idCaracter");
-        var bel50 = document.createElement("label");
-        bel50.setAttribute("htmlFor", "idCaracter");
-        ac(bel50, ["Caracter"]);
-        var bel51 = document.createElement("div");
-        bel51.setAttribute("class", "selectCaracter");
-        ac(bel52, ["\n    ", bel50, "\n    ", bel51, "\n   \n    \n"]);
-        var bel55 = document.createElement("div");
-        bel55.setAttribute("class", "form-group idTurnado");
-        var bel53 = document.createElement("label");
-        bel53.setAttribute("htmlFor", "idTurnado");
-        ac(bel53, ["Turnado a:"]);
-        var bel54 = document.createElement("div");
-        bel54.setAttribute("class", "selectTurnado");
-        ac(bel55, ["\n    ", bel53, "\n     ", bel54, "\n"]);
-        var bel58 = document.createElement("div");
-        bel58.setAttribute("class", "form-group idAccion");
-        var bel56 = document.createElement("label");
-        bel56.setAttribute("htmlFor", "idAccion");
-        ac(bel56, ["Instruccion"]);
-        var bel57 = document.createElement("div");
-        bel57.setAttribute("class", "selectAccion");
-        ac(bel58, ["\n    ", bel56, "\n     ", bel57, "\n"]);
-        var bel61 = document.createElement("div");
-        bel61.setAttribute("class", "form-group send");
-        var bel59 = document.createElement("input");
-        bel59.setAttribute("type", "submit");
-        bel59.setAttribute("value", "Guardar");
-        bel59.setAttribute("class", "btn btn-primary btn-sm");
-        var bel60 = document.createElement("button");
-        bel60.setAttribute("id", "cancelar");
-        bel60.setAttribute("class", "btn btn-default btn-sm");
-        ac(bel60, ["Cancelar"]);
-        ac(bel61, ["\n    ", bel59, "\n    ", bel60, "\n"]);
-        ac(bel62, ["\n\n", bel24, "\n\n\n", bel27, "\n\n", bel30, "\n\n", bel33, "\n\n", bel36, "\n\n", bel39, "\n\n\n", bel42, "\n\n\n", bel46, "\n\n", bel49, "\n\n", bel52, "\n\n", bel55, "\n\n", bel58, "\n\n\n\n\n\n\n\n\n\n\n\n", bel61, "\n\n\n"]);
-        ac(bel63, ["\n\n", bel11, "\n\n", bel21, "\n\n\n\n", bel62, "\n"]);
-        return bel63;
-    }(render);
+	var th = $.parseHTML(headers(data[0]));
+	var el = yo(_templateObject, th, data.map(function (json) {
+		return body(json);
+	}));
+	//console.log(el);
+	return el;
 };
 
-},{"./../../../models/objetoCombos.js":11,"./../../componentes/Components.js":13,"c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js":199,"yo-yo":197}],18:[function(require,module,exports){
+},{"./body":11,"./headers":12,"yo-yo":195}],15:[function(require,module,exports){
 'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="UpdateAcciones">\n<div class="form-group nombre">\n    <label for="nombre">Nombre </label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,30}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" value="', '">\n</div>\n<div class="form-group estatus">\n    <label for="estatus">Estatus</label>\n    <select id="estatus" name="estatus" class="form-control">\n    <option value="', '">', '</option>\n    <option value="', '">', '</option>\n    </select>\n</div>\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n</form>'], ['<form method="POST" class="form-inline" id="UpdateAcciones">\n<div class="form-group nombre">\n    <label for="nombre">Nombre </label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,30}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" value="', '">\n</div>\n<div class="form-group estatus">\n    <label for="estatus">Estatus</label>\n    <select id="estatus" name="estatus" class="form-control">\n    <option value="', '">', '</option>\n    <option value="', '">', '</option>\n    </select>\n</div>\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n</form>']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var yo = require('yo-yo');
 
 module.exports = function (data) {
+    console.log(data);
 
-      if (data.estatus == 'ACTIVO') {
+    if (data.estatus == 'ACTIVO') {
+        var opuesto = 'INACTIVO';
+    } else {
+        var opuesto = 'ACTIVO';
+    }
+
+    return yo(_templateObject, data.nombre, data.estatus, data.estatus, opuesto, opuesto);
+};
+
+},{"yo-yo":195}],16:[function(require,module,exports){
+'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="UpdateCaracteres">\n      <div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required  name="siglas" title="Inserta un Caracter" value="', '">\n</div>\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,10}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" value="', '">\n</div>\n<div class="form-group estatus">\n    <label for="estatus">Estatus</label>\n    <select id="estatus" name="estatus" class="form-control">\n    <option value="', '">', '</option>\n    <option value="', '">', '</option>\n    </select>\n</div>\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n</form>'], ['<form method="POST" class="form-inline" id="UpdateCaracteres">\n      <div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required  name="siglas" title="Inserta un Caracter" value="', '">\n</div>\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,10}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" value="', '">\n</div>\n<div class="form-group estatus">\n    <label for="estatus">Estatus</label>\n    <select id="estatus" name="estatus" class="form-control">\n    <option value="', '">', '</option>\n    <option value="', '">', '</option>\n    </select>\n</div>\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n</form>']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+var yo = require('yo-yo');
+
+module.exports = function (data) {
+    if (data === undefined) {} else {
+
+        //console.log(data);
+
+
+        if (data.estatus == 'ACTIVO') {
             var opuesto = 'INACTIVO';
-      } else {
+        } else {
             var opuesto = 'ACTIVO';
-      }
+        }
 
-      return function () {
-
-            var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js');
-            var bel11 = document.createElement("form");
-            bel11.setAttribute("method", "POST");
-            bel11.setAttribute("id", "UpdateAcciones");
-            bel11.setAttribute("class", "form-inline");
-            var bel2 = document.createElement("div");
-            bel2.setAttribute("class", "form-group nombre");
-            var bel0 = document.createElement("label");
-            bel0.setAttribute("htmlFor", "nombre");
-            ac(bel0, ["Nombre "]);
-            var bel1 = document.createElement("input");
-            bel1.setAttribute("type", "text");
-            bel1.setAttribute("id", "nombre");
-            bel1.setAttribute("placeholder", "Nombre");
-            bel1.setAttribute("required", "required");
-            bel1.setAttribute("pattern", "[A-Za-z].{1,10}");
-            bel1.setAttribute("name", "nombre");
-            bel1.setAttribute("title", "Nombre Incorrecto o Caracteres maximos");
-            bel1.setAttribute("value", arguments[0]);
-            bel1.setAttribute("class", "form-control");
-            ac(bel2, ["\n    ", bel0, "\n    ", bel1, "\n"]);
-            var bel7 = document.createElement("div");
-            bel7.setAttribute("class", "form-group estatus");
-            var bel3 = document.createElement("label");
-            bel3.setAttribute("htmlFor", "estatus");
-            ac(bel3, ["Estatus"]);
-            var bel6 = document.createElement("select");
-            bel6.setAttribute("id", "estatus");
-            bel6.setAttribute("name", "estatus");
-            bel6.setAttribute("class", "form-control");
-            var bel4 = document.createElement("option");
-            bel4.setAttribute("value", arguments[1]);
-            ac(bel4, [arguments[2]]);
-            var bel5 = document.createElement("option");
-            bel5.setAttribute("value", arguments[3]);
-            ac(bel5, [arguments[4]]);
-            ac(bel6, ["\n    ", bel4, "\n    ", bel5, "\n    "]);
-            ac(bel7, ["\n    ", bel3, "\n    ", bel6, "\n"]);
-            var bel10 = document.createElement("div");
-            bel10.setAttribute("class", "form-group send");
-            var bel8 = document.createElement("input");
-            bel8.setAttribute("type", "submit");
-            bel8.setAttribute("value", "Guardar");
-            bel8.setAttribute("class", "btn btn-primary btn-sm");
-            var bel9 = document.createElement("button");
-            bel9.setAttribute("id", "cancelar");
-            bel9.setAttribute("class", "btn btn-default btn-sm");
-            ac(bel9, ["Cancelar"]);
-            ac(bel10, ["\n    ", bel8, "\n    ", bel9, "\n"]);
-            ac(bel11, ["\n", bel2, "\n", bel7, "\n", bel10, "\n"]);
-            return bel11;
-      }(data.nombre, data.estatus, data.estatus, opuesto, opuesto);
+        return yo(_templateObject, data.siglas, data.nombre, data.estatus, data.estatus, opuesto, opuesto);
+    }
 };
 
-},{"c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js":199,"yo-yo":197}],19:[function(require,module,exports){
+},{"yo-yo":195}],17:[function(require,module,exports){
 'use strict';
+
+var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="UpdateSubTiposDocumentos">\n   <div class="form-group idDocumento">\n    <label for="idDocumento">Tipo de Documento</label>\n    <select name="idTipoDocto" id="idDocumento" required="required" class="form-control">\n    \n    </select>\n    \n</div>\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" value="', '">\n</div>\n\n<div class="form-group promocion">\n    <label for="estatus">Promocion</label>\n    <select id="promocion" name="promocion" class="form-control" required>\n    <option value="', '">', '</option>\n    <option value="', '">', '</option>\n    </select>\n</div>\n\n\n\n<div class="form-group estatus">\n    <label for="estatus">Estatus</label>\n    <select id="estatus" name="estatus" class="form-control">\n    <option value="', '">', '</option>\n    <option value="', '">', '</option>\n    </select>\n</div>\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>'], ['<form method="POST" class="form-inline" id="UpdateSubTiposDocumentos">\n   <div class="form-group idDocumento">\n    <label for="idDocumento">Tipo de Documento</label>\n    <select name="idTipoDocto" id="idDocumento" required="required" class="form-control">\n    \n    </select>\n    \n</div>\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" value="', '">\n</div>\n\n<div class="form-group promocion">\n    <label for="estatus">Promocion</label>\n    <select id="promocion" name="promocion" class="form-control" required>\n    <option value="', '">', '</option>\n    <option value="', '">', '</option>\n    </select>\n</div>\n\n\n\n<div class="form-group estatus">\n    <label for="estatus">Estatus</label>\n    <select id="estatus" name="estatus" class="form-control">\n    <option value="', '">', '</option>\n    <option value="', '">', '</option>\n    </select>\n</div>\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>']);
+
+function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
 var yo = require('yo-yo');
 
-module.exports = function (data) {
-      if (data === undefined) {} else {
-
-            //console.log(data);
-
-
-            if (data.estatus == 'ACTIVO') {
-                  var opuesto = 'INACTIVO';
-            } else {
-                  var opuesto = 'ACTIVO';
-            }
-
-            return function () {
-
-                  var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js');
-                  var bel14 = document.createElement("form");
-                  bel14.setAttribute("method", "POST");
-                  bel14.setAttribute("id", "UpdateCaracteres");
-                  bel14.setAttribute("class", "form-inline");
-                  var bel2 = document.createElement("div");
-                  bel2.setAttribute("class", "form-group siglas");
-                  var bel0 = document.createElement("label");
-                  bel0.setAttribute("htmlFor", "siglas");
-                  ac(bel0, ["Siglas"]);
-                  var bel1 = document.createElement("input");
-                  bel1.setAttribute("type", "text");
-                  bel1.setAttribute("id", "siglas");
-                  bel1.setAttribute("placeholder", "siglas");
-                  bel1.setAttribute("required", "required");
-                  bel1.setAttribute("name", "siglas");
-                  bel1.setAttribute("title", "Inserta un Caracter");
-                  bel1.setAttribute("value", arguments[0]);
-                  bel1.setAttribute("class", "form-control");
-                  ac(bel2, ["\n    ", bel0, "\n    ", bel1, "\n"]);
-                  var bel5 = document.createElement("div");
-                  bel5.setAttribute("class", "form-group nombre");
-                  var bel3 = document.createElement("label");
-                  bel3.setAttribute("htmlFor", "nombre");
-                  ac(bel3, ["Nombre"]);
-                  var bel4 = document.createElement("input");
-                  bel4.setAttribute("type", "text");
-                  bel4.setAttribute("id", "nombre");
-                  bel4.setAttribute("placeholder", "Nombre");
-                  bel4.setAttribute("required", "required");
-                  bel4.setAttribute("pattern", "[A-Za-z].{1,10}");
-                  bel4.setAttribute("name", "nombre");
-                  bel4.setAttribute("title", "Nombre Incorrecto o Caracteres maximos");
-                  bel4.setAttribute("value", arguments[1]);
-                  bel4.setAttribute("class", "form-control");
-                  ac(bel5, ["\n    ", bel3, "\n    ", bel4, "\n"]);
-                  var bel10 = document.createElement("div");
-                  bel10.setAttribute("class", "form-group estatus");
-                  var bel6 = document.createElement("label");
-                  bel6.setAttribute("htmlFor", "estatus");
-                  ac(bel6, ["Estatus"]);
-                  var bel9 = document.createElement("select");
-                  bel9.setAttribute("id", "estatus");
-                  bel9.setAttribute("name", "estatus");
-                  bel9.setAttribute("class", "form-control");
-                  var bel7 = document.createElement("option");
-                  bel7.setAttribute("value", arguments[2]);
-                  ac(bel7, [arguments[3]]);
-                  var bel8 = document.createElement("option");
-                  bel8.setAttribute("value", arguments[4]);
-                  ac(bel8, [arguments[5]]);
-                  ac(bel9, ["\n    ", bel7, "\n    ", bel8, "\n    "]);
-                  ac(bel10, ["\n    ", bel6, "\n    ", bel9, "\n"]);
-                  var bel13 = document.createElement("div");
-                  bel13.setAttribute("class", "form-group send");
-                  var bel11 = document.createElement("input");
-                  bel11.setAttribute("type", "submit");
-                  bel11.setAttribute("value", "Guardar");
-                  bel11.setAttribute("class", "btn btn-primary btn-sm");
-                  var bel12 = document.createElement("button");
-                  bel12.setAttribute("id", "cancelar");
-                  bel12.setAttribute("class", "btn btn-default btn-sm");
-                  ac(bel12, ["Cancelar"]);
-                  ac(bel13, ["\n    ", bel11, "\n    ", bel12, "\n"]);
-                  ac(bel14, ["\n      ", bel2, "\n", bel5, "\n", bel10, "\n", bel13, "\n"]);
-                  return bel14;
-            }(data.siglas, data.nombre, data.estatus, data.estatus, opuesto, opuesto);
-      }
-};
-
-},{"c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js":199,"yo-yo":197}],20:[function(require,module,exports){
-'use strict';
-
-var yo = require('yo-yo');
-var objCombo = require('./../../../models/objetoCombos.js');
-var comboObj = new objCombo();
-
-var cpm = require('./../../componentes/Components.js');
-var componente = new cpm();
 module.exports = function (data) {
 
     if (data.prmocion == 'SI') {
@@ -1594,495 +780,170 @@ module.exports = function (data) {
         var opuesto = 'ACTIVO';
     }
 
-    var selec;
-    var combo = comboObj.tiposDocumentos();
-
-    $.ajax({
-        url: '/combo/' + 'tiposdocumentos',
-        data: combo,
-        async: false,
-        success: function success(data) {
-            data = $.parseJSON(data);
-            selec = data;
-        }
-    });
-
-    var render = componente.selectTipoDocUpdate('idTipoDocto', 'idDocumento', selec, data.idTipoDocto);
-
-    return function () {
-
-        var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js');
-        var bel18 = document.createElement("form");
-        bel18.setAttribute("method", "POST");
-        bel18.setAttribute("id", "UpdateSubTiposDocumentos");
-        bel18.setAttribute("class", "form-inline");
-        var bel1 = document.createElement("div");
-        bel1.setAttribute("class", "form-group idDocumento");
-        var bel0 = document.createElement("label");
-        bel0.setAttribute("htmlFor", "idDocumento");
-        ac(bel0, ["Tipo de Documento"]);
-        ac(bel1, ["\n    ", bel0, "\n    ", arguments[0], "\n"]);
-        var bel4 = document.createElement("div");
-        bel4.setAttribute("class", "form-group nombre");
-        var bel2 = document.createElement("label");
-        bel2.setAttribute("htmlFor", "nombre");
-        ac(bel2, ["Nombre"]);
-        var bel3 = document.createElement("input");
-        bel3.setAttribute("type", "text");
-        bel3.setAttribute("id", "nombre");
-        bel3.setAttribute("placeholder", "Nombre");
-        bel3.setAttribute("required", "required");
-        bel3.setAttribute("pattern", "[A-Za-z].{1,49}");
-        bel3.setAttribute("name", "nombre");
-        bel3.setAttribute("title", "Nombre Incorrecto o Caracteres maximos");
-        bel3.setAttribute("value", arguments[1]);
-        bel3.setAttribute("class", "form-control");
-        ac(bel4, ["\n    ", bel2, "\n    ", bel3, "\n"]);
-        var bel9 = document.createElement("div");
-        bel9.setAttribute("class", "form-group promocion");
-        var bel5 = document.createElement("label");
-        bel5.setAttribute("htmlFor", "estatus");
-        ac(bel5, ["Promocion"]);
-        var bel8 = document.createElement("select");
-        bel8.setAttribute("id", "promocion");
-        bel8.setAttribute("name", "promocion");
-        bel8.setAttribute("required", "required");
-        bel8.setAttribute("class", "form-control");
-        var bel6 = document.createElement("option");
-        bel6.setAttribute("value", arguments[2]);
-        ac(bel6, [arguments[3]]);
-        var bel7 = document.createElement("option");
-        bel7.setAttribute("value", arguments[4]);
-        ac(bel7, [arguments[5]]);
-        ac(bel8, ["\n    ", bel6, "\n    ", bel7, "\n    "]);
-        ac(bel9, ["\n    ", bel5, "\n    ", bel8, "\n"]);
-        var bel14 = document.createElement("div");
-        bel14.setAttribute("class", "form-group estatus");
-        var bel10 = document.createElement("label");
-        bel10.setAttribute("htmlFor", "estatus");
-        ac(bel10, ["Estatus"]);
-        var bel13 = document.createElement("select");
-        bel13.setAttribute("id", "estatus");
-        bel13.setAttribute("name", "estatus");
-        bel13.setAttribute("class", "form-control");
-        var bel11 = document.createElement("option");
-        bel11.setAttribute("value", arguments[6]);
-        ac(bel11, [arguments[7]]);
-        var bel12 = document.createElement("option");
-        bel12.setAttribute("value", arguments[8]);
-        ac(bel12, [arguments[9]]);
-        ac(bel13, ["\n    ", bel11, "\n    ", bel12, "\n    "]);
-        ac(bel14, ["\n    ", bel10, "\n    ", bel13, "\n"]);
-        var bel17 = document.createElement("div");
-        bel17.setAttribute("class", "form-group send");
-        var bel15 = document.createElement("input");
-        bel15.setAttribute("type", "submit");
-        bel15.setAttribute("value", "Guardar");
-        bel15.setAttribute("class", "btn btn-primary btn-sm");
-        var bel16 = document.createElement("button");
-        bel16.setAttribute("id", "cancelar");
-        bel16.setAttribute("class", "btn btn-default btn-sm");
-        ac(bel16, ["Cancelar"]);
-        ac(bel17, ["\n    ", bel15, "\n    ", bel16, "\n"]);
-        ac(bel18, ["\n   ", bel1, "\n", bel4, "\n\n", bel9, "\n\n\n\n", bel14, "\n", bel17, "\n\n"]);
-        return bel18;
-    }(render, data.nombre, data.promocion, data.promocion, promo, promo, data.estatus, data.estatus, opuesto, opuesto);
+    return yo(_templateObject, data.nombre, data.promocion, data.promocion, promo, promo, data.estatus, data.estatus, opuesto, opuesto);
 };
 
-},{"./../../../models/objetoCombos.js":11,"./../../componentes/Components.js":13,"c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js":199,"yo-yo":197}],21:[function(require,module,exports){
+},{"yo-yo":195}],18:[function(require,module,exports){
 'use strict';
 
-var yo = require('yo-yo');
+var empty = require('empty-element');
+var page = require('page');
 
-module.exports = function (data) {
+var Acciones = require('./Acciones');
+var Caracteres = require('./Caracteres');
+var SubTiposDocumentos = require('./SubTiposDocumentos');
 
-    if (data.estatus == 'ACTIVO') {
-        var opuesto = 'INACTIVO';
-    } else {
-        var opuesto = 'ACTIVO';
-    }
-    /*
-    if(data.estado=='PENDIENTE')
-    {
-        var estadoOpuesto='ATENDIDO';
-    }
-    else {
-     var estadoOpuesto='PENDIENTE'   ;
-    }
-    */
+var objCombo = require('./../jsonCombos');
+var url = require('./../Redireccion/Urls');
+var notfications = require('./../Notificaciones/noty');
 
-    $.get({
-        url: '/getComboRemitente',
-        async: false,
-        success: function success(data) {
-            data = $.parseJSON(data);
-            options = comboRemitente(data);
-        }
+var link = new url();
+var noty = new notfications();
+var jsonCombo = new objCombo();
+/*------------------RUTAS-----------------*/
 
+page('/juridico/Acciones/update/:campo/:id', function (ctx, netx) {
+  var id = ctx.params.id;
+  var campo = ctx.params.campo;
+  var obj = {};
+  obj[campo] = id;
+  cargaDatos(obj).then(function (response) {
+    var form = Acciones(response[0]);
+    render(form);
+    sendData(campo, id);
+  });
+});
+
+page('/juridico/Caracteres/update/:campo/:id', function (ctx, netx) {
+  var id = ctx.params.id;
+  var campo = ctx.params.campo;
+  var obj = {};
+  obj[campo] = id;
+  cargaDatos(obj).then(function (response) {
+    var form = Caracteres(response[0]);
+    render(form);
+    sendData(campo, id);
+  });
+});
+
+page('/juridico/SubTiposDocumentos/update/:campo/:id', function (ctx, netx) {
+  var id = ctx.params.id;
+  var campo = ctx.params.campo;
+  var obj = {};
+  obj[campo] = id;
+  cargaDatos(obj).then(function (response) {
+    var form = SubTiposDocumentos(response[0]);
+    render(form);
+    var selected = response[0].idTipoDocto;
+    var objeto = jsonCombo.tiposDocumentos();
+    cargaCombo(objeto).then(function (response) {
+      $('select#idDocumento').html(response);
+      $('select#idDocumento > option[value="' + selected + '"]').attr('selected', 'selected');
     });
+    sendData(campo, id);
+  });
+});
 
-    var nombre, cargo, dependencia;
+function render(form) {
+  var main = document.getElementById('main-content');
+  empty(main);
+  $('div#main-content').append(form);
+  cancelar();
+}
 
+function cancelar() {
+  $('button#cancelar').click(function (e) {
+    e.preventDefault();
+    link.Main();
+  });
+}
+
+function cargaDatos(obj) {
+  var get = new Promise(function (resolve, reject) {
     $.get({
-        url: '/getDatosRemitente/' + data.idRemitente,
-        async: false,
-        success: function success(data) {
-            data = $.parseJSON(data);
-            nombre = data[0].nombre;
-            cargo = data[0].cargo;
-            dependencia = data[0].procedencia;
-        }
-    });
-
-    $.get({
-        url: '/getComboCaracter',
-        async: false,
-        success: function success(data) {
-            data = $.parseJSON(data);
-            caracter = comboCaracter(data);
-        }
-    });
-
-    $.get({
-        url: '/getComboTurnado',
-        async: false,
-        success: function success(data) {
-            data = $.parseJSON(data);
-            turnado = comboTurnado(data);
-        }
-    });
-
-    $.get({
-        url: '/getComboAccion',
-        async: false,
-        success: function success(data) {
-            data = $.parseJSON(data);
-            accion = comboAccion(data);
-        }
-    });
-
-    options = $.parseHTML(options);
-    caracter = $.parseHTML(caracter);
-    turnado = $.parseHTML(turnado);
-    accion = $.parseHTML(accion);
-
-    asunto = data.asunto;
-    console.log(asunto);
-    console.log(asunto.length);
-    asunto = asunto.trim();
-    console.log(asunto.length);
-
-    return function () {
-
-        var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js');
-        var bel54 = document.createElement("form");
-        bel54.setAttribute("method", "POST");
-        bel54.setAttribute("id", "UpdateVolantes");
-        bel54.setAttribute("class", "form-inline");
-        var bel53 = document.createElement("div");
-        bel53.setAttribute("class", "contentVolante");
-        var bel2 = document.createElement("div");
-        bel2.setAttribute("class", "form-group Folio");
-        var bel0 = document.createElement("label");
-        bel0.setAttribute("htmlFor", "Folio");
-        ac(bel0, ["Folio"]);
-        var bel1 = document.createElement("input");
-        bel1.setAttribute("type", "number");
-        bel1.setAttribute("id", "Folio");
-        bel1.setAttribute("name", "folio");
-        bel1.setAttribute("required", "required");
-        bel1.setAttribute("value", arguments[0]);
-        bel1.setAttribute("disabled", "true");
-        bel1.setAttribute("class", "form-control");
-        ac(bel2, ["\n    ", bel0, "\n    ", bel1, "\n"]);
-        var bel5 = document.createElement("div");
-        bel5.setAttribute("class", "form-group numDocumento");
-        var bel3 = document.createElement("label");
-        bel3.setAttribute("htmlFor", "numDocumento");
-        ac(bel3, ["Numero de Documento"]);
-        var bel4 = document.createElement("input");
-        bel4.setAttribute("type", "text");
-        bel4.setAttribute("id", "numDocumento");
-        bel4.setAttribute("name", "numDocumento");
-        bel4.setAttribute("required", "required");
-        bel4.setAttribute("value", arguments[1]);
-        bel4.setAttribute("disabled", "true");
-        bel4.setAttribute("class", "form-control");
-        ac(bel5, ["\n    ", bel3, "\n    ", bel4, "\n"]);
-        var bel8 = document.createElement("div");
-        bel8.setAttribute("class", "form-group fDocumento");
-        var bel6 = document.createElement("label");
-        bel6.setAttribute("htmlFor", "fDocumento");
-        ac(bel6, ["Fecha de Documento"]);
-        var bel7 = document.createElement("input");
-        bel7.setAttribute("type", "text");
-        bel7.setAttribute("id", "fDocumento");
-        bel7.setAttribute("name", "fDocumento");
-        bel7.setAttribute("required", "required");
-        bel7.setAttribute("pattern", "(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))");
-        bel7.setAttribute("value", arguments[2]);
-        bel7.setAttribute("class", "form-control");
-        ac(bel8, ["\n    ", bel6, "\n    ", bel7, "\n"]);
-        var bel11 = document.createElement("div");
-        bel11.setAttribute("class", "form-group anexos");
-        var bel9 = document.createElement("label");
-        bel9.setAttribute("htmlFor", "anexos");
-        ac(bel9, ["Numero de Anexos"]);
-        var bel10 = document.createElement("input");
-        bel10.setAttribute("type", "number");
-        bel10.setAttribute("id", "anexos");
-        bel10.setAttribute("name", "anexos");
-        bel10.setAttribute("required", "required");
-        bel10.setAttribute("value", arguments[3]);
-        bel10.setAttribute("class", "form-control");
-        ac(bel11, ["\n    ", bel9, "\n    ", bel10, "\n"]);
-        var bel14 = document.createElement("div");
-        bel14.setAttribute("class", "form-group fRecepcion");
-        var bel12 = document.createElement("label");
-        bel12.setAttribute("htmlFor", "fRecepcion");
-        ac(bel12, ["Fecha de Recepcion"]);
-        var bel13 = document.createElement("input");
-        bel13.setAttribute("type", "text");
-        bel13.setAttribute("id", "fRecepcion");
-        bel13.setAttribute("name", "fRecepcion");
-        bel13.setAttribute("required", "required");
-        bel13.setAttribute("pattern", "(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))");
-        bel13.setAttribute("value", arguments[4]);
-        bel13.setAttribute("class", "form-control");
-        ac(bel14, ["\n    ", bel12, "\n    ", bel13, "\n"]);
-        var bel17 = document.createElement("div");
-        bel17.setAttribute("class", "form-group hRecepcion");
-        var bel15 = document.createElement("label");
-        bel15.setAttribute("htmlFor", "hRecepcion");
-        ac(bel15, ["Hora de Recepcion"]);
-        var bel16 = document.createElement("input");
-        bel16.setAttribute("type", "time");
-        bel16.setAttribute("id", "hRecepcion");
-        bel16.setAttribute("name", "hRecepcion");
-        bel16.setAttribute("required", "required");
-        bel16.setAttribute("value", arguments[5]);
-        bel16.setAttribute("class", "form-control");
-        ac(bel17, ["\n    ", bel15, "\n    ", bel16, "\n"]);
-        var bel20 = document.createElement("div");
-        bel20.setAttribute("class", "form-group idRemitente");
-        var bel18 = document.createElement("label");
-        bel18.setAttribute("htmlFor", "idRemitente");
-        ac(bel18, ["Remitente"]);
-        var bel19 = document.createElement("select");
-        bel19.setAttribute("name", "idRemitente");
-        bel19.setAttribute("id", "idRemitente");
-        bel19.setAttribute("required", "required");
-        bel19.setAttribute("class", "form-control");
-        ac(bel19, ["\n   ", arguments[6], "\n    "]);
-        ac(bel20, ["\n    ", bel18, "\n    ", bel19, "\n"]);
-        var bel23 = document.createElement("div");
-        bel23.setAttribute("class", "form-group NombreRemitente");
-        var bel21 = document.createElement("label");
-        bel21.setAttribute("htmlFor", "NombreRemitente");
-        ac(bel21, ["Nombre"]);
-        var bel22 = document.createElement("input");
-        bel22.setAttribute("type", "text");
-        bel22.setAttribute("id", "NombreRemitente");
-        bel22.setAttribute("disabled", "true");
-        bel22.setAttribute("value", arguments[7]);
-        bel22.setAttribute("class", "form-control");
-        ac(bel23, ["\n    ", bel21, "\n    ", bel22, "\n"]);
-        var bel26 = document.createElement("div");
-        bel26.setAttribute("class", "form-group cargo");
-        var bel24 = document.createElement("label");
-        bel24.setAttribute("htmlFor", "cargo");
-        ac(bel24, ["Cargo"]);
-        var bel25 = document.createElement("input");
-        bel25.setAttribute("type", "text");
-        bel25.setAttribute("id", "cargo");
-        bel25.setAttribute("disabled", "true");
-        bel25.setAttribute("value", arguments[8]);
-        bel25.setAttribute("class", "form-control");
-        ac(bel26, ["\n    ", bel24, "\n    ", bel25, "\n"]);
-        var bel29 = document.createElement("div");
-        bel29.setAttribute("class", "form-group dependencia");
-        var bel27 = document.createElement("label");
-        bel27.setAttribute("htmlFor", "dependencia");
-        ac(bel27, ["Dependencia"]);
-        var bel28 = document.createElement("input");
-        bel28.setAttribute("type", "text");
-        bel28.setAttribute("id", "dependencia");
-        bel28.setAttribute("disabled", "true");
-        bel28.setAttribute("value", arguments[9]);
-        bel28.setAttribute("class", "form-control");
-        ac(bel29, ["\n    ", bel27, "\n    ", bel28, "\n"]);
-        var bel32 = document.createElement("div");
-        bel32.setAttribute("class", "form-group Destinatario");
-        var bel30 = document.createElement("label");
-        bel30.setAttribute("htmlFor", "Destinatario");
-        ac(bel30, ["Destinatario"]);
-        var bel31 = document.createElement("input");
-        bel31.setAttribute("type", "text");
-        bel31.setAttribute("id", "Destinatario");
-        bel31.setAttribute("name", "destinatario");
-        bel31.setAttribute("placeholder", "Destinatario");
-        bel31.setAttribute("value", arguments[10]);
-        bel31.setAttribute("class", "form-control");
-        ac(bel32, ["\n    ", bel30, "\n    ", bel31, "\n"]);
-        var bel35 = document.createElement("div");
-        bel35.setAttribute("class", "form-group Asunto");
-        var bel33 = document.createElement("label");
-        bel33.setAttribute("htmlFor", "Asunto");
-        ac(bel33, ["Asunto"]);
-        var bel34 = document.createElement("textarea");
-        bel34.setAttribute("rows", "3");
-        bel34.setAttribute("name", "asunto");
-        bel34.setAttribute("required", "required");
-        bel34.setAttribute("placeholder", "Asunto");
-        bel34.setAttribute("class", "form-control");
-        ac(bel34, [arguments[11]]);
-        ac(bel35, ["\n    ", bel33, "\n    ", bel34, "\n"]);
-        var bel38 = document.createElement("div");
-        bel38.setAttribute("class", "form-group idCaracter");
-        var bel36 = document.createElement("label");
-        bel36.setAttribute("htmlFor", "idCaracter");
-        ac(bel36, ["Caracter"]);
-        var bel37 = document.createElement("select");
-        bel37.setAttribute("name", "idCaracter");
-        bel37.setAttribute("id", "idCaracter");
-        bel37.setAttribute("required", "required");
-        bel37.setAttribute("class", "form-control");
-        ac(bel37, ["\n    ", arguments[12], "\n    "]);
-        ac(bel38, ["\n    ", bel36, "\n    ", bel37, "\n"]);
-        var bel41 = document.createElement("div");
-        bel41.setAttribute("class", "form-group idTurnado");
-        var bel39 = document.createElement("label");
-        bel39.setAttribute("htmlFor", "idTurnado");
-        ac(bel39, ["Turnado a:"]);
-        var bel40 = document.createElement("select");
-        bel40.setAttribute("name", "idTurnado");
-        bel40.setAttribute("id", "idTurnado");
-        bel40.setAttribute("required", "required");
-        bel40.setAttribute("class", "form-control");
-        ac(bel40, ["\n    ", arguments[13], "\n    "]);
-        ac(bel41, ["\n    ", bel39, "\n    ", bel40, "\n"]);
-        var bel44 = document.createElement("div");
-        bel44.setAttribute("class", "form-group idAccion");
-        var bel42 = document.createElement("label");
-        bel42.setAttribute("htmlFor", "idAccion");
-        ac(bel42, ["Instruccion"]);
-        var bel43 = document.createElement("select");
-        bel43.setAttribute("name", "idAccion");
-        bel43.setAttribute("id", "idAccion");
-        bel43.setAttribute("required", "required");
-        bel43.setAttribute("class", "form-control");
-        ac(bel43, ["\n    ", arguments[14], "\n    "]);
-        ac(bel44, ["\n    ", bel42, "\n    ", bel43, "\n"]);
-        var bel49 = document.createElement("div");
-        bel49.setAttribute("class", "form-group estatus");
-        var bel45 = document.createElement("label");
-        bel45.setAttribute("htmlFor", "estatus");
-        ac(bel45, ["Estatus"]);
-        var bel48 = document.createElement("select");
-        bel48.setAttribute("id", "estatus");
-        bel48.setAttribute("name", "estatus");
-        bel48.setAttribute("class", "form-control");
-        var bel46 = document.createElement("option");
-        bel46.setAttribute("value", arguments[15]);
-        ac(bel46, [arguments[16]]);
-        var bel47 = document.createElement("option");
-        bel47.setAttribute("value", arguments[17]);
-        ac(bel47, [arguments[18]]);
-        ac(bel48, ["\n    ", bel46, "\n    ", bel47, "\n    "]);
-        ac(bel49, ["\n    ", bel45, "\n    ", bel48, "\n"]);
-        var bel52 = document.createElement("div");
-        bel52.setAttribute("class", "form-group send");
-        var bel50 = document.createElement("input");
-        bel50.setAttribute("type", "submit");
-        bel50.setAttribute("value", "Guardar");
-        bel50.setAttribute("class", "btn btn-primary btn-sm");
-        var bel51 = document.createElement("button");
-        bel51.setAttribute("id", "cancelar");
-        bel51.setAttribute("class", "btn btn-default btn-sm");
-        ac(bel51, ["Cancelar"]);
-        ac(bel52, ["\n    ", bel50, "\n    ", bel51, "\n"]);
-        ac(bel53, ["\n\n", bel2, "\n\n\n", bel5, "\n\n", bel8, "\n\n", bel11, "\n\n", bel14, "\n\n", bel17, "\n\n\n", bel20, "\n\n", bel23, "\n\n\n", bel26, "\n\n", bel29, "\n\n", bel32, "\n\n", bel35, "\n\n", bel38, "\n\n", bel41, "\n\n", bel44, "\n\n\n\n", bel49, "\n\n\n\n\n\n\n\n", bel52, "\n\n\n"]);
-        ac(bel54, ["\n\n", bel53, "\n"]);
-        return bel54;
-    }(data.folio, data.numDocumento, data.fDocumento, data.anexos, data.fRecepcion, data.hRecepcion, options, nombre, cargo, dependencia, data.destinatario, asunto, caracter, turnado, accion, data.estatus, data.estatus, opuesto, opuesto);
-};
-
-},{"c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js":199,"yo-yo":197}],22:[function(require,module,exports){
-'use strict';
-
-var yo = require('yo-yo');
-
-module.exports = function (datos) {
-
-	var cont = 1;
-
-	var body = "";
-	$.each(datos, function (index, val) {
-		$.each(datos[index], function (llave, valor) {
-			if (cont == 1) {
-				body += '<tr data-id=' + valor + ' data-nombre=' + llave + '>';
-				cont++;
-			} else {
-				body += '<td>' + valor + '</td>';
-			}
-		});
-		body += '</tr>';
-		cont = 1;
-	});
-
-	return body;
-};
-
-},{"yo-yo":197}],23:[function(require,module,exports){
-'use strict';
-
-var yo = require('yo-yo');
-var body = require('./../body/bodyTable.js');
-var cadenas = require('./../../../controllers/tablas.js');
-
-module.exports = function (datos) {
-
-      var head = new cadenas();
-      var header = head.encabezadoTabla(datos);
-
-      var th = "";
-      for (var x in header) {
-            th += '<th>' + header[x] + '</th>';
+      url: '/get/' + ruta,
+      data: obj,
+      success: function success(data) {
+        var data = $.parseJSON(data);
+        resolve(data);
       }
+    });
+  });
+  return get;
+}
 
-      var td = body(datos);
+function sendData(campo, id) {
+  $('form#Update' + ruta).on('submit', function (e) {
+    e.preventDefault();
+    var datos = $(this).serialize() + '&' + campo + '=' + id;;
+    actualizaRegistro(datos);
+  });
+}
 
-      th = $.parseHTML(th);
-      td = $.parseHTML(td);
+function actualizaRegistro(datos) {
 
-      var el = function () {
+  var update = new Promise(function (resolve, reject) {
+    $.post({
+      url: '/update/' + ruta,
+      data: datos,
+      success: function success(response) {
+        var data = $.parseJSON(response);
+        if (data.insert == 'false') {
+          noty.Error();
+        } else {
+          link.Main();
+        }
+      }
+    });
+  });
+  return update;
+}
 
-            var ac = require('c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js');
-            var bel2 = document.createElement("table");
-            bel2.setAttribute("class", "table table-striped table-bordered table-hover principal");
-            var bel0 = document.createElement("thead");
-            ac(bel0, ["\n", arguments[0], "\n"]);
-            var bel1 = document.createElement("tbody");
-            ac(bel1, ["\n\t", arguments[1], "\n"]);
-            ac(bel2, [bel0, "\n", bel1, "\n"]);
-            return bel2;
-      }(th, td);
+function cargaCombo(obj) {
+  var combo = new Promise(function (resolve, reject) {
+    $.get({
+      url: '/getCombo',
+      data: obj,
+      success: function success(data) {
+        var datos = $.parseJSON(data);
+        var option = $.parseHTML(creaSelect(datos));
+        resolve(option);
+      }
+    });
+  });
+  return combo;
+}
 
-      return el;
-};
+function creaSelect(datos) {
+  var cont = 1;
+  var opt = '<option value="">Escogue una Opcion</option>';
+  $.each(datos, function (index, val) {
+    cont = 1;
+    for (var x in datos[index]) {
+      if (cont < 2) {
+        opt += '<option value=' + datos[index][x] + '>';
+        cont = 5;
+      } else {
+        opt += datos[index][x] + '</option>';
+      }
+    }
+  });
 
-},{"./../../../controllers/tablas.js":7,"./../body/bodyTable.js":22,"c:\\xampp\\htdocs\\juridico\\node_modules\\yo-yoify\\lib\\appendChild.js":199,"yo-yo":197}],24:[function(require,module,exports){
+  return opt;
+}
+
+},{"./../Notificaciones/noty":6,"./../Redireccion/Urls":7,"./../jsonCombos":9,"./Acciones":15,"./Caracteres":16,"./SubTiposDocumentos":17,"empty-element":179,"page":191}],19:[function(require,module,exports){
 module.exports = function(it){
   if(typeof it != 'function')throw TypeError(it + ' is not a function!');
   return it;
 };
-},{}],25:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 var isObject = require('./$.is-object');
 module.exports = function(it){
   if(!isObject(it))throw TypeError(it + ' is not an object!');
   return it;
 };
-},{"./$.is-object":54}],26:[function(require,module,exports){
+},{"./$.is-object":49}],21:[function(require,module,exports){
 // false -> Array#indexOf
 // true  -> Array#includes
 var toIObject = require('./$.to-iobject')
@@ -2104,7 +965,7 @@ module.exports = function(IS_INCLUDES){
     } return !IS_INCLUDES && -1;
   };
 };
-},{"./$.to-index":84,"./$.to-iobject":86,"./$.to-length":87}],27:[function(require,module,exports){
+},{"./$.to-index":79,"./$.to-iobject":81,"./$.to-length":82}],22:[function(require,module,exports){
 // 0 -> Array#forEach
 // 1 -> Array#map
 // 2 -> Array#filter
@@ -2147,7 +1008,7 @@ module.exports = function(TYPE){
     return IS_FIND_INDEX ? -1 : IS_SOME || IS_EVERY ? IS_EVERY : result;
   };
 };
-},{"./$.ctx":35,"./$.iobject":51,"./$.to-length":87,"./$.to-object":88}],28:[function(require,module,exports){
+},{"./$.ctx":30,"./$.iobject":46,"./$.to-length":82,"./$.to-object":83}],23:[function(require,module,exports){
 // 19.1.2.1 Object.assign(target, source, ...)
 var toObject = require('./$.to-object')
   , IObject  = require('./$.iobject')
@@ -2168,7 +1029,7 @@ module.exports = Object.assign || function assign(target, source){
   }
   return T;
 };
-},{"./$.enum-keys":39,"./$.iobject":51,"./$.to-object":88}],29:[function(require,module,exports){
+},{"./$.enum-keys":34,"./$.iobject":46,"./$.to-object":83}],24:[function(require,module,exports){
 // getting tag from 19.1.3.6 Object.prototype.toString()
 var cof = require('./$.cof')
   , TAG = require('./$.wks')('toStringTag')
@@ -2185,13 +1046,13 @@ module.exports = function(it){
     // ES3 arguments fallback
     : (B = cof(O)) == 'Object' && typeof O.callee == 'function' ? 'Arguments' : B;
 };
-},{"./$.cof":30,"./$.wks":91}],30:[function(require,module,exports){
+},{"./$.cof":25,"./$.wks":86}],25:[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = function(it){
   return toString.call(it).slice(8, -1);
 };
-},{}],31:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 var $            = require('./$')
   , hide         = require('./$.hide')
@@ -2350,7 +1211,7 @@ module.exports = {
     species(require('./$.core')[NAME]); // for wrapper
   }
 };
-},{"./$":62,"./$.core":34,"./$.ctx":35,"./$.defined":37,"./$.for-of":44,"./$.has":47,"./$.hide":48,"./$.is-object":54,"./$.iter-define":58,"./$.iter-step":60,"./$.mix":66,"./$.species":75,"./$.strict-new":76,"./$.support-desc":81,"./$.uid":89}],32:[function(require,module,exports){
+},{"./$":57,"./$.core":29,"./$.ctx":30,"./$.defined":32,"./$.for-of":39,"./$.has":42,"./$.hide":43,"./$.is-object":49,"./$.iter-define":53,"./$.iter-step":55,"./$.mix":61,"./$.species":70,"./$.strict-new":71,"./$.support-desc":76,"./$.uid":84}],27:[function(require,module,exports){
 'use strict';
 var hide         = require('./$.hide')
   , anObject     = require('./$.an-object')
@@ -2436,7 +1297,7 @@ module.exports = {
   frozenStore: frozenStore,
   WEAK: WEAK
 };
-},{"./$.an-object":25,"./$.array-methods":27,"./$.for-of":44,"./$.has":47,"./$.hide":48,"./$.is-object":54,"./$.mix":66,"./$.strict-new":76,"./$.uid":89}],33:[function(require,module,exports){
+},{"./$.an-object":20,"./$.array-methods":22,"./$.for-of":39,"./$.has":42,"./$.hide":43,"./$.is-object":49,"./$.mix":61,"./$.strict-new":71,"./$.uid":84}],28:[function(require,module,exports){
 'use strict';
 var global     = require('./$.global')
   , $def       = require('./$.def')
@@ -2503,10 +1364,10 @@ module.exports = function(NAME, wrapper, methods, common, IS_MAP, IS_WEAK){
 
   return C;
 };
-},{"./$.def":36,"./$.for-of":44,"./$.global":46,"./$.iter-buggy":55,"./$.iter-detect":59,"./$.mix":66,"./$.redef":70,"./$.strict-new":76,"./$.tag":82}],34:[function(require,module,exports){
+},{"./$.def":31,"./$.for-of":39,"./$.global":41,"./$.iter-buggy":50,"./$.iter-detect":54,"./$.mix":61,"./$.redef":65,"./$.strict-new":71,"./$.tag":77}],29:[function(require,module,exports){
 var core = module.exports = {};
 if(typeof __e == 'number')__e = core; // eslint-disable-line no-undef
-},{}],35:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 // optional / simple context binding
 var aFunction = require('./$.a-function');
 module.exports = function(fn, that, length){
@@ -2526,7 +1387,7 @@ module.exports = function(fn, that, length){
       return fn.apply(that, arguments);
     };
 };
-},{"./$.a-function":24}],36:[function(require,module,exports){
+},{"./$.a-function":19}],31:[function(require,module,exports){
 var global     = require('./$.global')
   , core       = require('./$.core')
   , hide       = require('./$.hide')
@@ -2569,13 +1430,13 @@ $def.P = 8;  // proto
 $def.B = 16; // bind
 $def.W = 32; // wrap
 module.exports = $def;
-},{"./$.core":34,"./$.global":46,"./$.hide":48,"./$.redef":70}],37:[function(require,module,exports){
+},{"./$.core":29,"./$.global":41,"./$.hide":43,"./$.redef":65}],32:[function(require,module,exports){
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function(it){
   if(it == undefined)throw TypeError("Can't call method on  " + it);
   return it;
 };
-},{}],38:[function(require,module,exports){
+},{}],33:[function(require,module,exports){
 var isObject = require('./$.is-object')
   , document = require('./$.global').document
   // in old IE typeof document.createElement is 'object'
@@ -2583,7 +1444,7 @@ var isObject = require('./$.is-object')
 module.exports = function(it){
   return is ? document.createElement(it) : {};
 };
-},{"./$.global":46,"./$.is-object":54}],39:[function(require,module,exports){
+},{"./$.global":41,"./$.is-object":49}],34:[function(require,module,exports){
 // all enumerable object keys, includes symbols
 var $ = require('./$');
 module.exports = function(it){
@@ -2598,12 +1459,12 @@ module.exports = function(it){
   }
   return keys;
 };
-},{"./$":62}],40:[function(require,module,exports){
+},{"./$":57}],35:[function(require,module,exports){
 // 20.2.2.14 Math.expm1(x)
 module.exports = Math.expm1 || function expm1(x){
   return (x = +x) == 0 ? x : x > -1e-6 && x < 1e-6 ? x + x * x / 2 : Math.exp(x) - 1;
 };
-},{}],41:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 module.exports = function(exec){
   try {
     return !!exec();
@@ -2611,7 +1472,7 @@ module.exports = function(exec){
     return true;
   }
 };
-},{}],42:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 'use strict';
 module.exports = function(KEY, length, exec){
   var defined  = require('./$.defined')
@@ -2633,7 +1494,7 @@ module.exports = function(KEY, length, exec){
     );
   }
 };
-},{"./$.defined":37,"./$.fails":41,"./$.hide":48,"./$.redef":70,"./$.wks":91}],43:[function(require,module,exports){
+},{"./$.defined":32,"./$.fails":36,"./$.hide":43,"./$.redef":65,"./$.wks":86}],38:[function(require,module,exports){
 'use strict';
 // 21.2.5.3 get RegExp.prototype.flags
 var anObject = require('./$.an-object');
@@ -2647,7 +1508,7 @@ module.exports = function(){
   if(that.sticky)result += 'y';
   return result;
 };
-},{"./$.an-object":25}],44:[function(require,module,exports){
+},{"./$.an-object":20}],39:[function(require,module,exports){
 var ctx         = require('./$.ctx')
   , call        = require('./$.iter-call')
   , isArrayIter = require('./$.is-array-iter')
@@ -2667,7 +1528,7 @@ module.exports = function(iterable, entries, fn, that){
     call(iterator, f, step.value, entries);
   }
 };
-},{"./$.an-object":25,"./$.ctx":35,"./$.is-array-iter":52,"./$.iter-call":56,"./$.to-length":87,"./core.get-iterator-method":92}],45:[function(require,module,exports){
+},{"./$.an-object":20,"./$.ctx":30,"./$.is-array-iter":47,"./$.iter-call":51,"./$.to-length":82,"./core.get-iterator-method":87}],40:[function(require,module,exports){
 // fallback for IE11 buggy Object.getOwnPropertyNames with iframe and window
 var toString  = {}.toString
   , toIObject = require('./$.to-iobject')
@@ -2688,16 +1549,16 @@ module.exports.get = function getOwnPropertyNames(it){
   if(windowNames && toString.call(it) == '[object Window]')return getWindowNames(it);
   return getNames(toIObject(it));
 };
-},{"./$":62,"./$.to-iobject":86}],46:[function(require,module,exports){
+},{"./$":57,"./$.to-iobject":81}],41:[function(require,module,exports){
 var global = typeof self != 'undefined' && self.Math == Math ? self : Function('return this')();
 module.exports = global;
 if(typeof __g == 'number')__g = global; // eslint-disable-line no-undef
-},{}],47:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 var hasOwnProperty = {}.hasOwnProperty;
 module.exports = function(it, key){
   return hasOwnProperty.call(it, key);
 };
-},{}],48:[function(require,module,exports){
+},{}],43:[function(require,module,exports){
 var $          = require('./$')
   , createDesc = require('./$.property-desc');
 module.exports = require('./$.support-desc') ? function(object, key, value){
@@ -2706,9 +1567,9 @@ module.exports = require('./$.support-desc') ? function(object, key, value){
   object[key] = value;
   return object;
 };
-},{"./$":62,"./$.property-desc":69,"./$.support-desc":81}],49:[function(require,module,exports){
+},{"./$":57,"./$.property-desc":64,"./$.support-desc":76}],44:[function(require,module,exports){
 module.exports = require('./$.global').document && document.documentElement;
-},{"./$.global":46}],50:[function(require,module,exports){
+},{"./$.global":41}],45:[function(require,module,exports){
 // fast apply, http://jsperf.lnkit.com/fast-apply/5
 module.exports = function(fn, args, that){
   var un = that === undefined;
@@ -2725,35 +1586,35 @@ module.exports = function(fn, args, that){
                       : fn.call(that, args[0], args[1], args[2], args[3]);
   } return              fn.apply(that, args);
 };
-},{}],51:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 // indexed object, fallback for non-array-like ES3 strings
 var cof = require('./$.cof');
 module.exports = 0 in Object('z') ? Object : function(it){
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
-},{"./$.cof":30}],52:[function(require,module,exports){
+},{"./$.cof":25}],47:[function(require,module,exports){
 // check on default Array iterator
 var Iterators = require('./$.iterators')
   , ITERATOR  = require('./$.wks')('iterator');
 module.exports = function(it){
   return (Iterators.Array || Array.prototype[ITERATOR]) === it;
 };
-},{"./$.iterators":61,"./$.wks":91}],53:[function(require,module,exports){
+},{"./$.iterators":56,"./$.wks":86}],48:[function(require,module,exports){
 // 20.1.2.3 Number.isInteger(number)
 var isObject = require('./$.is-object')
   , floor    = Math.floor;
 module.exports = function isInteger(it){
   return !isObject(it) && isFinite(it) && floor(it) === it;
 };
-},{"./$.is-object":54}],54:[function(require,module,exports){
+},{"./$.is-object":49}],49:[function(require,module,exports){
 // http://jsperf.com/core-js-isobject
 module.exports = function(it){
   return it !== null && (typeof it == 'object' || typeof it == 'function');
 };
-},{}],55:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 // Safari has buggy iterators w/o `next`
 module.exports = 'keys' in [] && !('next' in [].keys());
-},{}],56:[function(require,module,exports){
+},{}],51:[function(require,module,exports){
 // call something on iterator step with safe closing on error
 var anObject = require('./$.an-object');
 module.exports = function(iterator, fn, value, entries){
@@ -2766,7 +1627,7 @@ module.exports = function(iterator, fn, value, entries){
     throw e;
   }
 };
-},{"./$.an-object":25}],57:[function(require,module,exports){
+},{"./$.an-object":20}],52:[function(require,module,exports){
 'use strict';
 var $ = require('./$')
   , IteratorPrototype = {};
@@ -2778,7 +1639,7 @@ module.exports = function(Constructor, NAME, next){
   Constructor.prototype = $.create(IteratorPrototype, {next: require('./$.property-desc')(1,next)});
   require('./$.tag')(Constructor, NAME + ' Iterator');
 };
-},{"./$":62,"./$.hide":48,"./$.property-desc":69,"./$.tag":82,"./$.wks":91}],58:[function(require,module,exports){
+},{"./$":57,"./$.hide":43,"./$.property-desc":64,"./$.tag":77,"./$.wks":86}],53:[function(require,module,exports){
 'use strict';
 var LIBRARY         = require('./$.library')
   , $def            = require('./$.def')
@@ -2828,7 +1689,7 @@ module.exports = function(Base, NAME, Constructor, next, DEFAULT, IS_SET, FORCE)
     } else $def($def.P + $def.F * require('./$.iter-buggy'), NAME, methods);
   }
 };
-},{"./$":62,"./$.def":36,"./$.has":47,"./$.hide":48,"./$.iter-buggy":55,"./$.iter-create":57,"./$.iterators":61,"./$.library":64,"./$.redef":70,"./$.tag":82,"./$.wks":91}],59:[function(require,module,exports){
+},{"./$":57,"./$.def":31,"./$.has":42,"./$.hide":43,"./$.iter-buggy":50,"./$.iter-create":52,"./$.iterators":56,"./$.library":59,"./$.redef":65,"./$.tag":77,"./$.wks":86}],54:[function(require,module,exports){
 var SYMBOL_ITERATOR = require('./$.wks')('iterator')
   , SAFE_CLOSING    = false;
 try {
@@ -2848,13 +1709,13 @@ module.exports = function(exec){
   } catch(e){ /* empty */ }
   return safe;
 };
-},{"./$.wks":91}],60:[function(require,module,exports){
+},{"./$.wks":86}],55:[function(require,module,exports){
 module.exports = function(done, value){
   return {value: value, done: !!done};
 };
-},{}],61:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 module.exports = {};
-},{}],62:[function(require,module,exports){
+},{}],57:[function(require,module,exports){
 var $Object = Object;
 module.exports = {
   create:     $Object.create,
@@ -2868,7 +1729,7 @@ module.exports = {
   getSymbols: $Object.getOwnPropertySymbols,
   each:       [].forEach
 };
-},{}],63:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 var $         = require('./$')
   , toIObject = require('./$.to-iobject');
 module.exports = function(object, el){
@@ -2879,20 +1740,20 @@ module.exports = function(object, el){
     , key;
   while(length > index)if(O[key = keys[index++]] === el)return key;
 };
-},{"./$":62,"./$.to-iobject":86}],64:[function(require,module,exports){
+},{"./$":57,"./$.to-iobject":81}],59:[function(require,module,exports){
 module.exports = false;
-},{}],65:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 // 20.2.2.20 Math.log1p(x)
 module.exports = Math.log1p || function log1p(x){
   return (x = +x) > -1e-8 && x < 1e-8 ? x - x * x / 2 : Math.log(1 + x);
 };
-},{}],66:[function(require,module,exports){
+},{}],61:[function(require,module,exports){
 var $redef = require('./$.redef');
 module.exports = function(target, src){
   for(var key in src)$redef(target, key, src[key]);
   return target;
 };
-},{"./$.redef":70}],67:[function(require,module,exports){
+},{"./$.redef":65}],62:[function(require,module,exports){
 // most Object methods by ES6 should accept primitives
 module.exports = function(KEY, exec){
   var $def = require('./$.def')
@@ -2901,7 +1762,7 @@ module.exports = function(KEY, exec){
   exp[KEY] = exec(fn);
   $def($def.S + $def.F * require('./$.fails')(function(){ fn(1); }), 'Object', exp);
 };
-},{"./$.core":34,"./$.def":36,"./$.fails":41}],68:[function(require,module,exports){
+},{"./$.core":29,"./$.def":31,"./$.fails":36}],63:[function(require,module,exports){
 // all object keys, includes non-enumerable and symbols
 var $        = require('./$')
   , anObject = require('./$.an-object');
@@ -2910,7 +1771,7 @@ module.exports = function ownKeys(it){
     , getSymbols = $.getSymbols;
   return getSymbols ? keys.concat(getSymbols(it)) : keys;
 };
-},{"./$":62,"./$.an-object":25}],69:[function(require,module,exports){
+},{"./$":57,"./$.an-object":20}],64:[function(require,module,exports){
 module.exports = function(bitmap, value){
   return {
     enumerable  : !(bitmap & 1),
@@ -2919,7 +1780,7 @@ module.exports = function(bitmap, value){
     value       : value
   };
 };
-},{}],70:[function(require,module,exports){
+},{}],65:[function(require,module,exports){
 // add fake Function#toString
 // for correct work wrapped methods / constructors with methods like LoDash isNative
 var global    = require('./$.global')
@@ -2947,11 +1808,11 @@ require('./$.core').inspectSource = function(it){
 })(Function.prototype, TO_STRING, function toString(){
   return typeof this == 'function' && this[SRC] || $toString.call(this);
 });
-},{"./$.core":34,"./$.global":46,"./$.hide":48,"./$.uid":89}],71:[function(require,module,exports){
+},{"./$.core":29,"./$.global":41,"./$.hide":43,"./$.uid":84}],66:[function(require,module,exports){
 module.exports = Object.is || function is(x, y){
   return x === y ? x !== 0 || 1 / x === 1 / y : x != x && y != y;
 };
-},{}],72:[function(require,module,exports){
+},{}],67:[function(require,module,exports){
 // Works with __proto__ only. Old v8 can't work with null proto objects.
 /* eslint-disable no-proto */
 var getDesc  = require('./$').getDesc
@@ -2978,19 +1839,19 @@ module.exports = {
     : undefined),
   check: check
 };
-},{"./$":62,"./$.an-object":25,"./$.ctx":35,"./$.is-object":54}],73:[function(require,module,exports){
+},{"./$":57,"./$.an-object":20,"./$.ctx":30,"./$.is-object":49}],68:[function(require,module,exports){
 var global = require('./$.global')
   , SHARED = '__core-js_shared__'
   , store  = global[SHARED] || (global[SHARED] = {});
 module.exports = function(key){
   return store[key] || (store[key] = {});
 };
-},{"./$.global":46}],74:[function(require,module,exports){
+},{"./$.global":41}],69:[function(require,module,exports){
 // 20.2.2.28 Math.sign(x)
 module.exports = Math.sign || function sign(x){
   return (x = +x) == 0 || x != x ? x : x < 0 ? -1 : 1;
 };
-},{}],75:[function(require,module,exports){
+},{}],70:[function(require,module,exports){
 'use strict';
 var $       = require('./$')
   , SPECIES = require('./$.wks')('species');
@@ -3000,12 +1861,12 @@ module.exports = function(C){
     get: function(){ return this; }
   });
 };
-},{"./$":62,"./$.support-desc":81,"./$.wks":91}],76:[function(require,module,exports){
+},{"./$":57,"./$.support-desc":76,"./$.wks":86}],71:[function(require,module,exports){
 module.exports = function(it, Constructor, name){
   if(!(it instanceof Constructor))throw TypeError(name + ": use the 'new' operator!");
   return it;
 };
-},{}],77:[function(require,module,exports){
+},{}],72:[function(require,module,exports){
 // true  -> String#at
 // false -> String#codePointAt
 var toInteger = require('./$.to-integer')
@@ -3024,7 +1885,7 @@ module.exports = function(TO_STRING){
         : TO_STRING ? s.slice(i, i + 2) : (a - 0xd800 << 10) + (b - 0xdc00) + 0x10000;
   };
 };
-},{"./$.defined":37,"./$.to-integer":85}],78:[function(require,module,exports){
+},{"./$.defined":32,"./$.to-integer":80}],73:[function(require,module,exports){
 // helper for String#{startsWith, endsWith, includes}
 var defined = require('./$.defined')
   , cof     = require('./$.cof');
@@ -3033,7 +1894,7 @@ module.exports = function(that, searchString, NAME){
   if(cof(searchString) == 'RegExp')throw TypeError('String#' + NAME + " doesn't accept regex!");
   return String(defined(that));
 };
-},{"./$.cof":30,"./$.defined":37}],79:[function(require,module,exports){
+},{"./$.cof":25,"./$.defined":32}],74:[function(require,module,exports){
 'use strict';
 var toInteger = require('./$.to-integer')
   , defined   = require('./$.defined');
@@ -3046,7 +1907,7 @@ module.exports = function repeat(count){
   for(;n > 0; (n >>>= 1) && (str += str))if(n & 1)res += str;
   return res;
 };
-},{"./$.defined":37,"./$.to-integer":85}],80:[function(require,module,exports){
+},{"./$.defined":32,"./$.to-integer":80}],75:[function(require,module,exports){
 // 1 -> String#trimLeft
 // 2 -> String#trimRight
 // 3 -> String#trim
@@ -3073,12 +1934,12 @@ module.exports = function(KEY, exec){
     return !!spaces[KEY]() || non[KEY]() != non;
   }), 'String', exp);
 };
-},{"./$.def":36,"./$.defined":37,"./$.fails":41}],81:[function(require,module,exports){
+},{"./$.def":31,"./$.defined":32,"./$.fails":36}],76:[function(require,module,exports){
 // Thank's IE8 for his funny defineProperty
 module.exports = !require('./$.fails')(function(){
   return Object.defineProperty({}, 'a', {get: function(){ return 7; }}).a != 7;
 });
-},{"./$.fails":41}],82:[function(require,module,exports){
+},{"./$.fails":36}],77:[function(require,module,exports){
 var has  = require('./$.has')
   , hide = require('./$.hide')
   , TAG  = require('./$.wks')('toStringTag');
@@ -3086,7 +1947,7 @@ var has  = require('./$.has')
 module.exports = function(it, tag, stat){
   if(it && !has(it = stat ? it : it.prototype, TAG))hide(it, TAG, tag);
 };
-},{"./$.has":47,"./$.hide":48,"./$.wks":91}],83:[function(require,module,exports){
+},{"./$.has":42,"./$.hide":43,"./$.wks":86}],78:[function(require,module,exports){
 'use strict';
 var ctx                = require('./$.ctx')
   , invoke             = require('./$.invoke')
@@ -3163,7 +2024,7 @@ module.exports = {
   set:   setTask,
   clear: clearTask
 };
-},{"./$.cof":30,"./$.ctx":35,"./$.dom-create":38,"./$.global":46,"./$.html":49,"./$.invoke":50}],84:[function(require,module,exports){
+},{"./$.cof":25,"./$.ctx":30,"./$.dom-create":33,"./$.global":41,"./$.html":44,"./$.invoke":45}],79:[function(require,module,exports){
 var toInteger = require('./$.to-integer')
   , max       = Math.max
   , min       = Math.min;
@@ -3171,61 +2032,61 @@ module.exports = function(index, length){
   index = toInteger(index);
   return index < 0 ? max(index + length, 0) : min(index, length);
 };
-},{"./$.to-integer":85}],85:[function(require,module,exports){
+},{"./$.to-integer":80}],80:[function(require,module,exports){
 // 7.1.4 ToInteger
 var ceil  = Math.ceil
   , floor = Math.floor;
 module.exports = function(it){
   return isNaN(it = +it) ? 0 : (it > 0 ? floor : ceil)(it);
 };
-},{}],86:[function(require,module,exports){
+},{}],81:[function(require,module,exports){
 // to indexed object, toObject with fallback for non-array-like ES3 strings
 var IObject = require('./$.iobject')
   , defined = require('./$.defined');
 module.exports = function(it){
   return IObject(defined(it));
 };
-},{"./$.defined":37,"./$.iobject":51}],87:[function(require,module,exports){
+},{"./$.defined":32,"./$.iobject":46}],82:[function(require,module,exports){
 // 7.1.15 ToLength
 var toInteger = require('./$.to-integer')
   , min       = Math.min;
 module.exports = function(it){
   return it > 0 ? min(toInteger(it), 0x1fffffffffffff) : 0; // pow(2, 53) - 1 == 9007199254740991
 };
-},{"./$.to-integer":85}],88:[function(require,module,exports){
+},{"./$.to-integer":80}],83:[function(require,module,exports){
 // 7.1.13 ToObject(argument)
 var defined = require('./$.defined');
 module.exports = function(it){
   return Object(defined(it));
 };
-},{"./$.defined":37}],89:[function(require,module,exports){
+},{"./$.defined":32}],84:[function(require,module,exports){
 var id = 0
   , px = Math.random();
 module.exports = function(key){
   return 'Symbol('.concat(key === undefined ? '' : key, ')_', (++id + px).toString(36));
 };
-},{}],90:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 // 22.1.3.31 Array.prototype[@@unscopables]
 var UNSCOPABLES = require('./$.wks')('unscopables');
 if(!(UNSCOPABLES in []))require('./$.hide')(Array.prototype, UNSCOPABLES, {});
 module.exports = function(key){
   [][UNSCOPABLES][key] = true;
 };
-},{"./$.hide":48,"./$.wks":91}],91:[function(require,module,exports){
+},{"./$.hide":43,"./$.wks":86}],86:[function(require,module,exports){
 var store  = require('./$.shared')('wks')
   , Symbol = require('./$.global').Symbol;
 module.exports = function(name){
   return store[name] || (store[name] =
     Symbol && Symbol[name] || (Symbol || require('./$.uid'))('Symbol.' + name));
 };
-},{"./$.global":46,"./$.shared":73,"./$.uid":89}],92:[function(require,module,exports){
+},{"./$.global":41,"./$.shared":68,"./$.uid":84}],87:[function(require,module,exports){
 var classof   = require('./$.classof')
   , ITERATOR  = require('./$.wks')('iterator')
   , Iterators = require('./$.iterators');
 module.exports = require('./$.core').getIteratorMethod = function(it){
   if(it != undefined)return it[ITERATOR] || it['@@iterator'] || Iterators[classof(it)];
 };
-},{"./$.classof":29,"./$.core":34,"./$.iterators":61,"./$.wks":91}],93:[function(require,module,exports){
+},{"./$.classof":24,"./$.core":29,"./$.iterators":56,"./$.wks":86}],88:[function(require,module,exports){
 'use strict';
 var $                = require('./$')
   , SUPPORT_DESC     = require('./$.support-desc')
@@ -3501,7 +2362,7 @@ $def($def.P + $def.F * brokenDate, 'Date', {
       ':' + lz(d.getUTCSeconds()) + '.' + (m > 99 ? m : '0' + lz(m)) + 'Z';
   }
 });
-},{"./$":62,"./$.a-function":24,"./$.an-object":25,"./$.array-includes":26,"./$.array-methods":27,"./$.cof":30,"./$.def":36,"./$.dom-create":38,"./$.fails":41,"./$.has":47,"./$.html":49,"./$.invoke":50,"./$.iobject":51,"./$.is-object":54,"./$.property-desc":69,"./$.support-desc":81,"./$.to-index":84,"./$.to-integer":85,"./$.to-iobject":86,"./$.to-length":87,"./$.to-object":88,"./$.uid":89}],94:[function(require,module,exports){
+},{"./$":57,"./$.a-function":19,"./$.an-object":20,"./$.array-includes":21,"./$.array-methods":22,"./$.cof":25,"./$.def":31,"./$.dom-create":33,"./$.fails":36,"./$.has":42,"./$.html":44,"./$.invoke":45,"./$.iobject":46,"./$.is-object":49,"./$.property-desc":64,"./$.support-desc":76,"./$.to-index":79,"./$.to-integer":80,"./$.to-iobject":81,"./$.to-length":82,"./$.to-object":83,"./$.uid":84}],89:[function(require,module,exports){
 'use strict';
 var $def     = require('./$.def')
   , toObject = require('./$.to-object')
@@ -3532,7 +2393,7 @@ $def($def.P, 'Array', {
   }
 });
 require('./$.unscope')('copyWithin');
-},{"./$.def":36,"./$.to-index":84,"./$.to-length":87,"./$.to-object":88,"./$.unscope":90}],95:[function(require,module,exports){
+},{"./$.def":31,"./$.to-index":79,"./$.to-length":82,"./$.to-object":83,"./$.unscope":85}],90:[function(require,module,exports){
 'use strict';
 var $def     = require('./$.def')
   , toObject = require('./$.to-object')
@@ -3551,7 +2412,7 @@ $def($def.P, 'Array', {
   }
 });
 require('./$.unscope')('fill');
-},{"./$.def":36,"./$.to-index":84,"./$.to-length":87,"./$.to-object":88,"./$.unscope":90}],96:[function(require,module,exports){
+},{"./$.def":31,"./$.to-index":79,"./$.to-length":82,"./$.to-object":83,"./$.unscope":85}],91:[function(require,module,exports){
 'use strict';
 // 22.1.3.9 Array.prototype.findIndex(predicate, thisArg = undefined)
 var KEY    = 'findIndex'
@@ -3566,7 +2427,7 @@ $def($def.P + $def.F * forced, 'Array', {
   }
 });
 require('./$.unscope')(KEY);
-},{"./$.array-methods":27,"./$.def":36,"./$.unscope":90}],97:[function(require,module,exports){
+},{"./$.array-methods":22,"./$.def":31,"./$.unscope":85}],92:[function(require,module,exports){
 'use strict';
 // 22.1.3.8 Array.prototype.find(predicate, thisArg = undefined)
 var KEY    = 'find'
@@ -3581,7 +2442,7 @@ $def($def.P + $def.F * forced, 'Array', {
   }
 });
 require('./$.unscope')(KEY);
-},{"./$.array-methods":27,"./$.def":36,"./$.unscope":90}],98:[function(require,module,exports){
+},{"./$.array-methods":22,"./$.def":31,"./$.unscope":85}],93:[function(require,module,exports){
 'use strict';
 var ctx         = require('./$.ctx')
   , $def        = require('./$.def')
@@ -3615,7 +2476,7 @@ $def($def.S + $def.F * !require('./$.iter-detect')(function(iter){ Array.from(it
     return result;
   }
 });
-},{"./$.ctx":35,"./$.def":36,"./$.is-array-iter":52,"./$.iter-call":56,"./$.iter-detect":59,"./$.to-length":87,"./$.to-object":88,"./core.get-iterator-method":92}],99:[function(require,module,exports){
+},{"./$.ctx":30,"./$.def":31,"./$.is-array-iter":47,"./$.iter-call":51,"./$.iter-detect":54,"./$.to-length":82,"./$.to-object":83,"./core.get-iterator-method":87}],94:[function(require,module,exports){
 'use strict';
 var setUnscope = require('./$.unscope')
   , step       = require('./$.iter-step')
@@ -3650,7 +2511,7 @@ Iterators.Arguments = Iterators.Array;
 setUnscope('keys');
 setUnscope('values');
 setUnscope('entries');
-},{"./$.iter-define":58,"./$.iter-step":60,"./$.iterators":61,"./$.to-iobject":86,"./$.unscope":90}],100:[function(require,module,exports){
+},{"./$.iter-define":53,"./$.iter-step":55,"./$.iterators":56,"./$.to-iobject":81,"./$.unscope":85}],95:[function(require,module,exports){
 'use strict';
 var $def = require('./$.def');
 $def($def.S, 'Array', {
@@ -3664,9 +2525,9 @@ $def($def.S, 'Array', {
     return result;
   }
 });
-},{"./$.def":36}],101:[function(require,module,exports){
+},{"./$.def":31}],96:[function(require,module,exports){
 require('./$.species')(Array);
-},{"./$.species":75}],102:[function(require,module,exports){
+},{"./$.species":70}],97:[function(require,module,exports){
 'use strict';
 var $             = require('./$')
   , isObject      = require('./$.is-object')
@@ -3680,7 +2541,7 @@ if(!(HAS_INSTANCE in FunctionProto))$.setDesc(FunctionProto, HAS_INSTANCE, {valu
   while(O = $.getProto(O))if(this.prototype === O)return true;
   return false;
 }});
-},{"./$":62,"./$.is-object":54,"./$.wks":91}],103:[function(require,module,exports){
+},{"./$":57,"./$.is-object":49,"./$.wks":86}],98:[function(require,module,exports){
 var setDesc    = require('./$').setDesc
   , createDesc = require('./$.property-desc')
   , has        = require('./$.has')
@@ -3697,7 +2558,7 @@ NAME in FProto || require('./$.support-desc') && setDesc(FProto, NAME, {
     return name;
   }
 });
-},{"./$":62,"./$.has":47,"./$.property-desc":69,"./$.support-desc":81}],104:[function(require,module,exports){
+},{"./$":57,"./$.has":42,"./$.property-desc":64,"./$.support-desc":76}],99:[function(require,module,exports){
 'use strict';
 var strong = require('./$.collection-strong');
 
@@ -3715,7 +2576,7 @@ require('./$.collection')('Map', function(get){
     return strong.def(this, key === 0 ? 0 : key, value);
   }
 }, strong, true);
-},{"./$.collection":33,"./$.collection-strong":31}],105:[function(require,module,exports){
+},{"./$.collection":28,"./$.collection-strong":26}],100:[function(require,module,exports){
 // 20.2.2.3 Math.acosh(x)
 var $def   = require('./$.def')
   , log1p  = require('./$.log1p')
@@ -3730,7 +2591,7 @@ $def($def.S + $def.F * !($acosh && Math.floor($acosh(Number.MAX_VALUE)) == 710),
       : log1p(x - 1 + sqrt(x - 1) * sqrt(x + 1));
   }
 });
-},{"./$.def":36,"./$.log1p":65}],106:[function(require,module,exports){
+},{"./$.def":31,"./$.log1p":60}],101:[function(require,module,exports){
 // 20.2.2.5 Math.asinh(x)
 var $def = require('./$.def');
 
@@ -3739,7 +2600,7 @@ function asinh(x){
 }
 
 $def($def.S, 'Math', {asinh: asinh});
-},{"./$.def":36}],107:[function(require,module,exports){
+},{"./$.def":31}],102:[function(require,module,exports){
 // 20.2.2.7 Math.atanh(x)
 var $def = require('./$.def');
 
@@ -3748,7 +2609,7 @@ $def($def.S, 'Math', {
     return (x = +x) == 0 ? x : Math.log((1 + x) / (1 - x)) / 2;
   }
 });
-},{"./$.def":36}],108:[function(require,module,exports){
+},{"./$.def":31}],103:[function(require,module,exports){
 // 20.2.2.9 Math.cbrt(x)
 var $def = require('./$.def')
   , sign = require('./$.sign');
@@ -3758,7 +2619,7 @@ $def($def.S, 'Math', {
     return sign(x = +x) * Math.pow(Math.abs(x), 1 / 3);
   }
 });
-},{"./$.def":36,"./$.sign":74}],109:[function(require,module,exports){
+},{"./$.def":31,"./$.sign":69}],104:[function(require,module,exports){
 // 20.2.2.11 Math.clz32(x)
 var $def = require('./$.def');
 
@@ -3767,7 +2628,7 @@ $def($def.S, 'Math', {
     return (x >>>= 0) ? 31 - Math.floor(Math.log(x + 0.5) * Math.LOG2E) : 32;
   }
 });
-},{"./$.def":36}],110:[function(require,module,exports){
+},{"./$.def":31}],105:[function(require,module,exports){
 // 20.2.2.12 Math.cosh(x)
 var $def = require('./$.def')
   , exp  = Math.exp;
@@ -3777,12 +2638,12 @@ $def($def.S, 'Math', {
     return (exp(x = +x) + exp(-x)) / 2;
   }
 });
-},{"./$.def":36}],111:[function(require,module,exports){
+},{"./$.def":31}],106:[function(require,module,exports){
 // 20.2.2.14 Math.expm1(x)
 var $def = require('./$.def');
 
 $def($def.S, 'Math', {expm1: require('./$.expm1')});
-},{"./$.def":36,"./$.expm1":40}],112:[function(require,module,exports){
+},{"./$.def":31,"./$.expm1":35}],107:[function(require,module,exports){
 // 20.2.2.16 Math.fround(x)
 var $def  = require('./$.def')
   , sign  = require('./$.sign')
@@ -3809,7 +2670,7 @@ $def($def.S, 'Math', {
     return $sign * result;
   }
 });
-},{"./$.def":36,"./$.sign":74}],113:[function(require,module,exports){
+},{"./$.def":31,"./$.sign":69}],108:[function(require,module,exports){
 // 20.2.2.17 Math.hypot([value1[, value2[, … ]]])
 var $def = require('./$.def')
   , abs  = Math.abs;
@@ -3835,7 +2696,7 @@ $def($def.S, 'Math', {
     return larg === Infinity ? Infinity : larg * Math.sqrt(sum);
   }
 });
-},{"./$.def":36}],114:[function(require,module,exports){
+},{"./$.def":31}],109:[function(require,module,exports){
 // 20.2.2.18 Math.imul(x, y)
 var $def = require('./$.def');
 
@@ -3852,7 +2713,7 @@ $def($def.S + $def.F * require('./$.fails')(function(){
     return 0 | xl * yl + ((UINT16 & xn >>> 16) * yl + xl * (UINT16 & yn >>> 16) << 16 >>> 0);
   }
 });
-},{"./$.def":36,"./$.fails":41}],115:[function(require,module,exports){
+},{"./$.def":31,"./$.fails":36}],110:[function(require,module,exports){
 // 20.2.2.21 Math.log10(x)
 var $def = require('./$.def');
 
@@ -3861,12 +2722,12 @@ $def($def.S, 'Math', {
     return Math.log(x) / Math.LN10;
   }
 });
-},{"./$.def":36}],116:[function(require,module,exports){
+},{"./$.def":31}],111:[function(require,module,exports){
 // 20.2.2.20 Math.log1p(x)
 var $def = require('./$.def');
 
 $def($def.S, 'Math', {log1p: require('./$.log1p')});
-},{"./$.def":36,"./$.log1p":65}],117:[function(require,module,exports){
+},{"./$.def":31,"./$.log1p":60}],112:[function(require,module,exports){
 // 20.2.2.22 Math.log2(x)
 var $def = require('./$.def');
 
@@ -3875,12 +2736,12 @@ $def($def.S, 'Math', {
     return Math.log(x) / Math.LN2;
   }
 });
-},{"./$.def":36}],118:[function(require,module,exports){
+},{"./$.def":31}],113:[function(require,module,exports){
 // 20.2.2.28 Math.sign(x)
 var $def = require('./$.def');
 
 $def($def.S, 'Math', {sign: require('./$.sign')});
-},{"./$.def":36,"./$.sign":74}],119:[function(require,module,exports){
+},{"./$.def":31,"./$.sign":69}],114:[function(require,module,exports){
 // 20.2.2.30 Math.sinh(x)
 var $def  = require('./$.def')
   , expm1 = require('./$.expm1')
@@ -3893,7 +2754,7 @@ $def($def.S, 'Math', {
       : (exp(x - 1) - exp(-x - 1)) * (Math.E / 2);
   }
 });
-},{"./$.def":36,"./$.expm1":40}],120:[function(require,module,exports){
+},{"./$.def":31,"./$.expm1":35}],115:[function(require,module,exports){
 // 20.2.2.33 Math.tanh(x)
 var $def  = require('./$.def')
   , expm1 = require('./$.expm1')
@@ -3906,7 +2767,7 @@ $def($def.S, 'Math', {
     return a == Infinity ? 1 : b == Infinity ? -1 : (a - b) / (exp(x) + exp(-x));
   }
 });
-},{"./$.def":36,"./$.expm1":40}],121:[function(require,module,exports){
+},{"./$.def":31,"./$.expm1":35}],116:[function(require,module,exports){
 // 20.2.2.34 Math.trunc(x)
 var $def = require('./$.def');
 
@@ -3915,7 +2776,7 @@ $def($def.S, 'Math', {
     return (it > 0 ? Math.floor : Math.ceil)(it);
   }
 });
-},{"./$.def":36}],122:[function(require,module,exports){
+},{"./$.def":31}],117:[function(require,module,exports){
 'use strict';
 var $          = require('./$')
   , global     = require('./$.global')
@@ -3969,12 +2830,12 @@ if(!($Number('0o1') && $Number('0b1'))){
   proto.constructor = $Number;
   require('./$.redef')(global, NUMBER, $Number);
 }
-},{"./$":62,"./$.cof":30,"./$.fails":41,"./$.global":46,"./$.has":47,"./$.is-object":54,"./$.redef":70,"./$.support-desc":81}],123:[function(require,module,exports){
+},{"./$":57,"./$.cof":25,"./$.fails":36,"./$.global":41,"./$.has":42,"./$.is-object":49,"./$.redef":65,"./$.support-desc":76}],118:[function(require,module,exports){
 // 20.1.2.1 Number.EPSILON
 var $def = require('./$.def');
 
 $def($def.S, 'Number', {EPSILON: Math.pow(2, -52)});
-},{"./$.def":36}],124:[function(require,module,exports){
+},{"./$.def":31}],119:[function(require,module,exports){
 // 20.1.2.2 Number.isFinite(number)
 var $def      = require('./$.def')
   , _isFinite = require('./$.global').isFinite;
@@ -3984,12 +2845,12 @@ $def($def.S, 'Number', {
     return typeof it == 'number' && _isFinite(it);
   }
 });
-},{"./$.def":36,"./$.global":46}],125:[function(require,module,exports){
+},{"./$.def":31,"./$.global":41}],120:[function(require,module,exports){
 // 20.1.2.3 Number.isInteger(number)
 var $def = require('./$.def');
 
 $def($def.S, 'Number', {isInteger: require('./$.is-integer')});
-},{"./$.def":36,"./$.is-integer":53}],126:[function(require,module,exports){
+},{"./$.def":31,"./$.is-integer":48}],121:[function(require,module,exports){
 // 20.1.2.4 Number.isNaN(number)
 var $def = require('./$.def');
 
@@ -3998,7 +2859,7 @@ $def($def.S, 'Number', {
     return number != number;
   }
 });
-},{"./$.def":36}],127:[function(require,module,exports){
+},{"./$.def":31}],122:[function(require,module,exports){
 // 20.1.2.5 Number.isSafeInteger(number)
 var $def      = require('./$.def')
   , isInteger = require('./$.is-integer')
@@ -4009,31 +2870,31 @@ $def($def.S, 'Number', {
     return isInteger(number) && abs(number) <= 0x1fffffffffffff;
   }
 });
-},{"./$.def":36,"./$.is-integer":53}],128:[function(require,module,exports){
+},{"./$.def":31,"./$.is-integer":48}],123:[function(require,module,exports){
 // 20.1.2.6 Number.MAX_SAFE_INTEGER
 var $def = require('./$.def');
 
 $def($def.S, 'Number', {MAX_SAFE_INTEGER: 0x1fffffffffffff});
-},{"./$.def":36}],129:[function(require,module,exports){
+},{"./$.def":31}],124:[function(require,module,exports){
 // 20.1.2.10 Number.MIN_SAFE_INTEGER
 var $def = require('./$.def');
 
 $def($def.S, 'Number', {MIN_SAFE_INTEGER: -0x1fffffffffffff});
-},{"./$.def":36}],130:[function(require,module,exports){
+},{"./$.def":31}],125:[function(require,module,exports){
 // 20.1.2.12 Number.parseFloat(string)
 var $def = require('./$.def');
 
 $def($def.S, 'Number', {parseFloat: parseFloat});
-},{"./$.def":36}],131:[function(require,module,exports){
+},{"./$.def":31}],126:[function(require,module,exports){
 // 20.1.2.13 Number.parseInt(string, radix)
 var $def = require('./$.def');
 
 $def($def.S, 'Number', {parseInt: parseInt});
-},{"./$.def":36}],132:[function(require,module,exports){
+},{"./$.def":31}],127:[function(require,module,exports){
 // 19.1.3.1 Object.assign(target, source)
 var $def = require('./$.def');
 $def($def.S, 'Object', {assign: require('./$.assign')});
-},{"./$.assign":28,"./$.def":36}],133:[function(require,module,exports){
+},{"./$.assign":23,"./$.def":31}],128:[function(require,module,exports){
 // 19.1.2.5 Object.freeze(O)
 var isObject = require('./$.is-object');
 
@@ -4042,7 +2903,7 @@ require('./$.object-sap')('freeze', function($freeze){
     return $freeze && isObject(it) ? $freeze(it) : it;
   };
 });
-},{"./$.is-object":54,"./$.object-sap":67}],134:[function(require,module,exports){
+},{"./$.is-object":49,"./$.object-sap":62}],129:[function(require,module,exports){
 // 19.1.2.6 Object.getOwnPropertyDescriptor(O, P)
 var toIObject = require('./$.to-iobject');
 
@@ -4051,12 +2912,12 @@ require('./$.object-sap')('getOwnPropertyDescriptor', function($getOwnPropertyDe
     return $getOwnPropertyDescriptor(toIObject(it), key);
   };
 });
-},{"./$.object-sap":67,"./$.to-iobject":86}],135:[function(require,module,exports){
+},{"./$.object-sap":62,"./$.to-iobject":81}],130:[function(require,module,exports){
 // 19.1.2.7 Object.getOwnPropertyNames(O)
 require('./$.object-sap')('getOwnPropertyNames', function(){
   return require('./$.get-names').get;
 });
-},{"./$.get-names":45,"./$.object-sap":67}],136:[function(require,module,exports){
+},{"./$.get-names":40,"./$.object-sap":62}],131:[function(require,module,exports){
 // 19.1.2.9 Object.getPrototypeOf(O)
 var toObject = require('./$.to-object');
 
@@ -4065,7 +2926,7 @@ require('./$.object-sap')('getPrototypeOf', function($getPrototypeOf){
     return $getPrototypeOf(toObject(it));
   };
 });
-},{"./$.object-sap":67,"./$.to-object":88}],137:[function(require,module,exports){
+},{"./$.object-sap":62,"./$.to-object":83}],132:[function(require,module,exports){
 // 19.1.2.11 Object.isExtensible(O)
 var isObject = require('./$.is-object');
 
@@ -4074,7 +2935,7 @@ require('./$.object-sap')('isExtensible', function($isExtensible){
     return isObject(it) ? $isExtensible ? $isExtensible(it) : true : false;
   };
 });
-},{"./$.is-object":54,"./$.object-sap":67}],138:[function(require,module,exports){
+},{"./$.is-object":49,"./$.object-sap":62}],133:[function(require,module,exports){
 // 19.1.2.12 Object.isFrozen(O)
 var isObject = require('./$.is-object');
 
@@ -4083,7 +2944,7 @@ require('./$.object-sap')('isFrozen', function($isFrozen){
     return isObject(it) ? $isFrozen ? $isFrozen(it) : false : true;
   };
 });
-},{"./$.is-object":54,"./$.object-sap":67}],139:[function(require,module,exports){
+},{"./$.is-object":49,"./$.object-sap":62}],134:[function(require,module,exports){
 // 19.1.2.13 Object.isSealed(O)
 var isObject = require('./$.is-object');
 
@@ -4092,13 +2953,13 @@ require('./$.object-sap')('isSealed', function($isSealed){
     return isObject(it) ? $isSealed ? $isSealed(it) : false : true;
   };
 });
-},{"./$.is-object":54,"./$.object-sap":67}],140:[function(require,module,exports){
+},{"./$.is-object":49,"./$.object-sap":62}],135:[function(require,module,exports){
 // 19.1.3.10 Object.is(value1, value2)
 var $def = require('./$.def');
 $def($def.S, 'Object', {
   is: require('./$.same')
 });
-},{"./$.def":36,"./$.same":71}],141:[function(require,module,exports){
+},{"./$.def":31,"./$.same":66}],136:[function(require,module,exports){
 // 19.1.2.14 Object.keys(O)
 var toObject = require('./$.to-object');
 
@@ -4107,7 +2968,7 @@ require('./$.object-sap')('keys', function($keys){
     return $keys(toObject(it));
   };
 });
-},{"./$.object-sap":67,"./$.to-object":88}],142:[function(require,module,exports){
+},{"./$.object-sap":62,"./$.to-object":83}],137:[function(require,module,exports){
 // 19.1.2.15 Object.preventExtensions(O)
 var isObject = require('./$.is-object');
 
@@ -4116,7 +2977,7 @@ require('./$.object-sap')('preventExtensions', function($preventExtensions){
     return $preventExtensions && isObject(it) ? $preventExtensions(it) : it;
   };
 });
-},{"./$.is-object":54,"./$.object-sap":67}],143:[function(require,module,exports){
+},{"./$.is-object":49,"./$.object-sap":62}],138:[function(require,module,exports){
 // 19.1.2.17 Object.seal(O)
 var isObject = require('./$.is-object');
 
@@ -4125,11 +2986,11 @@ require('./$.object-sap')('seal', function($seal){
     return $seal && isObject(it) ? $seal(it) : it;
   };
 });
-},{"./$.is-object":54,"./$.object-sap":67}],144:[function(require,module,exports){
+},{"./$.is-object":49,"./$.object-sap":62}],139:[function(require,module,exports){
 // 19.1.3.19 Object.setPrototypeOf(O, proto)
 var $def = require('./$.def');
 $def($def.S, 'Object', {setPrototypeOf: require('./$.set-proto').set});
-},{"./$.def":36,"./$.set-proto":72}],145:[function(require,module,exports){
+},{"./$.def":31,"./$.set-proto":67}],140:[function(require,module,exports){
 'use strict';
 // 19.1.3.6 Object.prototype.toString()
 var classof = require('./$.classof')
@@ -4140,7 +3001,7 @@ if(test + '' != '[object z]'){
     return '[object ' + classof(this) + ']';
   }, true);
 }
-},{"./$.classof":29,"./$.redef":70,"./$.wks":91}],146:[function(require,module,exports){
+},{"./$.classof":24,"./$.redef":65,"./$.wks":86}],141:[function(require,module,exports){
 'use strict';
 var $          = require('./$')
   , LIBRARY    = require('./$.library')
@@ -4404,7 +3265,7 @@ $def($def.S + $def.F * !(useNative && require('./$.iter-detect')(function(iter){
     });
   }
 });
-},{"./$":62,"./$.a-function":24,"./$.an-object":25,"./$.classof":29,"./$.core":34,"./$.ctx":35,"./$.def":36,"./$.for-of":44,"./$.global":46,"./$.is-object":54,"./$.iter-detect":59,"./$.library":64,"./$.mix":66,"./$.same":71,"./$.set-proto":72,"./$.species":75,"./$.strict-new":76,"./$.support-desc":81,"./$.tag":82,"./$.task":83,"./$.uid":89,"./$.wks":91}],147:[function(require,module,exports){
+},{"./$":57,"./$.a-function":19,"./$.an-object":20,"./$.classof":24,"./$.core":29,"./$.ctx":30,"./$.def":31,"./$.for-of":39,"./$.global":41,"./$.is-object":49,"./$.iter-detect":54,"./$.library":59,"./$.mix":61,"./$.same":66,"./$.set-proto":67,"./$.species":70,"./$.strict-new":71,"./$.support-desc":76,"./$.tag":77,"./$.task":78,"./$.uid":84,"./$.wks":86}],142:[function(require,module,exports){
 // 26.1.1 Reflect.apply(target, thisArgument, argumentsList)
 var $def   = require('./$.def')
   , _apply = Function.apply;
@@ -4414,7 +3275,7 @@ $def($def.S, 'Reflect', {
     return _apply.call(target, thisArgument, argumentsList);
   }
 });
-},{"./$.def":36}],148:[function(require,module,exports){
+},{"./$.def":31}],143:[function(require,module,exports){
 // 26.1.2 Reflect.construct(target, argumentsList [, newTarget])
 var $         = require('./$')
   , $def      = require('./$.def')
@@ -4447,7 +3308,7 @@ $def($def.S, 'Reflect', {
     return isObject(result) ? result : instance;
   }
 });
-},{"./$":62,"./$.a-function":24,"./$.an-object":25,"./$.core":34,"./$.def":36,"./$.is-object":54}],149:[function(require,module,exports){
+},{"./$":57,"./$.a-function":19,"./$.an-object":20,"./$.core":29,"./$.def":31,"./$.is-object":49}],144:[function(require,module,exports){
 // 26.1.3 Reflect.defineProperty(target, propertyKey, attributes)
 var $        = require('./$')
   , $def     = require('./$.def')
@@ -4467,7 +3328,7 @@ $def($def.S + $def.F * require('./$.fails')(function(){
     }
   }
 });
-},{"./$":62,"./$.an-object":25,"./$.def":36,"./$.fails":41}],150:[function(require,module,exports){
+},{"./$":57,"./$.an-object":20,"./$.def":31,"./$.fails":36}],145:[function(require,module,exports){
 // 26.1.4 Reflect.deleteProperty(target, propertyKey)
 var $def     = require('./$.def')
   , getDesc  = require('./$').getDesc
@@ -4479,7 +3340,7 @@ $def($def.S, 'Reflect', {
     return desc && !desc.configurable ? false : delete target[propertyKey];
   }
 });
-},{"./$":62,"./$.an-object":25,"./$.def":36}],151:[function(require,module,exports){
+},{"./$":57,"./$.an-object":20,"./$.def":31}],146:[function(require,module,exports){
 'use strict';
 // 26.1.5 Reflect.enumerate(target)
 var $def     = require('./$.def')
@@ -4506,7 +3367,7 @@ $def($def.S, 'Reflect', {
     return new Enumerate(target);
   }
 });
-},{"./$.an-object":25,"./$.def":36,"./$.iter-create":57}],152:[function(require,module,exports){
+},{"./$.an-object":20,"./$.def":31,"./$.iter-create":52}],147:[function(require,module,exports){
 // 26.1.7 Reflect.getOwnPropertyDescriptor(target, propertyKey)
 var $        = require('./$')
   , $def     = require('./$.def')
@@ -4517,7 +3378,7 @@ $def($def.S, 'Reflect', {
     return $.getDesc(anObject(target), propertyKey);
   }
 });
-},{"./$":62,"./$.an-object":25,"./$.def":36}],153:[function(require,module,exports){
+},{"./$":57,"./$.an-object":20,"./$.def":31}],148:[function(require,module,exports){
 // 26.1.8 Reflect.getPrototypeOf(target)
 var $def     = require('./$.def')
   , getProto = require('./$').getProto
@@ -4528,7 +3389,7 @@ $def($def.S, 'Reflect', {
     return getProto(anObject(target));
   }
 });
-},{"./$":62,"./$.an-object":25,"./$.def":36}],154:[function(require,module,exports){
+},{"./$":57,"./$.an-object":20,"./$.def":31}],149:[function(require,module,exports){
 // 26.1.6 Reflect.get(target, propertyKey [, receiver])
 var $        = require('./$')
   , has      = require('./$.has')
@@ -4549,7 +3410,7 @@ function get(target, propertyKey/*, receiver*/){
 }
 
 $def($def.S, 'Reflect', {get: get});
-},{"./$":62,"./$.an-object":25,"./$.def":36,"./$.has":47,"./$.is-object":54}],155:[function(require,module,exports){
+},{"./$":57,"./$.an-object":20,"./$.def":31,"./$.has":42,"./$.is-object":49}],150:[function(require,module,exports){
 // 26.1.9 Reflect.has(target, propertyKey)
 var $def = require('./$.def');
 
@@ -4558,7 +3419,7 @@ $def($def.S, 'Reflect', {
     return propertyKey in target;
   }
 });
-},{"./$.def":36}],156:[function(require,module,exports){
+},{"./$.def":31}],151:[function(require,module,exports){
 // 26.1.10 Reflect.isExtensible(target)
 var $def          = require('./$.def')
   , anObject      = require('./$.an-object')
@@ -4570,12 +3431,12 @@ $def($def.S, 'Reflect', {
     return $isExtensible ? $isExtensible(target) : true;
   }
 });
-},{"./$.an-object":25,"./$.def":36}],157:[function(require,module,exports){
+},{"./$.an-object":20,"./$.def":31}],152:[function(require,module,exports){
 // 26.1.11 Reflect.ownKeys(target)
 var $def = require('./$.def');
 
 $def($def.S, 'Reflect', {ownKeys: require('./$.own-keys')});
-},{"./$.def":36,"./$.own-keys":68}],158:[function(require,module,exports){
+},{"./$.def":31,"./$.own-keys":63}],153:[function(require,module,exports){
 // 26.1.12 Reflect.preventExtensions(target)
 var $def               = require('./$.def')
   , anObject           = require('./$.an-object')
@@ -4592,7 +3453,7 @@ $def($def.S, 'Reflect', {
     }
   }
 });
-},{"./$.an-object":25,"./$.def":36}],159:[function(require,module,exports){
+},{"./$.an-object":20,"./$.def":31}],154:[function(require,module,exports){
 // 26.1.14 Reflect.setPrototypeOf(target, proto)
 var $def     = require('./$.def')
   , setProto = require('./$.set-proto');
@@ -4608,7 +3469,7 @@ if(setProto)$def($def.S, 'Reflect', {
     }
   }
 });
-},{"./$.def":36,"./$.set-proto":72}],160:[function(require,module,exports){
+},{"./$.def":31,"./$.set-proto":67}],155:[function(require,module,exports){
 // 26.1.13 Reflect.set(target, propertyKey, V [, receiver])
 var $          = require('./$')
   , has        = require('./$.has')
@@ -4638,7 +3499,7 @@ function set(target, propertyKey, V/*, receiver*/){
 }
 
 $def($def.S, 'Reflect', {set: set});
-},{"./$":62,"./$.an-object":25,"./$.def":36,"./$.has":47,"./$.is-object":54,"./$.property-desc":69}],161:[function(require,module,exports){
+},{"./$":57,"./$.an-object":20,"./$.def":31,"./$.has":42,"./$.is-object":49,"./$.property-desc":64}],156:[function(require,module,exports){
 var $       = require('./$')
   , global  = require('./$.global')
   , cof     = require('./$.cof')
@@ -4681,14 +3542,14 @@ if(require('./$.support-desc')){
 }
 
 require('./$.species')($RegExp);
-},{"./$":62,"./$.cof":30,"./$.flags":43,"./$.global":46,"./$.redef":70,"./$.species":75,"./$.support-desc":81}],162:[function(require,module,exports){
+},{"./$":57,"./$.cof":25,"./$.flags":38,"./$.global":41,"./$.redef":65,"./$.species":70,"./$.support-desc":76}],157:[function(require,module,exports){
 // 21.2.5.3 get RegExp.prototype.flags()
 var $ = require('./$');
 if(require('./$.support-desc') && /./g.flags != 'g')$.setDesc(RegExp.prototype, 'flags', {
   configurable: true,
   get: require('./$.flags')
 });
-},{"./$":62,"./$.flags":43,"./$.support-desc":81}],163:[function(require,module,exports){
+},{"./$":57,"./$.flags":38,"./$.support-desc":76}],158:[function(require,module,exports){
 // @@match logic
 require('./$.fix-re-wks')('match', 1, function(defined, MATCH){
   // 21.1.3.11 String.prototype.match(regexp)
@@ -4699,7 +3560,7 @@ require('./$.fix-re-wks')('match', 1, function(defined, MATCH){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[MATCH](String(O));
   };
 });
-},{"./$.fix-re-wks":42}],164:[function(require,module,exports){
+},{"./$.fix-re-wks":37}],159:[function(require,module,exports){
 // @@replace logic
 require('./$.fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
   // 21.1.3.14 String.prototype.replace(searchValue, replaceValue)
@@ -4712,7 +3573,7 @@ require('./$.fix-re-wks')('replace', 2, function(defined, REPLACE, $replace){
       : $replace.call(String(O), searchValue, replaceValue);
   };
 });
-},{"./$.fix-re-wks":42}],165:[function(require,module,exports){
+},{"./$.fix-re-wks":37}],160:[function(require,module,exports){
 // @@search logic
 require('./$.fix-re-wks')('search', 1, function(defined, SEARCH){
   // 21.1.3.15 String.prototype.search(regexp)
@@ -4723,7 +3584,7 @@ require('./$.fix-re-wks')('search', 1, function(defined, SEARCH){
     return fn !== undefined ? fn.call(regexp, O) : new RegExp(regexp)[SEARCH](String(O));
   };
 });
-},{"./$.fix-re-wks":42}],166:[function(require,module,exports){
+},{"./$.fix-re-wks":37}],161:[function(require,module,exports){
 // @@split logic
 require('./$.fix-re-wks')('split', 2, function(defined, SPLIT, $split){
   // 21.1.3.17 String.prototype.split(separator, limit)
@@ -4736,7 +3597,7 @@ require('./$.fix-re-wks')('split', 2, function(defined, SPLIT, $split){
       : $split.call(String(O), separator, limit);
   };
 });
-},{"./$.fix-re-wks":42}],167:[function(require,module,exports){
+},{"./$.fix-re-wks":37}],162:[function(require,module,exports){
 'use strict';
 var strong = require('./$.collection-strong');
 
@@ -4749,7 +3610,7 @@ require('./$.collection')('Set', function(get){
     return strong.def(this, value = value === 0 ? 0 : value, value);
   }
 }, strong);
-},{"./$.collection":33,"./$.collection-strong":31}],168:[function(require,module,exports){
+},{"./$.collection":28,"./$.collection-strong":26}],163:[function(require,module,exports){
 'use strict';
 var $def = require('./$.def')
   , $at  = require('./$.string-at')(false);
@@ -4759,7 +3620,7 @@ $def($def.P, 'String', {
     return $at(this, pos);
   }
 });
-},{"./$.def":36,"./$.string-at":77}],169:[function(require,module,exports){
+},{"./$.def":31,"./$.string-at":72}],164:[function(require,module,exports){
 'use strict';
 var $def     = require('./$.def')
   , toLength = require('./$.to-length')
@@ -4777,7 +3638,7 @@ $def($def.P + $def.F * !require('./$.fails')(function(){ 'q'.endsWith(/./); }), 
     return that.slice(end - search.length, end) === search;
   }
 });
-},{"./$.def":36,"./$.fails":41,"./$.string-context":78,"./$.to-length":87}],170:[function(require,module,exports){
+},{"./$.def":31,"./$.fails":36,"./$.string-context":73,"./$.to-length":82}],165:[function(require,module,exports){
 var $def    = require('./$.def')
   , toIndex = require('./$.to-index')
   , fromCharCode = String.fromCharCode
@@ -4801,7 +3662,7 @@ $def($def.S + $def.F * (!!$fromCodePoint && $fromCodePoint.length != 1), 'String
     } return res.join('');
   }
 });
-},{"./$.def":36,"./$.to-index":84}],171:[function(require,module,exports){
+},{"./$.def":31,"./$.to-index":79}],166:[function(require,module,exports){
 'use strict';
 var $def    = require('./$.def')
   , context = require('./$.string-context');
@@ -4812,7 +3673,7 @@ $def($def.P, 'String', {
     return !!~context(this, searchString, 'includes').indexOf(searchString, arguments[1]);
   }
 });
-},{"./$.def":36,"./$.string-context":78}],172:[function(require,module,exports){
+},{"./$.def":31,"./$.string-context":73}],167:[function(require,module,exports){
 'use strict';
 var $at  = require('./$.string-at')(true);
 
@@ -4830,7 +3691,7 @@ require('./$.iter-define')(String, 'String', function(iterated){
   this._i += point.length;
   return {value: point, done: false};
 });
-},{"./$.iter-define":58,"./$.string-at":77}],173:[function(require,module,exports){
+},{"./$.iter-define":53,"./$.string-at":72}],168:[function(require,module,exports){
 var $def      = require('./$.def')
   , toIObject = require('./$.to-iobject')
   , toLength  = require('./$.to-length');
@@ -4849,14 +3710,14 @@ $def($def.S, 'String', {
     } return res.join('');
   }
 });
-},{"./$.def":36,"./$.to-iobject":86,"./$.to-length":87}],174:[function(require,module,exports){
+},{"./$.def":31,"./$.to-iobject":81,"./$.to-length":82}],169:[function(require,module,exports){
 var $def = require('./$.def');
 
 $def($def.P, 'String', {
   // 21.1.3.13 String.prototype.repeat(count)
   repeat: require('./$.string-repeat')
 });
-},{"./$.def":36,"./$.string-repeat":79}],175:[function(require,module,exports){
+},{"./$.def":31,"./$.string-repeat":74}],170:[function(require,module,exports){
 'use strict';
 var $def     = require('./$.def')
   , toLength = require('./$.to-length')
@@ -4872,7 +3733,7 @@ $def($def.P + $def.F * !require('./$.fails')(function(){ 'q'.startsWith(/./); })
     return that.slice(index, index + search.length) === search;
   }
 });
-},{"./$.def":36,"./$.fails":41,"./$.string-context":78,"./$.to-length":87}],176:[function(require,module,exports){
+},{"./$.def":31,"./$.fails":36,"./$.string-context":73,"./$.to-length":82}],171:[function(require,module,exports){
 'use strict';
 // 21.1.3.25 String.prototype.trim()
 require('./$.string-trim')('trim', function($trim){
@@ -4880,7 +3741,7 @@ require('./$.string-trim')('trim', function($trim){
     return $trim(this, 3);
   };
 });
-},{"./$.string-trim":80}],177:[function(require,module,exports){
+},{"./$.string-trim":75}],172:[function(require,module,exports){
 'use strict';
 // ECMAScript 6 symbols shim
 var $              = require('./$')
@@ -5076,7 +3937,7 @@ setTag($Symbol, 'Symbol');
 setTag(Math, 'Math', true);
 // 24.3.3 JSON[@@toStringTag]
 setTag(global.JSON, 'JSON', true);
-},{"./$":62,"./$.an-object":25,"./$.def":36,"./$.enum-keys":39,"./$.get-names":45,"./$.global":46,"./$.has":47,"./$.keyof":63,"./$.library":64,"./$.property-desc":69,"./$.redef":70,"./$.shared":73,"./$.support-desc":81,"./$.tag":82,"./$.to-iobject":86,"./$.uid":89,"./$.wks":91}],178:[function(require,module,exports){
+},{"./$":57,"./$.an-object":20,"./$.def":31,"./$.enum-keys":34,"./$.get-names":40,"./$.global":41,"./$.has":42,"./$.keyof":58,"./$.library":59,"./$.property-desc":64,"./$.redef":65,"./$.shared":68,"./$.support-desc":76,"./$.tag":77,"./$.to-iobject":81,"./$.uid":84,"./$.wks":86}],173:[function(require,module,exports){
 'use strict';
 var $            = require('./$')
   , weak         = require('./$.collection-weak')
@@ -5119,7 +3980,7 @@ if(new $WeakMap().set((Object.freeze || Object)(tmp), 7).get(tmp) != 7){
     });
   });
 }
-},{"./$":62,"./$.collection":33,"./$.collection-weak":32,"./$.has":47,"./$.is-object":54,"./$.redef":70}],179:[function(require,module,exports){
+},{"./$":57,"./$.collection":28,"./$.collection-weak":27,"./$.has":42,"./$.is-object":49,"./$.redef":65}],174:[function(require,module,exports){
 'use strict';
 var weak = require('./$.collection-weak');
 
@@ -5132,7 +3993,7 @@ require('./$.collection')('WeakSet', function(get){
     return weak.def(this, value, true);
   }
 }, weak, false, true);
-},{"./$.collection":33,"./$.collection-weak":32}],180:[function(require,module,exports){
+},{"./$.collection":28,"./$.collection-weak":27}],175:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -5146,7 +4007,7 @@ if (global._babelPolyfill) {
 
 global._babelPolyfill = true;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./shim.js":181,"regenerator/runtime":196}],181:[function(require,module,exports){
+},{"./shim.js":176,"regenerator/runtime":194}],176:[function(require,module,exports){
 require('core-js/modules/es5');
 require('core-js/modules/es6.symbol');
 require('core-js/modules/es6.object.assign');
@@ -5235,7 +4096,7 @@ require('core-js/modules/es6.reflect.prevent-extensions');
 require('core-js/modules/es6.reflect.set');
 require('core-js/modules/es6.reflect.set-prototype-of');
 module.exports = require('core-js/modules/$.core');
-},{"core-js/modules/$.core":34,"core-js/modules/es5":93,"core-js/modules/es6.array.copy-within":94,"core-js/modules/es6.array.fill":95,"core-js/modules/es6.array.find":97,"core-js/modules/es6.array.find-index":96,"core-js/modules/es6.array.from":98,"core-js/modules/es6.array.iterator":99,"core-js/modules/es6.array.of":100,"core-js/modules/es6.array.species":101,"core-js/modules/es6.function.has-instance":102,"core-js/modules/es6.function.name":103,"core-js/modules/es6.map":104,"core-js/modules/es6.math.acosh":105,"core-js/modules/es6.math.asinh":106,"core-js/modules/es6.math.atanh":107,"core-js/modules/es6.math.cbrt":108,"core-js/modules/es6.math.clz32":109,"core-js/modules/es6.math.cosh":110,"core-js/modules/es6.math.expm1":111,"core-js/modules/es6.math.fround":112,"core-js/modules/es6.math.hypot":113,"core-js/modules/es6.math.imul":114,"core-js/modules/es6.math.log10":115,"core-js/modules/es6.math.log1p":116,"core-js/modules/es6.math.log2":117,"core-js/modules/es6.math.sign":118,"core-js/modules/es6.math.sinh":119,"core-js/modules/es6.math.tanh":120,"core-js/modules/es6.math.trunc":121,"core-js/modules/es6.number.constructor":122,"core-js/modules/es6.number.epsilon":123,"core-js/modules/es6.number.is-finite":124,"core-js/modules/es6.number.is-integer":125,"core-js/modules/es6.number.is-nan":126,"core-js/modules/es6.number.is-safe-integer":127,"core-js/modules/es6.number.max-safe-integer":128,"core-js/modules/es6.number.min-safe-integer":129,"core-js/modules/es6.number.parse-float":130,"core-js/modules/es6.number.parse-int":131,"core-js/modules/es6.object.assign":132,"core-js/modules/es6.object.freeze":133,"core-js/modules/es6.object.get-own-property-descriptor":134,"core-js/modules/es6.object.get-own-property-names":135,"core-js/modules/es6.object.get-prototype-of":136,"core-js/modules/es6.object.is":140,"core-js/modules/es6.object.is-extensible":137,"core-js/modules/es6.object.is-frozen":138,"core-js/modules/es6.object.is-sealed":139,"core-js/modules/es6.object.keys":141,"core-js/modules/es6.object.prevent-extensions":142,"core-js/modules/es6.object.seal":143,"core-js/modules/es6.object.set-prototype-of":144,"core-js/modules/es6.object.to-string":145,"core-js/modules/es6.promise":146,"core-js/modules/es6.reflect.apply":147,"core-js/modules/es6.reflect.construct":148,"core-js/modules/es6.reflect.define-property":149,"core-js/modules/es6.reflect.delete-property":150,"core-js/modules/es6.reflect.enumerate":151,"core-js/modules/es6.reflect.get":154,"core-js/modules/es6.reflect.get-own-property-descriptor":152,"core-js/modules/es6.reflect.get-prototype-of":153,"core-js/modules/es6.reflect.has":155,"core-js/modules/es6.reflect.is-extensible":156,"core-js/modules/es6.reflect.own-keys":157,"core-js/modules/es6.reflect.prevent-extensions":158,"core-js/modules/es6.reflect.set":160,"core-js/modules/es6.reflect.set-prototype-of":159,"core-js/modules/es6.regexp.constructor":161,"core-js/modules/es6.regexp.flags":162,"core-js/modules/es6.regexp.match":163,"core-js/modules/es6.regexp.replace":164,"core-js/modules/es6.regexp.search":165,"core-js/modules/es6.regexp.split":166,"core-js/modules/es6.set":167,"core-js/modules/es6.string.code-point-at":168,"core-js/modules/es6.string.ends-with":169,"core-js/modules/es6.string.from-code-point":170,"core-js/modules/es6.string.includes":171,"core-js/modules/es6.string.iterator":172,"core-js/modules/es6.string.raw":173,"core-js/modules/es6.string.repeat":174,"core-js/modules/es6.string.starts-with":175,"core-js/modules/es6.string.trim":176,"core-js/modules/es6.symbol":177,"core-js/modules/es6.weak-map":178,"core-js/modules/es6.weak-set":179}],182:[function(require,module,exports){
+},{"core-js/modules/$.core":29,"core-js/modules/es5":88,"core-js/modules/es6.array.copy-within":89,"core-js/modules/es6.array.fill":90,"core-js/modules/es6.array.find":92,"core-js/modules/es6.array.find-index":91,"core-js/modules/es6.array.from":93,"core-js/modules/es6.array.iterator":94,"core-js/modules/es6.array.of":95,"core-js/modules/es6.array.species":96,"core-js/modules/es6.function.has-instance":97,"core-js/modules/es6.function.name":98,"core-js/modules/es6.map":99,"core-js/modules/es6.math.acosh":100,"core-js/modules/es6.math.asinh":101,"core-js/modules/es6.math.atanh":102,"core-js/modules/es6.math.cbrt":103,"core-js/modules/es6.math.clz32":104,"core-js/modules/es6.math.cosh":105,"core-js/modules/es6.math.expm1":106,"core-js/modules/es6.math.fround":107,"core-js/modules/es6.math.hypot":108,"core-js/modules/es6.math.imul":109,"core-js/modules/es6.math.log10":110,"core-js/modules/es6.math.log1p":111,"core-js/modules/es6.math.log2":112,"core-js/modules/es6.math.sign":113,"core-js/modules/es6.math.sinh":114,"core-js/modules/es6.math.tanh":115,"core-js/modules/es6.math.trunc":116,"core-js/modules/es6.number.constructor":117,"core-js/modules/es6.number.epsilon":118,"core-js/modules/es6.number.is-finite":119,"core-js/modules/es6.number.is-integer":120,"core-js/modules/es6.number.is-nan":121,"core-js/modules/es6.number.is-safe-integer":122,"core-js/modules/es6.number.max-safe-integer":123,"core-js/modules/es6.number.min-safe-integer":124,"core-js/modules/es6.number.parse-float":125,"core-js/modules/es6.number.parse-int":126,"core-js/modules/es6.object.assign":127,"core-js/modules/es6.object.freeze":128,"core-js/modules/es6.object.get-own-property-descriptor":129,"core-js/modules/es6.object.get-own-property-names":130,"core-js/modules/es6.object.get-prototype-of":131,"core-js/modules/es6.object.is":135,"core-js/modules/es6.object.is-extensible":132,"core-js/modules/es6.object.is-frozen":133,"core-js/modules/es6.object.is-sealed":134,"core-js/modules/es6.object.keys":136,"core-js/modules/es6.object.prevent-extensions":137,"core-js/modules/es6.object.seal":138,"core-js/modules/es6.object.set-prototype-of":139,"core-js/modules/es6.object.to-string":140,"core-js/modules/es6.promise":141,"core-js/modules/es6.reflect.apply":142,"core-js/modules/es6.reflect.construct":143,"core-js/modules/es6.reflect.define-property":144,"core-js/modules/es6.reflect.delete-property":145,"core-js/modules/es6.reflect.enumerate":146,"core-js/modules/es6.reflect.get":149,"core-js/modules/es6.reflect.get-own-property-descriptor":147,"core-js/modules/es6.reflect.get-prototype-of":148,"core-js/modules/es6.reflect.has":150,"core-js/modules/es6.reflect.is-extensible":151,"core-js/modules/es6.reflect.own-keys":152,"core-js/modules/es6.reflect.prevent-extensions":153,"core-js/modules/es6.reflect.set":155,"core-js/modules/es6.reflect.set-prototype-of":154,"core-js/modules/es6.regexp.constructor":156,"core-js/modules/es6.regexp.flags":157,"core-js/modules/es6.regexp.match":158,"core-js/modules/es6.regexp.replace":159,"core-js/modules/es6.regexp.search":160,"core-js/modules/es6.regexp.split":161,"core-js/modules/es6.set":162,"core-js/modules/es6.string.code-point-at":163,"core-js/modules/es6.string.ends-with":164,"core-js/modules/es6.string.from-code-point":165,"core-js/modules/es6.string.includes":166,"core-js/modules/es6.string.iterator":167,"core-js/modules/es6.string.raw":168,"core-js/modules/es6.string.repeat":169,"core-js/modules/es6.string.starts-with":170,"core-js/modules/es6.string.trim":171,"core-js/modules/es6.symbol":172,"core-js/modules/es6.weak-map":173,"core-js/modules/es6.weak-set":174}],177:[function(require,module,exports){
 var document = require('global/document')
 var hyperx = require('hyperx')
 var onload = require('on-load')
@@ -5391,9 +4252,9 @@ module.exports = hyperx(belCreateElement, {comments: true})
 module.exports.default = module.exports
 module.exports.createElement = belCreateElement
 
-},{"global/document":185,"hyperx":188,"on-load":194}],183:[function(require,module,exports){
+},{"global/document":180,"hyperx":183,"on-load":190}],178:[function(require,module,exports){
 
-},{}],184:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 /* global HTMLElement */
 
 'use strict'
@@ -5408,7 +4269,7 @@ module.exports = function emptyElement (element) {
   return element
 }
 
-},{}],185:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 (function (global){
 var topLevel = typeof global !== 'undefined' ? global :
     typeof window !== 'undefined' ? window : {}
@@ -5429,7 +4290,7 @@ if (typeof document !== 'undefined') {
 module.exports = doccy;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"min-document":183}],186:[function(require,module,exports){
+},{"min-document":178}],181:[function(require,module,exports){
 (function (global){
 var win;
 
@@ -5446,7 +4307,7 @@ if (typeof window !== "undefined") {
 module.exports = win;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],187:[function(require,module,exports){
+},{}],182:[function(require,module,exports){
 module.exports = attributeToProperty
 
 var transform = {
@@ -5467,7 +4328,7 @@ function attributeToProperty (h) {
   }
 }
 
-},{}],188:[function(require,module,exports){
+},{}],183:[function(require,module,exports){
 var attrToProp = require('hyperscript-attribute-to-property')
 
 var VAR = 0, TEXT = 1, OPEN = 2, CLOSE = 3, ATTR = 4
@@ -5747,7 +4608,12 @@ var closeRE = RegExp('^(' + [
 ].join('|') + ')(?:[\.#][a-zA-Z0-9\u007F-\uFFFF_:-]+)*$')
 function selfClosing (tag) { return closeRE.test(tag) }
 
-},{"hyperscript-attribute-to-property":187}],189:[function(require,module,exports){
+},{"hyperscript-attribute-to-property":182}],184:[function(require,module,exports){
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
+
+},{}],185:[function(require,module,exports){
 /*! jQuery UI - v1.11.0pre - 2013-09-27
 * http://jqueryui.com
 * Includes: jquery.ui.core.js, jquery.ui.widget.js, jquery.ui.mouse.js, jquery.ui.draggable.js, jquery.ui.droppable.js, jquery.ui.resizable.js, jquery.ui.selectable.js, jquery.ui.sortable.js, jquery.ui.effect.js, jquery.ui.accordion.js, jquery.ui.autocomplete.js, jquery.ui.button.js, jquery.ui.datepicker.js, jquery.ui.dialog.js, jquery.ui.effect-blind.js, jquery.ui.effect-bounce.js, jquery.ui.effect-clip.js, jquery.ui.effect-drop.js, jquery.ui.effect-explode.js, jquery.ui.effect-fade.js, jquery.ui.effect-fold.js, jquery.ui.effect-highlight.js, jquery.ui.effect-puff.js, jquery.ui.effect-pulsate.js, jquery.ui.effect-scale.js, jquery.ui.effect-shake.js, jquery.ui.effect-size.js, jquery.ui.effect-slide.js, jquery.ui.effect-transfer.js, jquery.ui.menu.js, jquery.ui.position.js, jquery.ui.progressbar.js, jquery.ui.slider.js, jquery.ui.spinner.js, jquery.ui.tabs.js, jquery.ui.tooltip.js
@@ -20853,10 +19719,10 @@ $.widget( "ui.tooltip", {
 
 }( jQuery ) );*/
 
-},{}],190:[function(require,module,exports){
+},{}],186:[function(require,module,exports){
 $ = jQuery = require('jquery');
 module.exports = require('./dist/jquery-ui.js');
-},{"./dist/jquery-ui.js":189,"jquery":191}],191:[function(require,module,exports){
+},{"./dist/jquery-ui.js":185,"jquery":187}],187:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.2.1
  * https://jquery.com/
@@ -31111,7 +29977,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{}],192:[function(require,module,exports){
+},{}],188:[function(require,module,exports){
 'use strict';
 
 var range; // Create a range object for efficently rendering strings to elements.
@@ -31789,7 +30655,7 @@ var morphdom = morphdomFactory(morphAttrs);
 
 module.exports = morphdom;
 
-},{}],193:[function(require,module,exports){
+},{}],189:[function(require,module,exports){
 !function(root, factory) {
 	 if (typeof define === 'function' && define.amd) {
 		 define(['jquery'], factory);
@@ -33666,7 +32532,7 @@ $.noty.themes.semanticUI = {
 return window.noty;
 
 });
-},{"jquery":191}],194:[function(require,module,exports){
+},{"jquery":187}],190:[function(require,module,exports){
 /* global MutationObserver */
 var document = require('global/document')
 var window = require('global/window')
@@ -33755,7 +32621,1025 @@ function eachMutation (nodes, fn) {
   }
 }
 
-},{"global/document":185,"global/window":186}],195:[function(require,module,exports){
+},{"global/document":180,"global/window":181}],191:[function(require,module,exports){
+(function (process){
+  /* globals require, module */
+
+  'use strict';
+
+  /**
+   * Module dependencies.
+   */
+
+  var pathtoRegexp = require('path-to-regexp');
+
+  /**
+   * Module exports.
+   */
+
+  module.exports = page;
+
+  /**
+   * Detect click event
+   */
+  var clickEvent = ('undefined' !== typeof document) && document.ontouchstart ? 'touchstart' : 'click';
+
+  /**
+   * To work properly with the URL
+   * history.location generated polyfill in https://github.com/devote/HTML5-History-API
+   */
+
+  var location = ('undefined' !== typeof window) && (window.history.location || window.location);
+
+  /**
+   * Perform initial dispatch.
+   */
+
+  var dispatch = true;
+
+
+  /**
+   * Decode URL components (query string, pathname, hash).
+   * Accommodates both regular percent encoding and x-www-form-urlencoded format.
+   */
+  var decodeURLComponents = true;
+
+  /**
+   * Base path.
+   */
+
+  var base = '';
+
+  /**
+   * Running flag.
+   */
+
+  var running;
+
+  /**
+   * HashBang option
+   */
+
+  var hashbang = false;
+
+  /**
+   * Previous context, for capturing
+   * page exit events.
+   */
+
+  var prevContext;
+
+  /**
+   * Register `path` with callback `fn()`,
+   * or route `path`, or redirection,
+   * or `page.start()`.
+   *
+   *   page(fn);
+   *   page('*', fn);
+   *   page('/user/:id', load, user);
+   *   page('/user/' + user.id, { some: 'thing' });
+   *   page('/user/' + user.id);
+   *   page('/from', '/to')
+   *   page();
+   *
+   * @param {string|!Function|!Object} path
+   * @param {Function=} fn
+   * @api public
+   */
+
+  function page(path, fn) {
+    // <callback>
+    if ('function' === typeof path) {
+      return page('*', path);
+    }
+
+    // route <path> to <callback ...>
+    if ('function' === typeof fn) {
+      var route = new Route(/** @type {string} */ (path));
+      for (var i = 1; i < arguments.length; ++i) {
+        page.callbacks.push(route.middleware(arguments[i]));
+      }
+      // show <path> with [state]
+    } else if ('string' === typeof path) {
+      page['string' === typeof fn ? 'redirect' : 'show'](path, fn);
+      // start [options]
+    } else {
+      page.start(path);
+    }
+  }
+
+  /**
+   * Callback functions.
+   */
+
+  page.callbacks = [];
+  page.exits = [];
+
+  /**
+   * Current path being processed
+   * @type {string}
+   */
+  page.current = '';
+
+  /**
+   * Number of pages navigated to.
+   * @type {number}
+   *
+   *     page.len == 0;
+   *     page('/login');
+   *     page.len == 1;
+   */
+
+  page.len = 0;
+
+  /**
+   * Get or set basepath to `path`.
+   *
+   * @param {string} path
+   * @api public
+   */
+
+  page.base = function(path) {
+    if (0 === arguments.length) return base;
+    base = path;
+  };
+
+  /**
+   * Bind with the given `options`.
+   *
+   * Options:
+   *
+   *    - `click` bind to click events [true]
+   *    - `popstate` bind to popstate [true]
+   *    - `dispatch` perform initial dispatch [true]
+   *
+   * @param {Object} options
+   * @api public
+   */
+
+  page.start = function(options) {
+    options = options || {};
+    if (running) return;
+    running = true;
+    if (false === options.dispatch) dispatch = false;
+    if (false === options.decodeURLComponents) decodeURLComponents = false;
+    if (false !== options.popstate) window.addEventListener('popstate', onpopstate, false);
+    if (false !== options.click) {
+      document.addEventListener(clickEvent, onclick, false);
+    }
+    if (true === options.hashbang) hashbang = true;
+    if (!dispatch) return;
+    var url = (hashbang && ~location.hash.indexOf('#!')) ? location.hash.substr(2) + location.search : location.pathname + location.search + location.hash;
+    page.replace(url, null, true, dispatch);
+  };
+
+  /**
+   * Unbind click and popstate event handlers.
+   *
+   * @api public
+   */
+
+  page.stop = function() {
+    if (!running) return;
+    page.current = '';
+    page.len = 0;
+    running = false;
+    document.removeEventListener(clickEvent, onclick, false);
+    window.removeEventListener('popstate', onpopstate, false);
+  };
+
+  /**
+   * Show `path` with optional `state` object.
+   *
+   * @param {string} path
+   * @param {Object=} state
+   * @param {boolean=} dispatch
+   * @param {boolean=} push
+   * @return {!Context}
+   * @api public
+   */
+
+  page.show = function(path, state, dispatch, push) {
+    var ctx = new Context(path, state);
+    page.current = ctx.path;
+    if (false !== dispatch) page.dispatch(ctx);
+    if (false !== ctx.handled && false !== push) ctx.pushState();
+    return ctx;
+  };
+
+  /**
+   * Goes back in the history
+   * Back should always let the current route push state and then go back.
+   *
+   * @param {string} path - fallback path to go back if no more history exists, if undefined defaults to page.base
+   * @param {Object=} state
+   * @api public
+   */
+
+  page.back = function(path, state) {
+    if (page.len > 0) {
+      // this may need more testing to see if all browsers
+      // wait for the next tick to go back in history
+      history.back();
+      page.len--;
+    } else if (path) {
+      setTimeout(function() {
+        page.show(path, state);
+      });
+    }else{
+      setTimeout(function() {
+        page.show(base, state);
+      });
+    }
+  };
+
+
+  /**
+   * Register route to redirect from one path to other
+   * or just redirect to another route
+   *
+   * @param {string} from - if param 'to' is undefined redirects to 'from'
+   * @param {string=} to
+   * @api public
+   */
+  page.redirect = function(from, to) {
+    // Define route from a path to another
+    if ('string' === typeof from && 'string' === typeof to) {
+      page(from, function(e) {
+        setTimeout(function() {
+          page.replace(/** @type {!string} */ (to));
+        }, 0);
+      });
+    }
+
+    // Wait for the push state and replace it with another
+    if ('string' === typeof from && 'undefined' === typeof to) {
+      setTimeout(function() {
+        page.replace(from);
+      }, 0);
+    }
+  };
+
+  /**
+   * Replace `path` with optional `state` object.
+   *
+   * @param {string} path
+   * @param {Object=} state
+   * @param {boolean=} init
+   * @param {boolean=} dispatch
+   * @return {!Context}
+   * @api public
+   */
+
+
+  page.replace = function(path, state, init, dispatch) {
+    var ctx = new Context(path, state);
+    page.current = ctx.path;
+    ctx.init = init;
+    ctx.save(); // save before dispatching, which may redirect
+    if (false !== dispatch) page.dispatch(ctx);
+    return ctx;
+  };
+
+  /**
+   * Dispatch the given `ctx`.
+   *
+   * @param {Context} ctx
+   * @api private
+   */
+  page.dispatch = function(ctx) {
+    var prev = prevContext,
+      i = 0,
+      j = 0;
+
+    prevContext = ctx;
+
+    function nextExit() {
+      var fn = page.exits[j++];
+      if (!fn) return nextEnter();
+      fn(prev, nextExit);
+    }
+
+    function nextEnter() {
+      var fn = page.callbacks[i++];
+
+      if (ctx.path !== page.current) {
+        ctx.handled = false;
+        return;
+      }
+      if (!fn) return unhandled(ctx);
+      fn(ctx, nextEnter);
+    }
+
+    if (prev) {
+      nextExit();
+    } else {
+      nextEnter();
+    }
+  };
+
+  /**
+   * Unhandled `ctx`. When it's not the initial
+   * popstate then redirect. If you wish to handle
+   * 404s on your own use `page('*', callback)`.
+   *
+   * @param {Context} ctx
+   * @api private
+   */
+  function unhandled(ctx) {
+    if (ctx.handled) return;
+    var current;
+
+    if (hashbang) {
+      current = base + location.hash.replace('#!', '');
+    } else {
+      current = location.pathname + location.search;
+    }
+
+    if (current === ctx.canonicalPath) return;
+    page.stop();
+    ctx.handled = false;
+    location.href = ctx.canonicalPath;
+  }
+
+  /**
+   * Register an exit route on `path` with
+   * callback `fn()`, which will be called
+   * on the previous context when a new
+   * page is visited.
+   */
+  page.exit = function(path, fn) {
+    if (typeof path === 'function') {
+      return page.exit('*', path);
+    }
+
+    var route = new Route(path);
+    for (var i = 1; i < arguments.length; ++i) {
+      page.exits.push(route.middleware(arguments[i]));
+    }
+  };
+
+  /**
+   * Remove URL encoding from the given `str`.
+   * Accommodates whitespace in both x-www-form-urlencoded
+   * and regular percent-encoded form.
+   *
+   * @param {string} val - URL component to decode
+   */
+  function decodeURLEncodedURIComponent(val) {
+    if (typeof val !== 'string') { return val; }
+    return decodeURLComponents ? decodeURIComponent(val.replace(/\+/g, ' ')) : val;
+  }
+
+  /**
+   * Initialize a new "request" `Context`
+   * with the given `path` and optional initial `state`.
+   *
+   * @constructor
+   * @param {string} path
+   * @param {Object=} state
+   * @api public
+   */
+
+  function Context(path, state) {
+    if ('/' === path[0] && 0 !== path.indexOf(base)) path = base + (hashbang ? '#!' : '') + path;
+    var i = path.indexOf('?');
+
+    this.canonicalPath = path;
+    this.path = path.replace(base, '') || '/';
+    if (hashbang) this.path = this.path.replace('#!', '') || '/';
+
+    this.title = document.title;
+    this.state = state || {};
+    this.state.path = path;
+    this.querystring = ~i ? decodeURLEncodedURIComponent(path.slice(i + 1)) : '';
+    this.pathname = decodeURLEncodedURIComponent(~i ? path.slice(0, i) : path);
+    this.params = {};
+
+    // fragment
+    this.hash = '';
+    if (!hashbang) {
+      if (!~this.path.indexOf('#')) return;
+      var parts = this.path.split('#');
+      this.path = parts[0];
+      this.hash = decodeURLEncodedURIComponent(parts[1]) || '';
+      this.querystring = this.querystring.split('#')[0];
+    }
+  }
+
+  /**
+   * Expose `Context`.
+   */
+
+  page.Context = Context;
+
+  /**
+   * Push state.
+   *
+   * @api private
+   */
+
+  Context.prototype.pushState = function() {
+    page.len++;
+    history.pushState(this.state, this.title, hashbang && this.path !== '/' ? '#!' + this.path : this.canonicalPath);
+  };
+
+  /**
+   * Save the context state.
+   *
+   * @api public
+   */
+
+  Context.prototype.save = function() {
+    history.replaceState(this.state, this.title, hashbang && this.path !== '/' ? '#!' + this.path : this.canonicalPath);
+  };
+
+  /**
+   * Initialize `Route` with the given HTTP `path`,
+   * and an array of `callbacks` and `options`.
+   *
+   * Options:
+   *
+   *   - `sensitive`    enable case-sensitive routes
+   *   - `strict`       enable strict matching for trailing slashes
+   *
+   * @constructor
+   * @param {string} path
+   * @param {Object=} options
+   * @api private
+   */
+
+  function Route(path, options) {
+    options = options || {};
+    this.path = (path === '*') ? '(.*)' : path;
+    this.method = 'GET';
+    this.regexp = pathtoRegexp(this.path,
+      this.keys = [],
+      options);
+  }
+
+  /**
+   * Expose `Route`.
+   */
+
+  page.Route = Route;
+
+  /**
+   * Return route middleware with
+   * the given callback `fn()`.
+   *
+   * @param {Function} fn
+   * @return {Function}
+   * @api public
+   */
+
+  Route.prototype.middleware = function(fn) {
+    var self = this;
+    return function(ctx, next) {
+      if (self.match(ctx.path, ctx.params)) return fn(ctx, next);
+      next();
+    };
+  };
+
+  /**
+   * Check if this route matches `path`, if so
+   * populate `params`.
+   *
+   * @param {string} path
+   * @param {Object} params
+   * @return {boolean}
+   * @api private
+   */
+
+  Route.prototype.match = function(path, params) {
+    var keys = this.keys,
+      qsIndex = path.indexOf('?'),
+      pathname = ~qsIndex ? path.slice(0, qsIndex) : path,
+      m = this.regexp.exec(decodeURIComponent(pathname));
+
+    if (!m) return false;
+
+    for (var i = 1, len = m.length; i < len; ++i) {
+      var key = keys[i - 1];
+      var val = decodeURLEncodedURIComponent(m[i]);
+      if (val !== undefined || !(hasOwnProperty.call(params, key.name))) {
+        params[key.name] = val;
+      }
+    }
+
+    return true;
+  };
+
+
+  /**
+   * Handle "populate" events.
+   */
+
+  var onpopstate = (function () {
+    var loaded = false;
+    if ('undefined' === typeof window) {
+      return;
+    }
+    if (document.readyState === 'complete') {
+      loaded = true;
+    } else {
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          loaded = true;
+        }, 0);
+      });
+    }
+    return function onpopstate(e) {
+      if (!loaded) return;
+      if (e.state) {
+        var path = e.state.path;
+        page.replace(path, e.state);
+      } else {
+        page.show(location.pathname + location.hash, undefined, undefined, false);
+      }
+    };
+  })();
+  /**
+   * Handle "click" events.
+   */
+
+  function onclick(e) {
+
+    if (1 !== which(e)) return;
+
+    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+    if (e.defaultPrevented) return;
+
+
+
+    // ensure link
+    // use shadow dom when available
+    var el = e.path ? e.path[0] : e.target;
+    while (el && 'A' !== el.nodeName) el = el.parentNode;
+    if (!el || 'A' !== el.nodeName) return;
+
+
+
+    // Ignore if tag has
+    // 1. "download" attribute
+    // 2. rel="external" attribute
+    if (el.hasAttribute('download') || el.getAttribute('rel') === 'external') return;
+
+    // ensure non-hash for the same path
+    var link = el.getAttribute('href');
+    if (!hashbang && el.pathname === location.pathname && (el.hash || '#' === link)) return;
+
+
+
+    // Check for mailto: in the href
+    if (link && link.indexOf('mailto:') > -1) return;
+
+    // check target
+    if (el.target) return;
+
+    // x-origin
+    if (!sameOrigin(el.href)) return;
+
+
+
+    // rebuild path
+    var path = el.pathname + el.search + (el.hash || '');
+
+    // strip leading "/[drive letter]:" on NW.js on Windows
+    if (typeof process !== 'undefined' && path.match(/^\/[a-zA-Z]:\//)) {
+      path = path.replace(/^\/[a-zA-Z]:\//, '/');
+    }
+
+    // same page
+    var orig = path;
+
+    if (path.indexOf(base) === 0) {
+      path = path.substr(base.length);
+    }
+
+    if (hashbang) path = path.replace('#!', '');
+
+    if (base && orig === path) return;
+
+    e.preventDefault();
+    page.show(orig);
+  }
+
+  /**
+   * Event button.
+   */
+
+  function which(e) {
+    e = e || window.event;
+    return null === e.which ? e.button : e.which;
+  }
+
+  /**
+   * Check if `href` is the same origin.
+   */
+
+  function sameOrigin(href) {
+    var origin = location.protocol + '//' + location.hostname;
+    if (location.port) origin += ':' + location.port;
+    return (href && (0 === href.indexOf(origin)));
+  }
+
+  page.sameOrigin = sameOrigin;
+
+}).call(this,require('_process'))
+},{"_process":193,"path-to-regexp":192}],192:[function(require,module,exports){
+var isarray = require('isarray')
+
+/**
+ * Expose `pathToRegexp`.
+ */
+module.exports = pathToRegexp
+module.exports.parse = parse
+module.exports.compile = compile
+module.exports.tokensToFunction = tokensToFunction
+module.exports.tokensToRegExp = tokensToRegExp
+
+/**
+ * The main path matching regexp utility.
+ *
+ * @type {RegExp}
+ */
+var PATH_REGEXP = new RegExp([
+  // Match escaped characters that would otherwise appear in future matches.
+  // This allows the user to escape special characters that won't transform.
+  '(\\\\.)',
+  // Match Express-style parameters and un-named parameters with a prefix
+  // and optional suffixes. Matches appear as:
+  //
+  // "/:test(\\d+)?" => ["/", "test", "\d+", undefined, "?", undefined]
+  // "/route(\\d+)"  => [undefined, undefined, undefined, "\d+", undefined, undefined]
+  // "/*"            => ["/", undefined, undefined, undefined, undefined, "*"]
+  '([\\/.])?(?:(?:\\:(\\w+)(?:\\(((?:\\\\.|[^()])+)\\))?|\\(((?:\\\\.|[^()])+)\\))([+*?])?|(\\*))'
+].join('|'), 'g')
+
+/**
+ * Parse a string for the raw tokens.
+ *
+ * @param  {String} str
+ * @return {Array}
+ */
+function parse (str) {
+  var tokens = []
+  var key = 0
+  var index = 0
+  var path = ''
+  var res
+
+  while ((res = PATH_REGEXP.exec(str)) != null) {
+    var m = res[0]
+    var escaped = res[1]
+    var offset = res.index
+    path += str.slice(index, offset)
+    index = offset + m.length
+
+    // Ignore already escaped sequences.
+    if (escaped) {
+      path += escaped[1]
+      continue
+    }
+
+    // Push the current path onto the tokens.
+    if (path) {
+      tokens.push(path)
+      path = ''
+    }
+
+    var prefix = res[2]
+    var name = res[3]
+    var capture = res[4]
+    var group = res[5]
+    var suffix = res[6]
+    var asterisk = res[7]
+
+    var repeat = suffix === '+' || suffix === '*'
+    var optional = suffix === '?' || suffix === '*'
+    var delimiter = prefix || '/'
+    var pattern = capture || group || (asterisk ? '.*' : '[^' + delimiter + ']+?')
+
+    tokens.push({
+      name: name || key++,
+      prefix: prefix || '',
+      delimiter: delimiter,
+      optional: optional,
+      repeat: repeat,
+      pattern: escapeGroup(pattern)
+    })
+  }
+
+  // Match any characters still remaining.
+  if (index < str.length) {
+    path += str.substr(index)
+  }
+
+  // If the path exists, push it onto the end.
+  if (path) {
+    tokens.push(path)
+  }
+
+  return tokens
+}
+
+/**
+ * Compile a string to a template function for the path.
+ *
+ * @param  {String}   str
+ * @return {Function}
+ */
+function compile (str) {
+  return tokensToFunction(parse(str))
+}
+
+/**
+ * Expose a method for transforming tokens into the path function.
+ */
+function tokensToFunction (tokens) {
+  // Compile all the tokens into regexps.
+  var matches = new Array(tokens.length)
+
+  // Compile all the patterns before compilation.
+  for (var i = 0; i < tokens.length; i++) {
+    if (typeof tokens[i] === 'object') {
+      matches[i] = new RegExp('^' + tokens[i].pattern + '$')
+    }
+  }
+
+  return function (obj) {
+    var path = ''
+    var data = obj || {}
+
+    for (var i = 0; i < tokens.length; i++) {
+      var token = tokens[i]
+
+      if (typeof token === 'string') {
+        path += token
+
+        continue
+      }
+
+      var value = data[token.name]
+      var segment
+
+      if (value == null) {
+        if (token.optional) {
+          continue
+        } else {
+          throw new TypeError('Expected "' + token.name + '" to be defined')
+        }
+      }
+
+      if (isarray(value)) {
+        if (!token.repeat) {
+          throw new TypeError('Expected "' + token.name + '" to not repeat, but received "' + value + '"')
+        }
+
+        if (value.length === 0) {
+          if (token.optional) {
+            continue
+          } else {
+            throw new TypeError('Expected "' + token.name + '" to not be empty')
+          }
+        }
+
+        for (var j = 0; j < value.length; j++) {
+          segment = encodeURIComponent(value[j])
+
+          if (!matches[i].test(segment)) {
+            throw new TypeError('Expected all "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"')
+          }
+
+          path += (j === 0 ? token.prefix : token.delimiter) + segment
+        }
+
+        continue
+      }
+
+      segment = encodeURIComponent(value)
+
+      if (!matches[i].test(segment)) {
+        throw new TypeError('Expected "' + token.name + '" to match "' + token.pattern + '", but received "' + segment + '"')
+      }
+
+      path += token.prefix + segment
+    }
+
+    return path
+  }
+}
+
+/**
+ * Escape a regular expression string.
+ *
+ * @param  {String} str
+ * @return {String}
+ */
+function escapeString (str) {
+  return str.replace(/([.+*?=^!:${}()[\]|\/])/g, '\\$1')
+}
+
+/**
+ * Escape the capturing group by escaping special characters and meaning.
+ *
+ * @param  {String} group
+ * @return {String}
+ */
+function escapeGroup (group) {
+  return group.replace(/([=!:$\/()])/g, '\\$1')
+}
+
+/**
+ * Attach the keys as a property of the regexp.
+ *
+ * @param  {RegExp} re
+ * @param  {Array}  keys
+ * @return {RegExp}
+ */
+function attachKeys (re, keys) {
+  re.keys = keys
+  return re
+}
+
+/**
+ * Get the flags for a regexp from the options.
+ *
+ * @param  {Object} options
+ * @return {String}
+ */
+function flags (options) {
+  return options.sensitive ? '' : 'i'
+}
+
+/**
+ * Pull out keys from a regexp.
+ *
+ * @param  {RegExp} path
+ * @param  {Array}  keys
+ * @return {RegExp}
+ */
+function regexpToRegexp (path, keys) {
+  // Use a negative lookahead to match only capturing groups.
+  var groups = path.source.match(/\((?!\?)/g)
+
+  if (groups) {
+    for (var i = 0; i < groups.length; i++) {
+      keys.push({
+        name: i,
+        prefix: null,
+        delimiter: null,
+        optional: false,
+        repeat: false,
+        pattern: null
+      })
+    }
+  }
+
+  return attachKeys(path, keys)
+}
+
+/**
+ * Transform an array into a regexp.
+ *
+ * @param  {Array}  path
+ * @param  {Array}  keys
+ * @param  {Object} options
+ * @return {RegExp}
+ */
+function arrayToRegexp (path, keys, options) {
+  var parts = []
+
+  for (var i = 0; i < path.length; i++) {
+    parts.push(pathToRegexp(path[i], keys, options).source)
+  }
+
+  var regexp = new RegExp('(?:' + parts.join('|') + ')', flags(options))
+
+  return attachKeys(regexp, keys)
+}
+
+/**
+ * Create a path regexp from string input.
+ *
+ * @param  {String} path
+ * @param  {Array}  keys
+ * @param  {Object} options
+ * @return {RegExp}
+ */
+function stringToRegexp (path, keys, options) {
+  var tokens = parse(path)
+  var re = tokensToRegExp(tokens, options)
+
+  // Attach keys back to the regexp.
+  for (var i = 0; i < tokens.length; i++) {
+    if (typeof tokens[i] !== 'string') {
+      keys.push(tokens[i])
+    }
+  }
+
+  return attachKeys(re, keys)
+}
+
+/**
+ * Expose a function for taking tokens and returning a RegExp.
+ *
+ * @param  {Array}  tokens
+ * @param  {Array}  keys
+ * @param  {Object} options
+ * @return {RegExp}
+ */
+function tokensToRegExp (tokens, options) {
+  options = options || {}
+
+  var strict = options.strict
+  var end = options.end !== false
+  var route = ''
+  var lastToken = tokens[tokens.length - 1]
+  var endsWithSlash = typeof lastToken === 'string' && /\/$/.test(lastToken)
+
+  // Iterate over the tokens and create our regexp string.
+  for (var i = 0; i < tokens.length; i++) {
+    var token = tokens[i]
+
+    if (typeof token === 'string') {
+      route += escapeString(token)
+    } else {
+      var prefix = escapeString(token.prefix)
+      var capture = token.pattern
+
+      if (token.repeat) {
+        capture += '(?:' + prefix + capture + ')*'
+      }
+
+      if (token.optional) {
+        if (prefix) {
+          capture = '(?:' + prefix + '(' + capture + '))?'
+        } else {
+          capture = '(' + capture + ')?'
+        }
+      } else {
+        capture = prefix + '(' + capture + ')'
+      }
+
+      route += capture
+    }
+  }
+
+  // In non-strict mode we allow a slash at the end of match. If the path to
+  // match already ends with a slash, we remove it for consistency. The slash
+  // is valid at the end of a path match, not in the middle. This is important
+  // in non-ending mode, where "/test/" shouldn't match "/test//route".
+  if (!strict) {
+    route = (endsWithSlash ? route.slice(0, -2) : route) + '(?:\\/(?=$))?'
+  }
+
+  if (end) {
+    route += '$'
+  } else {
+    // In non-ending mode, we need the capturing groups to match as much as
+    // possible by using a positive lookahead to the end or next path segment.
+    route += strict && endsWithSlash ? '' : '(?=\\/|$)'
+  }
+
+  return new RegExp('^' + route, flags(options))
+}
+
+/**
+ * Normalize the given path string, returning a regular expression.
+ *
+ * An empty array can be passed in for the keys, which will hold the
+ * placeholder key descriptions. For example, using `/user/:id`, `keys` will
+ * contain `[{ name: 'id', delimiter: '/', optional: false, repeat: false }]`.
+ *
+ * @param  {(String|RegExp|Array)} path
+ * @param  {Array}                 [keys]
+ * @param  {Object}                [options]
+ * @return {RegExp}
+ */
+function pathToRegexp (path, keys, options) {
+  keys = keys || []
+
+  if (!isarray(keys)) {
+    options = keys
+    keys = []
+  } else if (!options) {
+    options = {}
+  }
+
+  if (path instanceof RegExp) {
+    return regexpToRegexp(path, keys, options)
+  }
+
+  if (isarray(path)) {
+    return arrayToRegexp(path, keys, options)
+  }
+
+  return stringToRegexp(path, keys, options)
+}
+
+},{"isarray":184}],193:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -33941,7 +33825,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],196:[function(require,module,exports){
+},{}],194:[function(require,module,exports){
 (function (process,global){
 /**
  * Copyright (c) 2014, Facebook, Inc.
@@ -34596,7 +34480,7 @@ process.umask = function() { return 0; };
 );
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":195}],197:[function(require,module,exports){
+},{"_process":193}],195:[function(require,module,exports){
 var bel = require('bel') // turns template tag into DOM elements
 var morphdom = require('morphdom') // efficiently diffs + morphs two DOM elements
 var defaultEvents = require('./update-events.js') // default events to be copied when dom elements update
@@ -34640,7 +34524,7 @@ module.exports.update = function (fromNode, toNode, opts) {
   }
 }
 
-},{"./update-events.js":198,"bel":182,"morphdom":192}],198:[function(require,module,exports){
+},{"./update-events.js":196,"bel":177,"morphdom":188}],196:[function(require,module,exports){
 module.exports = [
   // attribute events (can be set with attributes)
   'onclick',
@@ -34677,32 +34561,5 @@ module.exports = [
   'onfocusin',
   'onfocusout'
 ]
-
-},{}],199:[function(require,module,exports){
-module.exports = function yoyoifyAppendChild (el, childs) {
-  for (var i = 0; i < childs.length; i++) {
-    var node = childs[i]
-    if (Array.isArray(node)) {
-      yoyoifyAppendChild(el, node)
-      continue
-    }
-    if (typeof node === 'number' ||
-      typeof node === 'boolean' ||
-      node instanceof Date ||
-      node instanceof RegExp) {
-      node = node.toString()
-    }
-    if (typeof node === 'string') {
-      if (el.lastChild && el.lastChild.nodeName === '#text') {
-        el.lastChild.nodeValue += node
-        continue
-      }
-      node = document.createTextNode(node)
-    }
-    if (node && node.nodeType) {
-      el.appendChild(node)
-    }
-  }
-}
 
 },{}]},{},[8]);
