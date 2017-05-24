@@ -22,6 +22,8 @@ class Get{
 		$db=$this->conecta();
 		$query=$db->prepare($sql);
 		$query->execute();
+		//echo "\nPDO::errorInfo():\n";
+    //print_r($query->errorInfo());
 		return $query->fetchAll(PDO::FETCH_ASSOC);
 	}
 
@@ -107,9 +109,23 @@ class Get{
 		return $datos;
 	}
 
+
+
+	public function getTablaVolantes(){
+		$db=$this->conecta();
+		$sql="select v.idVolante, v.folio, v.numDocumento, v.idRemitente, v.idTurnado, v.fRecepcion, v.estatus,
+a.clave,
+sub.nombre
+from sia_VolantesDocumentos vd
+inner join sia_Volantes v
+on vd.idVolante=v.idVolante
+inner join sia_auditorias a on vd.cveAuditoria=a.idAuditoria
+inner join sia_catSubTiposDocumentos sub on vd.idSubTipoDocumento=sub.idSubTipoDocumento";
+$datos=$this->consultaRetorno($sql);
+echo json_encode($datos);
+	}
+
 }
-
-
 
 
 

@@ -59,8 +59,6 @@ class Insert{
 		$dbQuery = $db->prepare($sql);
 		$pdo[':usrAlta']=$_SESSION ["idUsuario"];
 		$dbQuery->execute($pdo);
-		//echo "\nPDO::errorInfo():\n";
-	 	//print_r($dbQuery->errorInfo());
 		$obt=new Get();
 		$folio=$obt->getLastFolioVolantes();
 		$idVolante=$folio[0]['folio'];
@@ -78,7 +76,7 @@ class Insert{
 		$dbQuery->execute($pdo);
 		$salida['insert']='true';
 		echo json_encode($salida);
-		
+
 	}
 
 

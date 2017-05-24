@@ -28,4 +28,29 @@ module.exports=class notificaciones{
 			}
 		}).show();
 	}
+	volante(idVolante){
+		new Noty({
+			text: 'La auditoria ya fue asignada ',
+			type: 'error',
+			layout: 'center',
+			theme: 'metroui',
+			timeout: 3000,
+			progressBar: true
+		}).show();
+	}
+	folio(){
+		new Noty({
+			text: 'El folio ya se encuentra asignado',
+			type: 'error',
+			layout: 'center',
+			theme: 'metroui',
+			timeout: 1000,
+			progressBar: true,
+			callbacks:{
+				afterClose:function(){
+					alert("works");
+				}
+			}
+		}).show();
+	}
 }

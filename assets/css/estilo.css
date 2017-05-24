@@ -2265,15 +2265,20 @@ form#UpdateVolantes div.send {
 }
 td#idAccion,
 td#idCaracter,
-td#idSubTipoDocumento {
+td#idSubTipoDocumento,
+td#idVolante {
   display: none;
 }
 th#idAccion,
 th#idCaracter,
-th#idSubTipoDocumento {
+th#idSubTipoDocumento,
+th#idVolante {
   display: none;
 }
 .rotaFlecha {
   transform: rotate(180deg);
   transition: all 0.5s;
+}
+div.widget-icons a {
+  color: #fff !important;
 }

@@ -59,6 +59,7 @@ function render(form){
     $('div#main-content').append(form);
     $('input#fDocumento').datepicker({ dateFormat: "yy-mm-dd" });
     $('input#fRecepcion').datepicker({ dateFormat: "yy-mm-dd" });
+    $('a#agregar').hide();
     cancelar();
 }
 
@@ -66,7 +67,22 @@ function sendData(){
    $('form#'+ruta).on('submit',function(e){
       e.preventDefault();
       var datos=$(this).serialize();
-      guardaRegistro(datos);
+      if(ruta=='Volantes'){
+
+      var fl=$('input#Folio').val();
+      var objeto=jsonCombo.folio(fl);
+      cargaCombo(objeto).
+      then(response=>{
+        if(response.length>0){
+            noty.folio();
+        }else{
+          guardaRegistro(datos);
+        }
+      })
+      }else{
+        guardaRegistro(datos);
+      }
+      
    })
 }
 
@@ -102,8 +118,6 @@ function cargaCombo(obj){
           data:obj,
           success:function(data){
             var datos=$.parseJSON(data);
-            //var option=$.parseHTML(creaSelect(datos));
-            //resolve(option);
             resolve(datos);
           }
       });
@@ -224,22 +238,36 @@ function cargaComboAuditoria(){
 
 
 function cargaDatosAuditoria(){
-
-  var id=$(this).val();
-  datosAuditoria(id).then(response=>{
-    separaDatosAuditoria(response[0].sujeto,'idUnidad');
-    separaDatosAuditoria(response[0].objeto,'idObjeto');
-    $('ul#tipoAuditoria').html('<li>'+response[0].tipo+'</li>');
-    $('div.datosAuditoria').css('display','flex');
-    $('div.datosAuditoria').slideDown('slow');
-    $('div.contentVolante').show('slow');
-      //escondeDatos();
-  })
+var id=$(this).val();
+checaDocumento(id);
 }
 
 
-function checaDocumento(){
-  
+function checaDocumento(id){
+  var sub=$('select#subDocumento').val();
+  var cve=$('select#cveAuditoria').val();
+  var objDuplicado=jsonCombo.duplicado(sub,cve);
+  cargaCombo(objDuplicado) 
+  .then(response=>{
+       
+      if(response.length>0){
+        noty.volante(response[0].idVolante);
+        $('div.datosAuditoria').hide('fast');
+        $('div.contentVolante').hide('fast');
+      }else{
+        datosAuditoria(id).then(response=>{
+          separaDatosAuditoria(response[0].sujeto,'idUnidad');
+          separaDatosAuditoria(response[0].objeto,'idObjeto');
+          $('ul#tipoAuditoria').html('<li>'+response[0].tipo+'</li>');
+          $('div.datosAuditoria').css('display','flex');
+          $('div.datosAuditoria').slideDown('slow');
+          $('div.contentVolante').show('slow');
+            
+        })
+      }
+  })
+
+
 }
 
 
@@ -274,7 +302,7 @@ function separaDatosAuditoria(palabra,id){
 function obtieneFolio(){
   let folio = new Promise((resolve,reject)=>{
       $.get({
-          url:'/folio/Volantes/idVolante',
+          url:'/folio/Volantes/folio',
           success:function(data){
             var datos=$.parseJSON(data);
             //var option=$.parseHTML(creaSelect(datos));

@@ -19,7 +19,12 @@ $app->get('/juridico/:modulo',function($modulo) use ($app){
 /*-----------------carga la tabla principal -----------------*/
 $app->get('/table/:modulo',function($modulo) use ($app){
 	$camposTabla=new Tables();
-	$camposTabla->obtenerTabla($modulo);
+	if($modulo=='Volantes'){
+			$get = new Get();
+			$get->getTablaVolantes();
+	}else {
+		$camposTabla->obtenerTabla($modulo);
+	}
 
 });
 
@@ -101,20 +106,6 @@ $app->get('/auditorias/:id',function($id) use ($app){
 });
 
 
-
-
-
-
-
-/*----------inserta en volantes ---------------------*/
-
-$app->post('/tableVolantes/:modulo',function($modulo) use ($app){
-	$rutas=new Rutas();
-	$modulo=$rutas->separaModulo($modulo);
-	$inserta=new Insert();
-	$inserta->insertaVolantes($modulo,$app->request->post());
-
-});
 
 
 

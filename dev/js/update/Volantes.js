@@ -9,85 +9,12 @@ if(data.estatus=='ACTIVO')
 else {
  var opuesto='ACTIVO'   
 }
-/*
-if(data.estado=='PENDIENTE')
-{
-    var estadoOpuesto='ATENDIDO';
-}
-else {
- var estadoOpuesto='PENDIENTE'   ;
-}
-*/
 
-
-$.get({
-    url:'/getComboRemitente',
-    async:false,
-    success:function(data){
-        data=$.parseJSON(data);
-       options=comboRemitente(data);
-      
-    }
-
-});
-
-
-var nombre,cargo,dependencia;
-
-$.get({
-    url:'/getDatosRemitente/'+data.idRemitente,
-    async:false,
-    success:function(data){
-        data=$.parseJSON(data);
-        nombre=data[0].nombre;
-        cargo=data[0].cargo;
-        dependencia=data[0].procedencia;
-    }
-});
-
-$.get({
-    url:'/getComboCaracter',
-    async:false,
-    success:function(data)
-    {
-        data=$.parseJSON(data);
-        caracter=comboCaracter(data);
-    }
-});
-
-
-$.get({
-    url:'/getComboTurnado',
-    async:false,
-    success:function(data){
-    data=$.parseJSON(data);
-    turnado=comboTurnado(data);
-    }
-});
-
-
-$.get({
-    url:'/getComboAccion',
-    async:false,
-    success:function(data){
-        data=$.parseJSON(data);
-        accion=comboAccion(data);
-    }
-});
+var hRecepcion=data.hRecepcion;
+hRecepcion=hRecepcion.substring(5,0);
 
 
 
-
-options=$.parseHTML(options);
-caracter=$.parseHTML(caracter)
-turnado=$.parseHTML(turnado);
-accion=$.parseHTML(accion);
-
-asunto=data.asunto;
-console.log(asunto);
-console.log(asunto.length);
-asunto=asunto.trim();
-console.log(asunto.length);
 
 return yo`<form method="POST" class="form-inline" id="UpdateVolantes">
 
@@ -95,7 +22,7 @@ return yo`<form method="POST" class="form-inline" id="UpdateVolantes">
 
 <div class="form-group Folio">
     <label for="Folio">Folio</label>
-    <input type="number" id="Folio" name="folio" required class="form-control" value="${data.folio}" disabled="true">
+    <input type="number" readonly id="Folio" name="folio" required class="form-control" value="${data.folio}" >
 </div>
 
 
@@ -121,61 +48,44 @@ return yo`<form method="POST" class="form-inline" id="UpdateVolantes">
 
 <div class="form-group hRecepcion">
     <label for="hRecepcion">Hora de Recepcion</label>
-    <input type="time" id="hRecepcion" name="hRecepcion" required class="form-control" value="${data.hRecepcion}">
+    <input type="time" id="hRecepcion" name="hRecepcion" required="required" pattern="([0-1]{1}[0-9]{1}|20|21|22|23):[0-5]{1}[0-9]{1}" placeholder="00:00" title="Formato de 24 horas 00:00" class="form-control" value="${hRecepcion}">
 </div>
 
 
 <div class="form-group idRemitente">
     <label for="idRemitente">Remitente</label>
     <select class="form-control" name="idRemitente" id="idRemitente" required>
-   ${options}
+ 
     </select>
 </div>
 
-<div class="form-group NombreRemitente">
-    <label for="NombreRemitente">Nombre</label>
-    <input type="text" id="NombreRemitente"  class="form-control" disabled="true" value="${nombre}">
-</div>
 
 
-<div class="form-group cargo">
-    <label for="cargo">Cargo</label>
-    <input type="text" id="cargo"  class="form-control" disabled="true" value="${cargo}">
-</div>
 
-<div class="form-group dependencia">
-    <label for="dependencia">Dependencia</label>
-    <input type="text" id="dependencia"  class="form-control" disabled="true" value="${dependencia}">
-</div>
-
-<div class="form-group Destinatario">
-    <label for="Destinatario">Destinatario</label>
-    <input type="text" id="Destinatario"  name="destinatario" class="form-control" placeholder="Destinatario" value="${data.destinatario}">
-</div>
 
 <div class="form-group Asunto">
     <label for="Asunto">Asunto</label>
-    <textarea class="form-control" rows="3" name="asunto" required placeholder="Asunto" >${asunto}</textarea>
+    <textarea class="form-control" rows="3" name="asunto" required placeholder="Asunto" >${data.asunto}</textarea>
 </div>
 
 <div class="form-group idCaracter">
     <label for="idCaracter">Caracter</label>
     <select class="form-control" name="idCaracter" id="idCaracter" required>
-    ${caracter}
+    
     </select>
 </div>
 
 <div class="form-group idTurnado">
     <label for="idTurnado">Turnado a:</label>
     <select class="form-control" name="idTurnado" id="idTurnado" required>
-    ${turnado}
+    
     </select>
 </div>
 
 <div class="form-group idAccion">
     <label for="idAccion">Instruccion</label>
     <select class="form-control" name="idAccion" id="idAccion" required>
-    ${accion}
+    
     </select>
 </div>
 

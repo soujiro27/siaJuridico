@@ -86,14 +86,29 @@ module.exports=class comboJson{
 	}
 
 	 duplicado(valor1,valor2){
-	 	return obj={
+	 	var obj={
 	 		tabla:'VolantesDocumentos',
 	 		campos:['idVolante'],
 	 		where:{
 	 			idSubTipoDocumento:valor1,
-	 			cveAuditoria:valor2
+	 			cveAuditoria:valor2,
+	 			estatus:'ACTIVO'
 	 		}
 	 	}
+	 	return obj
+	 }
+
+	 folio(fol)
+	 {
+	 	var obj={
+	 		tabla:'Volantes',
+	 		campos:['idVolante'],
+	 		where:{
+	 			folio:fol
+
+	 		}
+	 	}
+	 	return obj;
 	 }
 	
 

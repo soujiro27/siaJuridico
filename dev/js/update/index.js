@@ -4,6 +4,7 @@ var page=require('page');
 var Acciones=require('./Acciones');
 var Caracteres=require('./Caracteres');
 var SubTiposDocumentos=require('./SubTiposDocumentos');
+var Volantes=require('./Volantes');
 
 var objCombo=require('./../jsonCombos')
 var url=require('./../Redireccion/Urls');
@@ -55,7 +56,7 @@ page('/juridico/SubTiposDocumentos/update/:campo/:id',function(ctx, netx){
 		var objeto=jsonCombo.tiposDocumentos();
 		cargaCombo(objeto)
    		.then(response =>{
-    		$('select#idDocumento').html(response);
+        creaSelect(response,'idDocumento');
     		$('select#idDocumento > option[value="'+selected+'"]').attr('selected', 'selected');
    		})
 		sendData(campo,id);
@@ -64,6 +65,28 @@ page('/juridico/SubTiposDocumentos/update/:campo/:id',function(ctx, netx){
 
 
 
+page('/juridico/Volantes/update/:campo/:id',function(ctx, netx){
+  var id=ctx.params.id;
+  var campo=ctx.params.campo;
+  var obj={};
+  obj[campo]=id;
+  cargaDatos(obj).
+  then(response => {
+    console.log(response);
+    var form=Volantes(response[0]);
+    render(form);
+    cargaCombosInicio(response);
+    //cargaSelectDefault(response);
+    sendData(campo,id);
+  })
+});
+
+
+function cargaSelectDefault(valores){
+  console.log(valores[0].idRemitente);
+  debugger;
+  $('select#idRemitente > option[value='+valores[0].idRemitente+']').attr('selected', 'selected');
+}
 
 
 
@@ -73,6 +96,7 @@ function render(form){
     var main=document.getElementById('main-content');
     empty(main);
     $('div#main-content').append(form);
+    $('a#agregar').hide();
     cancelar();
 }
 
@@ -136,8 +160,7 @@ function cargaCombo(obj){
           data:obj,
           success:function(data){
             var datos=$.parseJSON(data);
-            var option=$.parseHTML(creaSelect(datos));
-            resolve(option);
+            resolve(datos);
           }
       });
   })
@@ -145,9 +168,9 @@ function cargaCombo(obj){
 }
 
 
-function creaSelect(datos){
+function creaSelect(datos,id){
   var cont=1;
-  var opt='<option value="">Escogue una Opcion</option>';
+  var opt='<option value="">Escoge una Opcion</option>';
   $.each(datos, function(index, val) {
     cont=1;
      for(var x in datos[index]){
@@ -160,7 +183,35 @@ function creaSelect(datos){
      }
   });
 
-  return opt;
+  opt=$.parseHTML(opt);
+  $('select#'+id).html(opt);
 }
 
 
+function cargaCombosInicio(valores){
+  var remitente=jsonCombo.remitentes();
+  var caracter=jsonCombo.caracteres();
+  var turnado=jsonCombo.turnados();
+  var accion=jsonCombo.acciones();
+  
+  var objetos={
+    idRemitente:[remitente],
+    idCaracter:[caracter],
+    idTurnado:[turnado],
+    idAccion:[accion]
+  }
+
+  $.each(objetos, function(index, val) {
+     val.map(function(data){
+        cargaCombo(data).then(response=>{
+          creaSelect(response,index);
+          $('select#idRemitente > option[value='+valores[0].idRemitente+']').attr('selected', 'selected');
+          $('select#idCaracter > option[value='+valores[0].idCaracter+']').attr('selected', 'selected');
+          $('select#idTurnado > option[value='+valores[0].idTurnado+']').attr('selected', 'selected');
+          $('select#idAccion > option[value='+valores[0].idAccion+']').attr('selected', 'selected');
+          });
+     });
+  });
+
+  
+}

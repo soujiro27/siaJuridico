@@ -64,7 +64,7 @@ return yo`<form method="POST" class="form-inline" id="Volantes">
 
 <div class="form-group Folio">
     <label for="Folio">Folio</label>
-    <input type="number" readonly id="Folio" name="folio" required class="form-control" />
+    <input type="number"  id="Folio" name="folio" required class="form-control" />
 </div>
 
 

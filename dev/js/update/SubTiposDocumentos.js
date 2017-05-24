@@ -34,13 +34,6 @@ return yo`<form method="POST" class="form-inline" id="UpdateSubTiposDocumentos">
     <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Nombre Incorrecto o Caracteres maximos" value="${data.nombre}">
 </div>
 
-<div class="form-group promocion">
-    <label for="estatus">Promocion</label>
-    <select id="promocion" name="promocion" class="form-control" required>
-    <option value="${data.promocion}">${data.promocion}</option>
-    <option value="${promo}">${promo}</option>
-    </select>
-</div>
 
 
 
