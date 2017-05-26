@@ -8,11 +8,11 @@
 </head>
 <body>
 <header>
-	 <?php require 'juridico/templates/header.php'; ?> 
+	 <?php require 'juridico/templates/header.php'; ?>
 	</header>
 	<main class="content">
-		<?php require 'juridico/templates/aside.php'; ?> 
-		<?php require 'juridico/templates/content.php'; ?> 
+		<?php require 'juridico/templates/aside.php'; ?>
+		<?php require 'juridico/templates/content.php'; ?>
 	</main>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js">
@@ -28,6 +28,9 @@
 
 </script>
 <script src="../Dashboard - MacAdmin_files/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.js">
+
+</script>
 <script type="text/javascript" src="assets/js/app.js"></script>
 </body>
 </html>

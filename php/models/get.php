@@ -125,6 +125,18 @@ $datos=$this->consultaRetorno($sql);
 echo json_encode($datos);
 	}
 
+
+	public function getTablaIracObservaciones(){
+		$db=$this->conecta();
+		$sql="select v.idVolante,v.numDocumento, v.fRecepcion, v.idRemitente, v.asunto, v.estatus from sia_Volantes v where idTurnado=
+(select nombreCorto from sia_areas where idAreaSuperior='DGAJ' and idEmpleadoTitular=
+(select idEmpleado from sia_usuarios where idUsuario=".$_SESSION['idUsuario']."))";
+$datos=$this->consultaRetorno($sql);
+echo json_encode($datos);
+	}
+
+
+
 }
 
 

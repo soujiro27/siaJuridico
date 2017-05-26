@@ -17,6 +17,7 @@ class Insert{
 		}
 
 	public function insertaBd($modulo,$datos){
+
 		$db=$this->conecta();
 		/*--------------- funciones de comprobacion de registro duplicado--------------*/
 		$getData=new Get();
@@ -33,10 +34,13 @@ class Insert{
 		$valores=$datosInsert->obtieneValoresQuery($datos);
 		$pdo=$datosInsert->obtieneArregloPdo($datos);
 		$sql="INSERT INTO sia_".$modulo."(".$campos."usrAlta, fAlta) VALUES(".$valores.":usrAlta, getdate())";
+		//echo $sql;
 		$dbQuery = $db->prepare($sql);
 		$pdo[':usrAlta']=$_SESSION ["idUsuario"];
 		$dbQuery->execute($pdo);
 		$salida['insert']='true';
+		//echo "\nPDO::errorInfo():\n";
+    //print_r($dbQuery->errorInfo());
 		echo json_encode($salida);
 		}
 	}
@@ -98,9 +102,10 @@ class Insert{
 		$dbQuery = $db->prepare($sql);
 		$pdo[':usrModificacion']=$_SESSION ["idUsuario"];
 		$dbQuery->execute($pdo);
-
+		echo "\nPDO::errorInfo():\n";
+		print_r($dbQuery->errorInfo());
 		$salida['insert']='true';
-		echo json_encode($salida);
+		//echo json_encode($salida);
 		}
 	}
 

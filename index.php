@@ -19,10 +19,13 @@ $app->get('/juridico/:modulo',function($modulo) use ($app){
 /*-----------------carga la tabla principal -----------------*/
 $app->get('/table/:modulo',function($modulo) use ($app){
 	$camposTabla=new Tables();
+	$get = new Get();
 	if($modulo=='Volantes'){
-			$get = new Get();
-			$get->getTablaVolantes();
-	}else {
+			$get->getTablaVolantes();}
+	elseif ($modulo=='Irac') {
+			$get->getTablaIracObservaciones();
+	}
+	else {
 		$camposTabla->obtenerTabla($modulo);
 	}
 
@@ -32,6 +35,9 @@ $app->get('/table/:modulo',function($modulo) use ($app){
 
 $app->get('/get/:modulo',function($modulo) use ($app){
 	$update=new UpdateForm();
+	if($modulo=='Irac'){
+		$modulo='Volantes';
+	}
 	$update->registroUpdate($modulo,$app);
 
 });
@@ -40,6 +46,10 @@ $app->get('/get/:modulo',function($modulo) use ($app){
 /*-----------------hace el update ------------------*/
 $app->post('/update/:modulo',function($modulo) use ($app){
 	$rutas=new Rutas();
+
+	if ($modulo=='Irac') {
+			$modulo='ObservacionesDoctosJuridico';
+	}
 	$modulo=$rutas->separaModulo($modulo);
 	$inserta=new Insert();
 	$inserta->update($modulo,$app->request->post());
@@ -56,7 +66,8 @@ $app->post('/insert/:modulo',function($modulo) use ($app){
 	$inserta=new Insert();
 	if($modulo=='Volantes'){
 			$inserta->insertaVolantes($modulo,$app->request->post());
-	}else{
+	}
+	else{
 		$inserta->insertaBd($modulo,$app->request->post());
 	}
 

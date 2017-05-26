@@ -15,6 +15,7 @@ page('/juridico/'+ruta,function(ctx,next){
 			var id=$(this).data('id');
 			var campo=$(this).data('nombre');
 			$('table').remove();
+			
 			page.redirect('/juridico/'+ruta+'/update/'+campo+'/'+id);
 		})
 	})

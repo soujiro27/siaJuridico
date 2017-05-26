@@ -5,6 +5,9 @@ var Acciones=require('./Acciones');
 var Caracteres=require('./Caracteres');
 var SubTiposDocumentos=require('./SubTiposDocumentos');
 var Volantes=require('./Volantes');
+var Irac=require('./irac');
+
+var template=require('./../table/template')
 
 var objCombo=require('./../jsonCombos')
 var url=require('./../Redireccion/Urls');
@@ -75,21 +78,32 @@ page('/juridico/Volantes/update/:campo/:id',function(ctx, netx){
     console.log(response);
     var form=Volantes(response[0]);
     render(form);
+    $('a#agregar').attr('target','_blank');
+    $('a#agregar').attr('href','/juridico/php/reportes/Volantes.php'+ "?param1="+ response[0].idVolante).text('Imprimir').show();
     cargaCombosInicio(response);
-    //cargaSelectDefault(response);
+    
     sendData(campo,id);
   })
 });
 
 
-function cargaSelectDefault(valores){
-  console.log(valores[0].idRemitente);
-  debugger;
-  $('select#idRemitente > option[value='+valores[0].idRemitente+']').attr('selected', 'selected');
-}
+page('/juridico/Irac/update/:campo/:id',function(ctx, netx){
+  var id=ctx.params.id;
+  var campo=ctx.params.campo;
+  var obj={};
+  obj[campo]=id;
+  cargaDatos(obj).
+  then(response => {
+    var form=Irac();
+    render(form);
+    cargaTablaIrac(response[0].idVolante);
+    cargaFormIrac(response[0].idVolante);
+  })
+
+});
 
 
-
+/*---------------------funciones -------------------*/
 
 
 function render(form){
@@ -132,8 +146,7 @@ function sendData(campo,id){
 }
 
 
-function actualizaRegistro(datos)
-{
+function actualizaRegistro(datos){
 	
 	let update=new Promise((resolve,reject)=>{
         $.post({
@@ -215,3 +228,86 @@ function cargaCombosInicio(valores){
 
   
 }
+
+
+
+
+
+function cargaFormIrac(idVolante)
+{
+  $('button#addIrac').click(function(){
+    var sub=jsonCombo.iracSubDoc(idVolante);
+    cargaCombo(sub)
+    .then(response=>{
+        var form=require('./irac/form');
+        var main=document.getElementById('contentIrac');
+        empty(main);
+        $('div.contentIrac').append(form());
+        sendDataObsIrac(response);
+        cancelar();
+    })
+
+  });
+}
+
+
+function sendDataObsIrac(response){
+  $('form#insert'+ruta).on('submit',function(e){
+      e.preventDefault();
+      var datos=$(this).serialize()+'&cveAuditoria='+response[0].cveAuditoria+'&idSubTipoDocumento='+response[0].idSubTipoDocumento+'&idVolante='+response[0].idVolante;
+      guardaRegistroIrac(datos,'ObservacionesDoctosJuridico');
+   })
+}
+
+
+function guardaRegistroIrac(datos,modulo){
+    let save=new Promise((resolve,reject)=>{
+        $.post({
+            url:'/insert/'+modulo,
+            data:datos,
+            success:function(response) {
+                var data=$.parseJSON(response);
+                if(data.insert=='false'){
+                  noty.Error();
+                }else{
+                  link.Main();
+                }
+            }
+        });
+    });
+    return save;
+}
+
+
+function cargaTablaIrac(id)
+{
+  var obsv=jsonCombo.tablaIracObs(id);
+  cargaCombo(obsv)
+  .then(response=>{
+    var table=template(response);
+    var main=document.getElementById('contentIrac');
+    empty(main);
+    $('div.contentIrac').append(table);
+    $('div.contentIrac table tr').click(function(){
+        var id=$(this).data('id');
+        var obsv=jsonCombo.updateIracObs(id);
+        cargaCombo(obsv)
+        .then(response=>{
+          console.log(response);
+            var form=require('./irac/updateIrac');
+            var main=document.getElementById('contentIrac');
+            empty(main);
+            $('div.contentIrac').append(form(response[0]));
+            sendData('idObservacionDoctoJuridico'
+,response[0].idObservacionDoctoJuridico)
+            cancelar();
+        })
+        //var updt=form(response)
+       
+    })
+  })
+}
+
+
+
+

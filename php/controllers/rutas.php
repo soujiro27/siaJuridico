@@ -1,4 +1,4 @@
-<?php  
+<?php
 
 
 
@@ -6,15 +6,15 @@ class Rutas{
 
 
 	private $catalogos=['Caracteres','Acciones','SubTiposDocumentos'];
-	private $tablas=['tiposdocumentos','Volantes','areas'];
+	private $tablas=['tiposdocumentos','Volantes','areas','ObservacionesDoctosJuridico'];
 
 	public function render($nombre,$app){
 		$app->render('./juridico/templates/main.php',array('nombre' => $nombre, 'tipo' => 'Catálogo de ' ));
 	}
-	
+
 
 	public function separaModulo($modulo){
-		
+
 		foreach ($this->catalogos as $key => $value) {
 			if($value==$modulo){
 				$modulo='Cat'.$modulo;

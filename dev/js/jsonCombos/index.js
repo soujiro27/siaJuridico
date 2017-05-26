@@ -110,7 +110,41 @@ module.exports=class comboJson{
 	 	}
 	 	return obj;
 	 }
-	
+
+	 iracSubDoc(valor){
+	 	var obj={
+	 		tabla:'VolantesDocumentos',
+	 		campos:['idSubTipoDocumento','cveAuditoria','idVolante'],
+	 		where:{
+	 			idVolante:valor
+	 		}
+	 	}
+
+	 	return obj;
+
+	 }
+
+	 tablaIracObs(valor){
+	 	var obj={
+	 		tabla:'ObservacionesDoctosJuridico',
+	 		campos:['idObservacionDoctoJuridico','pagina','parrafo','observacion','estatus'],
+	 		where:{
+	 			idVolante:valor
+	 		}
+	 	}
+	 	return obj;
+	 }
+
+	updateIracObs(valor){
+	 	var obj={
+	 		tabla:'ObservacionesDoctosJuridico',
+	 		campos:['idObservacionDoctoJuridico','pagina','parrafo','observacion','estatus'],
+	 		where:{
+	 			idObservacionDoctoJuridico:valor
+	 		}
+	 	}
+	 	return obj;
+	 }
 
 
 	
