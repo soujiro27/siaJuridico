@@ -7,6 +7,7 @@ class Combos extends Rutas{
 
 
 	public function obtenerCombo($data){
+		
 		$tabla=$this->obtenerTabla($data);
 		$campos=$this->obtenerCampos($data);
 		$where=$this->obtenerWhere($data);

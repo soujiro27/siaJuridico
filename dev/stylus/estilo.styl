@@ -4,7 +4,7 @@
 @import "../../../css/jquery-ui.min.css";
 @import "../../../css/jquery-ui.structure.min.css";
 @import "../../../css/jquery-ui.theme.min.css";
-
+@import "../../node_modules/jquery-confirm/css/jquery-confirm.css";
 
 table
 	overflow-y: hidden
@@ -54,7 +54,7 @@ form#Volantes
 	div.Destinatario
 		width 50%
 		input
-			width 60% 
+			width 60%
 		button
 			display inline-block
 			width 20%
@@ -65,7 +65,7 @@ form#Volantes
 		width 45%;
 	div.send input[type=submit]
 		width 7% !important
-		margin-right 15px; 
+		margin-right 15px;
 	div.NombreRemitente,div.cargo,div.dependencia
 		width 28%
 	div
@@ -100,7 +100,7 @@ form#Volantes
 			margin-top 10px
 			background-color #efefef
 			color black
-			
+
 
 
 
@@ -119,7 +119,7 @@ form#UpdateVolantes
 		width 57%
 	div.send input[type=submit]
 		width 7% !important
-		margin-right 15px; 
+		margin-right 15px;
 	div.NombreRemitente,div.cargo,div.dependencia
 		width 28%
 	div
@@ -135,13 +135,46 @@ form#UpdateVolantes
 		margin-top 15px
 
 
-td#idAccion,td#idCaracter,td#idSubTipoDocumento,td#idVolante
+div.headerIrac
+	button
+		margin-right 15px
+
+form#insertIrac, form#UpdateIrac
+	div
+		margin-right 20px
+		label
+			display block
+	div.Asunto
+		display block
+		width 800px
+		margin-bottom 20px
+		margin-top 15px
+		textarea
+			width 90%
+	div.send
+		input
+			margin-right 15px
+	div.estatus
+		display block
+		margin-bottom 20px
+
+
+
+
+
+
+
+
+td#idAccion,td#idCaracter,td#idSubTipoDocumento,td#idVolante,td#idObservacionDoctoJuridico
 	display none
-th#idAccion,th#idCaracter,th#idSubTipoDocumento,th#idVolante
+th#idAccion,th#idCaracter,th#idSubTipoDocumento,th#idVolante,th#idObservacionDoctoJuridico
 	display none
 .rotaFlecha
 	transform rotate(180deg);
 	transition all .5s
-	
+
 div.widget-icons a
 	color #fff !important
+
+button#showObvs
+	display none

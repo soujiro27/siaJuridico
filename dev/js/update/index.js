@@ -103,6 +103,8 @@ page('/juridico/Irac/update/:campo/:id',function(ctx, netx){
 });
 
 
+
+
 /*---------------------funciones -------------------*/
 
 

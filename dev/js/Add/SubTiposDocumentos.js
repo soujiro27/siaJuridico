@@ -28,7 +28,3 @@ return yo`<form method="POST" class="form-inline" id="SubTiposDocumentos">
 }
 
 
-function test()
-{
-    alert('no se que onda');
-}

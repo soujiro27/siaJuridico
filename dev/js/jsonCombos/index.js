@@ -147,6 +147,18 @@ module.exports=class comboJson{
 	 }
 
 
+	 notas(id){
+	 	var obj={
+	 		tabla:'confrontasJuridico',
+	 		campos:['*'],
+	 		where:{
+	 			idVolante:id
+	 		}
+	 	}
+	 	return obj;
+	 }
+
+
 	
 	
 

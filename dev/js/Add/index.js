@@ -2,17 +2,19 @@
 var page=require('page');
 var empty=require('empty-element');
 require("jquery-ui-browserify");
+var query=require('jquery-confirm');
 
 var Acciones=require('./Acciones');
 var Caracteres=require('./Caracteres');
 var SubtiposDocumentos=require('./SubTiposDocumentos');
 var Volantes=require('./Volantes');
+var nota=require('./nota/');
+var notaUpdate=require('./../update/nota/');
 
 var url=require('./../Redireccion/Urls');
 var notfications=require('./../Notificaciones/noty');
 var objCombo=require('./../jsonCombos')
 
-var jsonCombo=new objCombo();
 var link=new url();
 var noty=new notfications();
 var jsonCombo=new objCombo();
@@ -48,6 +50,35 @@ page('/juridico/Volantes/Add',function(ctx,next) {
    obtieneFolio().then(response=>{$('input#Folio').val(response[0].folio)});
    sendData();
 })
+
+
+
+
+
+page('/juridico/Nota/update/:campo/:id',function(ctx, netx){
+  var id=ctx.params.id;
+  var campo=ctx.params.campo;
+  var notaJson=jsonCombo.notas(id);
+  cargaCombo(notaJson)
+  .then(response =>{
+    if(response.length>0){
+        render(notaUpdate(response[0]));
+        sendDataUpdate('confrontasJuridico',response[0].idVolante);
+    }else{
+      render(nota(id));  
+      sendData()
+    }
+  })
+  //render(nota(id));
+  
+});
+
+
+
+
+
+
+
 
 
 /*---------------FUNCIONES-----------------*/
@@ -150,16 +181,12 @@ function creaSelect(datos,id){
 
 function cargaCombosInicio(){
   var tiposDocumentos=jsonCombo.tiposDocumentos();
-  //var auditorias=jsonCombo.auditorias();
-  var remitente=jsonCombo.remitentes();
   var caracter=jsonCombo.caracteres();
   var turnado=jsonCombo.turnados();
   var accion=jsonCombo.acciones();
   
   var objetos={
     idDocumento:[tiposDocumentos],
-    //cveAuditoria:[auditorias],
-    idRemitente:[remitente],
     idCaracter:[caracter],
     idTurnado:[turnado],
     idAccion:[accion]
@@ -256,9 +283,11 @@ function checaDocumento(id){
         $('div.contentVolante').hide('fast');
       }else{
         datosAuditoria(id).then(response=>{
+          console.log(response);
           separaDatosAuditoria(response[0].sujeto,'idUnidad');
           separaDatosAuditoria(response[0].objeto,'idObjeto');
           $('ul#tipoAuditoria').html('<li>'+response[0].tipo+'</li>');
+          $('input#idRemitente').val(response[0].idArea);
           $('div.datosAuditoria').css('display','flex');
           $('div.datosAuditoria').slideDown('slow');
           $('div.contentVolante').show('slow');
@@ -333,3 +362,42 @@ function escondeDatos(){
     })
 }
 
+function sendDataUpdate(tbl,id){
+   $('form#Update'+ruta).on('submit',function(e){
+      e.preventDefault();
+      var datos=$(this).serialize();
+      actualizaRegistro(datos,tbl,id);
+   })
+}
+
+
+
+function actualizaRegistro(datos,tbl,id){
+  
+  let update=new Promise((resolve,reject)=>{
+        $.post({
+            url:'/update/'+tbl,
+            data:datos,
+            success:function(response) {
+                var data=$.parseJSON(response);
+                if(data.insert=='false'){
+                  noty.Error();
+                }else{
+                 $.confirm({
+                  title: 'El Registro se ha Actualizado!',
+                  content: '¿Desea Imprimir el Acuse?',
+                  buttons: {
+                      confirm: function () {
+                         link.reporteConfronta(id);
+                  },
+                      cancel: function () {
+                         link.Main();
+                      }
+                  }
+                });
+                }
+            }
+        });
+    });
+    return update;
+}

@@ -22,8 +22,8 @@ $app->get('/table/:modulo',function($modulo) use ($app){
 	$get = new Get();
 	if($modulo=='Volantes'){
 			$get->getTablaVolantes();}
-	elseif ($modulo=='Irac') {
-			$get->getTablaIracObservaciones();
+	elseif ($modulo=='Irac' || $modulo=='Nota') {
+			$get->getTablaObservaciones($modulo);
 	}
 	else {
 		$camposTabla->obtenerTabla($modulo);
@@ -62,8 +62,10 @@ $app->post('/update/:modulo',function($modulo) use ($app){
 
 $app->post('/insert/:modulo',function($modulo) use ($app){
 	$rutas=new Rutas();
-	$modulo=$rutas->separaModulo($modulo);
 	$inserta=new Insert();
+
+	$modulo=($modulo=='Nota') ? 'confrontasJuridico' : $modulo;
+	$modulo=$rutas->separaModulo($modulo);
 	if($modulo=='Volantes'){
 			$inserta->insertaVolantes($modulo,$app->request->post());
 	}

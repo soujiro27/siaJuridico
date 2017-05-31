@@ -17,7 +17,7 @@ class Insert{
 		}
 
 	public function insertaBd($modulo,$datos){
-
+		echo $modulo;
 		$db=$this->conecta();
 		/*--------------- funciones de comprobacion de registro duplicado--------------*/
 		$getData=new Get();
@@ -63,6 +63,8 @@ class Insert{
 		$dbQuery = $db->prepare($sql);
 		$pdo[':usrAlta']=$_SESSION ["idUsuario"];
 		$dbQuery->execute($pdo);
+		//echo "\nPDO::errorInfo():\n";
+		//print_r($dbQuery->errorInfo());
 		$obt=new Get();
 		$folio=$obt->getLastFolioVolantes();
 		$idVolante=$folio[0]['folio'];
@@ -99,13 +101,14 @@ class Insert{
 		$where=$datosInsert->obtieneValoresWhereUpdate($datos);
 		$pdo=$datosInsert->obtieneArregloPdo($datos);
 		$sql="UPDATE sia_".$modulo." SET ".$valores."usrModificacion=:usrModificacion,fModificacion=getdate() WHERE ".$where;
+		//echo $sql;
 		$dbQuery = $db->prepare($sql);
 		$pdo[':usrModificacion']=$_SESSION ["idUsuario"];
 		$dbQuery->execute($pdo);
-		echo "\nPDO::errorInfo():\n";
-		print_r($dbQuery->errorInfo());
+		//echo "\nPDO::errorInfo():\n";
+		//print_r($dbQuery->errorInfo());
 		$salida['insert']='true';
-		//echo json_encode($salida);
+		echo json_encode($salida);
 		}
 	}
 

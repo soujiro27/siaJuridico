@@ -100,9 +100,9 @@ $pdf->Cell(77,5,'NOMBRE',1,0,'L');
 $pdf->Cell(105,5,'CARGO',1,0,'L');
 
 $pdf->Ln(5);
-$pdf->Cell(15,5,$datos[0]['idRemitente'],0,0,'C');
-$pdf->Cell(62,5,$titular,0,0,'L');
-$pdf->Cell(105,5,$area,0,0,'L');
+$pdf->Cell(15,5,$datos[0]['idRemitente'],1,0,'C');
+$pdf->Cell(62,5,$titular,1,0,'L');
+$pdf->Cell(105,5,$area,1,0,'L');
 $pdf->Ln(10);
 $pdf->Cell(91,5,'DEPENDENCIA',1,0,'C');
 $pdf->Cell(91,5,'DESTINATARIO',1,0,'C');
@@ -147,6 +147,6 @@ $pdf->Cell(183,5,'',1,0,'C');
 $pdf->Ln(40);
 $pdf->Cell(90,5,'',0,0,'C');
 $pdf->Cell(45,5,'PENDIENTE',0,0,'C');
-$pdf->Cell(45,5,'DESAHOGO',1,0,'C');
+$pdf->Cell(45,5,'DESAHOGO','T',0,'C');
 $pdf->Output();
 ?>

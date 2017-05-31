@@ -53,4 +53,26 @@ module.exports=class notificaciones{
 			}
 		}).show();
 	}
+
+	confirmacion(){
+		var n = new Noty({
+  text: 'Do you want to continue? <input id="example" type="text">',
+  buttons: [
+    n.buttons('YES', 'btn btn-success', function () {
+        console.log('button 1 clicked');
+    }, {id: 'button1', 'data-status': 'ok'}),
+
+    n.buttons('NO', 'btn btn-error', function () {
+        console.log('button 2 clicked');
+        n.close();
+    })
+  ]
+	}).show();
+	}
+
+
+
+
+
+
 }

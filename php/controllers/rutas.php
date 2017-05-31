@@ -6,7 +6,7 @@ class Rutas{
 
 
 	private $catalogos=['Caracteres','Acciones','SubTiposDocumentos'];
-	private $tablas=['tiposdocumentos','Volantes','areas','ObservacionesDoctosJuridico'];
+	private $tablas=['tiposdocumentos','Volantes','areas','ObservacionesDoctosJuridico','confrontasJuridico'];
 
 	public function render($nombre,$app){
 		$app->render('./juridico/templates/main.php',array('nombre' => $nombre, 'tipo' => 'Catálogo de ' ));

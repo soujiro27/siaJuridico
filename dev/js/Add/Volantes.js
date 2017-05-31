@@ -96,8 +96,8 @@ return yo`<form method="POST" class="form-inline" id="Volantes">
 
 <div class="form-group idRemitente">
     <label for="idRemitente">Remitente</label>
-     <select name="idRemitente" id="idRemitente" required="required" class="form-control">
-    </select>
+     <input type="text" name="idRemitente" id="idRemitente"  readonly class="form-control" />
+  
 
    
 </div>
