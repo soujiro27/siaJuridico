@@ -98,6 +98,9 @@ page('/juridico/Irac/update/:campo/:id',function(ctx, netx){
     render(form);
     cargaTablaIrac(response[0].idVolante);
     cargaFormIrac(response[0].idVolante);
+    $('button#print').click(function(){
+      link.reporteIfa(response[0].idVolante);
+    });
   })
 
 });

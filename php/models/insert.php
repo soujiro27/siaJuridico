@@ -17,7 +17,7 @@ class Insert{
 		}
 
 	public function insertaBd($modulo,$datos){
-		echo $modulo;
+		//echo $modulo;
 		$db=$this->conecta();
 		/*--------------- funciones de comprobacion de registro duplicado--------------*/
 		$getData=new Get();

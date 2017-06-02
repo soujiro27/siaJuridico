@@ -20,23 +20,26 @@ return yo`<form method="POST" class="form-inline" id="Nota">
 
 <div class="form-group nombre">
     <label for="nombre">Nombre</label>
-    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Formato Incorrecto" >
+    <input type="text" class="form-control" id="nombreResponsable" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombreResponsable" title="Formato Incorrecto" >
 </div>
 
 <div class="form-group cargo">
     <label for="cargo">Cargo</label>
-    <input type="text" class="form-control" id="cargo" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargo" title="Formato Incorrecto" >
+    <input type="text" class="form-control" id="cargoResponsable" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargoResponsable" title="Formato Incorrecto" >
 </div>
+
+<div class="form-group hConfronta">
+    <label for="hConfronta">Hora de Confronta</label>
+    <input type="time" class="form-control" id="hConfronta" placeholder="hConfronta" required  name="hConfronta" title="Formato Incorrecto" >
+</div>
+
 
 <div class="form-group siglas">
     <label for="siglas">Siglas</label>
     <input type="text" class="form-control" id="siglas" placeholder="siglas" required " name="siglas" title="Nombre Incorrecto o Caracteres maximos" >
 </div>
 
-<div class="form-group fDocumento">
-    <label for="fDocumento">fecha del Documento</label>
-    <input type="text" class="form-control" id="fDocumento" placeholder="fecha" required  name="fDocumento"  >
-</div>
+
 
 
 

@@ -115,6 +115,11 @@ page('/juridico/Nota/update/:campo/:id', function (ctx, netx) {
   cargaCombo(notaJson).then(function (response) {
     if (response.length > 0) {
       render(notaUpdate(response[0]));
+      $('div.widget-icons').html('<button class="btn btn-primary btn-sm" id="printNota" data-id=' + response[0].idVolante + ' >Imprimir Acuse </button>');
+      $('button#printNota').click(function () {
+        var idV = $(this).data('id');
+        link.reporteConfronta(idV);
+      });
       sendDataUpdate('confrontasJuridico', response[0].idVolante);
     } else {
       render(nota(id));
@@ -174,6 +179,7 @@ function guardaRegistro(datos) {
         if (data.insert == 'false') {
           noty.Error();
         } else {
+
           link.Main();
         }
       }
@@ -418,7 +424,7 @@ function actualizaRegistro(datos, tbl, id) {
 },{"./../Notificaciones/noty":7,"./../Redireccion/Urls":8,"./../jsonCombos":10,"./../update/nota/":24,"./Acciones":1,"./Caracteres":2,"./SubTiposDocumentos":3,"./Volantes":4,"./nota/":6,"empty-element":185,"jquery-confirm":191,"jquery-ui-browserify":193,"page":198}],6:[function(require,module,exports){
 'use strict';
 
-var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="Nota">\n\n<div class="form-group idVolante">\n    <input type="hidden" class="form-control" id="idVolante" placeholder="nota Informativa"   name="idVolante" value="', '" >\n</div>\n\n\n\n<div class="form-group notaInformativa">\n    <label for="notaInformativa">nota Informativa</label>\n    <input type="text" class="form-control" id="notaInformativa" placeholder="nota Informativa"   name="notaInformativa" >\n</div>\n\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Formato Incorrecto" >\n</div>\n\n<div class="form-group cargo">\n    <label for="cargo">Cargo</label>\n    <input type="text" class="form-control" id="cargo" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargo" title="Formato Incorrecto" >\n</div>\n\n<div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required " name="siglas" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n<div class="form-group fDocumento">\n    <label for="fDocumento">fecha del Documento</label>\n    <input type="text" class="form-control" id="fDocumento" placeholder="fecha" required  name="fDocumento"  >\n</div>\n\n\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>'], ['<form method="POST" class="form-inline" id="Nota">\n\n<div class="form-group idVolante">\n    <input type="hidden" class="form-control" id="idVolante" placeholder="nota Informativa"   name="idVolante" value="', '" >\n</div>\n\n\n\n<div class="form-group notaInformativa">\n    <label for="notaInformativa">nota Informativa</label>\n    <input type="text" class="form-control" id="notaInformativa" placeholder="nota Informativa"   name="notaInformativa" >\n</div>\n\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Formato Incorrecto" >\n</div>\n\n<div class="form-group cargo">\n    <label for="cargo">Cargo</label>\n    <input type="text" class="form-control" id="cargo" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargo" title="Formato Incorrecto" >\n</div>\n\n<div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required " name="siglas" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n<div class="form-group fDocumento">\n    <label for="fDocumento">fecha del Documento</label>\n    <input type="text" class="form-control" id="fDocumento" placeholder="fecha" required  name="fDocumento"  >\n</div>\n\n\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>']);
+var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="Nota">\n\n<div class="form-group idVolante">\n    <input type="hidden" class="form-control" id="idVolante" placeholder="nota Informativa"   name="idVolante" value="', '" >\n</div>\n\n\n\n<div class="form-group notaInformativa">\n    <label for="notaInformativa">nota Informativa</label>\n    <input type="text" class="form-control" id="notaInformativa" placeholder="nota Informativa"   name="notaInformativa" >\n</div>\n\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombreResponsable" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombreResponsable" title="Formato Incorrecto" >\n</div>\n\n<div class="form-group cargo">\n    <label for="cargo">Cargo</label>\n    <input type="text" class="form-control" id="cargoResponsable" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargoResponsable" title="Formato Incorrecto" >\n</div>\n\n<div class="form-group hConfronta">\n    <label for="hConfronta">Hora de Confronta</label>\n    <input type="time" class="form-control" id="hConfronta" placeholder="hConfronta" required  name="hConfronta" title="Formato Incorrecto" >\n</div>\n\n\n<div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required " name="siglas" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n\n\n\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>'], ['<form method="POST" class="form-inline" id="Nota">\n\n<div class="form-group idVolante">\n    <input type="hidden" class="form-control" id="idVolante" placeholder="nota Informativa"   name="idVolante" value="', '" >\n</div>\n\n\n\n<div class="form-group notaInformativa">\n    <label for="notaInformativa">nota Informativa</label>\n    <input type="text" class="form-control" id="notaInformativa" placeholder="nota Informativa"   name="notaInformativa" >\n</div>\n\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombreResponsable" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombreResponsable" title="Formato Incorrecto" >\n</div>\n\n<div class="form-group cargo">\n    <label for="cargo">Cargo</label>\n    <input type="text" class="form-control" id="cargoResponsable" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargoResponsable" title="Formato Incorrecto" >\n</div>\n\n<div class="form-group hConfronta">\n    <label for="hConfronta">Hora de Confronta</label>\n    <input type="time" class="form-control" id="hConfronta" placeholder="hConfronta" required  name="hConfronta" title="Formato Incorrecto" >\n</div>\n\n\n<div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required " name="siglas" title="Nombre Incorrecto o Caracteres maximos" >\n</div>\n\n\n\n\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Guardar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -538,22 +544,31 @@ module.exports = function () {
     _createClass(Redirecionar, [{
         key: "Main",
         value: function Main() {
-            //location.href="http://172.16.6.33/juridico/"+ruta; 
-            location.href = "http://localhost:88/juridico/" + ruta;
+            location.href = "/juridico/" + ruta;
+            //location.href="http://localhost:88/juridico/"+ruta;
         }
     }, {
         key: "updateForm",
         value: function updateForm(id) {
 
-            location.href = "http://localhost:88/juridico/update/" + ruta + "/" + id;
-            //location.href="http://172.16.6.33/juridico/update/"+ruta+"/"+id;
+            //location.href="http://localhost:88/juridico/update/"+ruta+"/"+id;
+            location.href = "http://172.16.6.33/juridico/update/" + ruta + "/" + id;
         }
     }, {
         key: "reporteConfronta",
         value: function reporteConfronta(dato) {
-            //location.href="http://172.16.6.33/juridico/"+ruta; 
-            window.open("http://localhost:88/juridico/php/reportes/Confronta.php" + "?param1=" + dato);
-            location.href = "http://localhost:88/juridico/" + ruta;
+            //window.open("http://localhost:88/juridico/php/reportes/Confronta.php"+"?param1="+dato);
+            //location.href="http://localhost:88/juridico/"+ruta;
+            window.open("http://172.16.6.33/juridico/php/reportes/Confronta.php" + "?param1=" + dato);
+            location.href = "http://172.16.6.33/juridico/" + ruta;
+        }
+    }, {
+        key: "reporteIfa",
+        value: function reporteIfa(idVolante) {
+            //window.open("http://localhost:88/juridico/php/reportes/Ifa.php"+"?param1="+idVolante);
+            //location.href="http://localhost:88/juridico/"+ruta;
+            window.open("http://172.16.6.33/juridico/php/reportes/Ifa.php" + "?param1=" + idVolante);
+            location.href = "http://172.16.6.33/juridico/" + ruta;
         }
     }]);
 
@@ -1119,6 +1134,9 @@ page('/juridico/Irac/update/:campo/:id', function (ctx, netx) {
     render(form);
     cargaTablaIrac(response[0].idVolante);
     cargaFormIrac(response[0].idVolante);
+    $('button#print').click(function () {
+      link.reporteIfa(response[0].idVolante);
+    });
   });
 });
 
@@ -1354,7 +1372,7 @@ module.exports = function (data) {
 },{"yo-yo":202}],24:[function(require,module,exports){
 'use strict';
 
-var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="UpdateNota">\n\n<div class="form-group notaInformativa">\n    <label for="notaInformativa">nota Informativa</label>\n    <input type="text" class="form-control" id="notaInformativa" placeholder="nota Informativa"   name="notaInformativa"  value="', '" >\n</div>\n\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Formato Incorrecto" value="', '" >\n</div>\n\n<div class="form-group cargo">\n    <label for="cargo">Cargo</label>\n    <input type="text" class="form-control" id="cargo" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargo" title="Formato Incorrecto" value="', '" >\n</div>\n\n<div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required " name="siglas" title="Nombre Incorrecto o Caracteres maximos" value="', '" >\n</div>\n\n<div class="form-group fDocumento">\n    <label for="fDocumento">fecha del Documento</label>\n    <input type="text" class="form-control" id="fDocumento" placeholder="fecha" required  name="fDocumento" value=', ' >\n</div>\n\n<div class="form-group idVolante">\n    <input type="hidden" class="form-control" id="idVolante" placeholder="nota Informativa"   name="idVolante" value="', '" >\n</div>\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Actualizar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>'], ['<form method="POST" class="form-inline" id="UpdateNota">\n\n<div class="form-group notaInformativa">\n    <label for="notaInformativa">nota Informativa</label>\n    <input type="text" class="form-control" id="notaInformativa" placeholder="nota Informativa"   name="notaInformativa"  value="', '" >\n</div>\n\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombre" title="Formato Incorrecto" value="', '" >\n</div>\n\n<div class="form-group cargo">\n    <label for="cargo">Cargo</label>\n    <input type="text" class="form-control" id="cargo" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargo" title="Formato Incorrecto" value="', '" >\n</div>\n\n<div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required " name="siglas" title="Nombre Incorrecto o Caracteres maximos" value="', '" >\n</div>\n\n<div class="form-group fDocumento">\n    <label for="fDocumento">fecha del Documento</label>\n    <input type="text" class="form-control" id="fDocumento" placeholder="fecha" required  name="fDocumento" value=', ' >\n</div>\n\n<div class="form-group idVolante">\n    <input type="hidden" class="form-control" id="idVolante" placeholder="nota Informativa"   name="idVolante" value="', '" >\n</div>\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Actualizar">\n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>']);
+var _templateObject = _taggedTemplateLiteral(['<form method="POST" class="form-inline" id="UpdateNota">\n\n<div class="form-group notaInformativa">\n    <label for="notaInformativa">nota Informativa</label>\n    <input type="text" class="form-control" id="notaInformativa" placeholder="nota Informativa"   name="notaInformativa"  value="', '" >\n</div>\n\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombreResponsable" title="Formato Incorrecto" value="', '" >\n</div>\n\n<div class="form-group cargo">\n    <label for="cargo">Cargo</label>\n    <input type="text" class="form-control" id="cargo" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargoResponsable" title="Formato Incorrecto" value="', '" >\n</div>\n\n<div class="form-group hConfronta">\n    <label for="hConfronta">Hora de Confronta</label>\n    <input type="time" class="form-control" id="hConfronta" placeholder="hConfronta" required pattern="[A-Za-z].{1,49}" name="hConfronta" title="Formato Incorrecto" value="', '" >\n</div>\n\n\n<div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required " name="siglas" title="Nombre Incorrecto o Caracteres maximos" value="', '" >\n</div>\n\n\n\n<div class="form-group idVolante">\n    <input type="hidden" class="form-control" id="idVolante" placeholder="nota Informativa"   name="idVolante" value="', '" >\n</div>\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Actualizar">\n    \n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>'], ['<form method="POST" class="form-inline" id="UpdateNota">\n\n<div class="form-group notaInformativa">\n    <label for="notaInformativa">nota Informativa</label>\n    <input type="text" class="form-control" id="notaInformativa" placeholder="nota Informativa"   name="notaInformativa"  value="', '" >\n</div>\n\n<div class="form-group nombre">\n    <label for="nombre">Nombre</label>\n    <input type="text" class="form-control" id="nombre" placeholder="Nombre" required pattern="[A-Za-z].{1,49}" name="nombreResponsable" title="Formato Incorrecto" value="', '" >\n</div>\n\n<div class="form-group cargo">\n    <label for="cargo">Cargo</label>\n    <input type="text" class="form-control" id="cargo" placeholder="cargo" required pattern="[A-Za-z].{1,49}" name="cargoResponsable" title="Formato Incorrecto" value="', '" >\n</div>\n\n<div class="form-group hConfronta">\n    <label for="hConfronta">Hora de Confronta</label>\n    <input type="time" class="form-control" id="hConfronta" placeholder="hConfronta" required pattern="[A-Za-z].{1,49}" name="hConfronta" title="Formato Incorrecto" value="', '" >\n</div>\n\n\n<div class="form-group siglas">\n    <label for="siglas">Siglas</label>\n    <input type="text" class="form-control" id="siglas" placeholder="siglas" required " name="siglas" title="Nombre Incorrecto o Caracteres maximos" value="', '" >\n</div>\n\n\n\n<div class="form-group idVolante">\n    <input type="hidden" class="form-control" id="idVolante" placeholder="nota Informativa"   name="idVolante" value="', '" >\n</div>\n\n<div class="form-group send">\n    <input type="submit" class="btn btn-primary btn-sm" value="Actualizar">\n    \n    <button class="btn btn-default btn-sm" id="cancelar">Cancelar</button>\n</div>\n\n</form>']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -1362,7 +1380,10 @@ var yo = require('yo-yo');
 
 module.exports = function (data) {
 
-    return yo(_templateObject, data.notaInformativa, data.nombre, data.cargo, data.siglas, data.fDocumento, data.idVolante);
+    var hConfronta = data.hConfronta;
+    hConfronta = hConfronta.substring(5, 0);
+
+    return yo(_templateObject, data.notaInformativa, data.nombreResponsable, data.cargoResponsable, hConfronta, data.siglas, data.idVolante);
 };
 
 },{"yo-yo":202}],25:[function(require,module,exports){

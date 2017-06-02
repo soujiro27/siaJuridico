@@ -29,7 +29,7 @@ CONCAT(u.saludo,' ',e.nombre,' ',e.paterno,' ',e.materno) as titular,
 audi.clave,
 dbo.lstSujetosByAuditoria(audi.idAuditoria) as ente,
 audi.fConfronta,
-con.notaInformativa, con.nombre, con.cargo, con.siglas,con.fDocumento
+con.notaInformativa, con.nombreResponsable, con.cargoResponsable, con.siglas, con.siglas, hConfronta
 from sia_Volantes v
 inner join sia_VolantesDocumentos vd on v.idVolante=vd.idVolante
 inner join sia_areas a on v.idRemitente=a.idArea
@@ -78,6 +78,8 @@ $areaTxt=convierte($datos[0]['area']);
 $destTxt=convierte('DR. IVÁN DE JESÚS OLMOS CANSINO');
 $ente=convierte($ente);
 $footer=convierte('Sin otro particular, hago propicia la ocasión para enviarle un coordial saludo.');
+$hora=substr($datos[0]['hConfronta'],0,-11);
+$tiempo=$datos[0]['fConfronta']."\n".$hora.' Horas.';
 $fecha=getdate();
 $mesTxt=mes($fecha['mon']);
 
@@ -86,7 +88,7 @@ $mesTxt=mes($fecha['mon']);
 
 $pdf = new PDF_MC_Table();
 $pdf->AddPage();
-$pdf->SetFont('Arial','B',8);
+$pdf->SetFont('Arial','B',10);
 $pdf->Image('./img/logo-top.png',10,8,33);
 $pdf->Cell(80,1,'',0);
 $pdf->Cell(50,1,$dir,0,0,'L');
@@ -94,14 +96,14 @@ $pdf->Ln(5);
 $pdf->Cell(80,1,'',0);
 $pdf->Cell(50,5,'NOTA INFORMATIVA',0,0,'L');
 
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','',10);
 $pdf->Ln(10);
 $pdf->Cell(180,5,$fechaTxt.$fecha['mday'].' de '.$mesTxt.' de '.$fecha['year'],0,0,'R');
 $pdf->Ln(10);
-$pdf->SetFont('Arial','B',8);
+$pdf->SetFont('Arial','B',10);
 $pdf->Cell(20,5,'PARA: ',0,0,'L');
 $pdf->Cell(90,5,$titular,0,0,'L');
-$pdf->Ln(5);
+$pdf->Ln(10);
 $pdf->Cell(20,5,'',0,0,'L');
 $pdf->MultiCell(60,5,$areaTxt,0,'L');
 
@@ -111,9 +113,9 @@ $pdf->Cell(90,5,$destTxt,0,0,'L');
 $pdf->Ln(5);
 $pdf->Cell(20,5,'',0,0,'L');
 $pdf->Cell(90,5,'DIRECTOR GENERAL DE ASUNTOS JURIDICOS',0,0,'L');
-$pdf->Ln(10);
+$pdf->Ln(15);
 
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','',10);
 $pdf->MultiCell(180,5,$textoFinal,0,'L');
 $pdf->Ln(10);
 $pdf->Cell(15,5,'',0,0,'L');
@@ -128,17 +130,17 @@ $pdf->Ln(5);
 $pdf->SetFont('Arial','B',6);
 $pdf->Cell(15,5,'',0,0,'L');
 $pdf->SetWidths(array(50,20,20,30,30));
-$pdf->Row(array($ente,$datos[0]['clave'],$datos[0]['fConfronta'],$datos[0]['nombre'],$datos[0]['cargo']));
+$pdf->Row(array($ente,$datos[0]['clave'],$tiempo,$datos[0]['nombreResponsable'],$datos[0]['cargoResponsable']));
 
 
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','',10);
 $pdf->Ln(10);
 $pdf->Cell(120,5,$footer,0,0,'L');
 $pdf->Ln(10);
-$pdf->SetFont('Arial','B',8);
+$pdf->SetFont('Arial','B',10);
 $pdf->Cell(120,5,'ATENTAMENTE',0,0,'L');
 $pdf->Ln(50);
-$pdf->SetFont('Arial','',8);
+$pdf->SetFont('Arial','',10);
 $pdf->Cell(120,5,$datos[0]['siglas'],0,0,'L');
 
 

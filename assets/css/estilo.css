@@ -3216,32 +3216,54 @@ div.headerIrac button {
   margin-right: 15px;
 }
 form#insertIrac div,
-form#UpdateIrac div {
+form#UpdateIrac div,
+form#Nota div,
+form#UpdateNota div {
   margin-right: 20px;
 }
 form#insertIrac div label,
-form#UpdateIrac div label {
+form#UpdateIrac div label,
+form#Nota div label,
+form#UpdateNota div label {
   display: block;
 }
 form#insertIrac div.Asunto,
-form#UpdateIrac div.Asunto {
+form#UpdateIrac div.Asunto,
+form#Nota div.Asunto,
+form#UpdateNota div.Asunto {
   display: block;
   width: 800px;
   margin-bottom: 20px;
   margin-top: 15px;
 }
 form#insertIrac div.Asunto textarea,
-form#UpdateIrac div.Asunto textarea {
+form#UpdateIrac div.Asunto textarea,
+form#Nota div.Asunto textarea,
+form#UpdateNota div.Asunto textarea {
   width: 90%;
 }
+form#insertIrac div.send,
+form#UpdateIrac div.send,
+form#Nota div.send,
+form#UpdateNota div.send {
+  display: block;
+}
 form#insertIrac div.send input,
-form#UpdateIrac div.send input {
+form#UpdateIrac div.send input,
+form#Nota div.send input,
+form#UpdateNota div.send input {
   margin-right: 15px;
 }
 form#insertIrac div.estatus,
-form#UpdateIrac div.estatus {
+form#UpdateIrac div.estatus,
+form#Nota div.estatus,
+form#UpdateNota div.estatus {
   display: block;
   margin-bottom: 20px;
+}
+form#Nota div.send {
+  margin-top: 20px;
+  margin-left: 20px;
 }
 td#idAccion,
 td#idCaracter,

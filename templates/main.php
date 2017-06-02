@@ -28,7 +28,6 @@
 
 </script>
 <script src="../Dashboard - MacAdmin_files/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/jquery.js">
 
 </script>
 <script type="text/javascript" src="assets/js/app.js"></script>

@@ -63,9 +63,15 @@ page('/juridico/Nota/update/:campo/:id',function(ctx, netx){
   .then(response =>{
     if(response.length>0){
         render(notaUpdate(response[0]));
+        $('div.widget-icons').html('<button class="btn btn-primary btn-sm" id="printNota" data-id='+response[0].idVolante+' >Imprimir Acuse </button>');
+        $('button#printNota').click(function(){
+            var idV=$(this).data('id');
+            link.reporteConfronta(idV);
+        })
         sendDataUpdate('confrontasJuridico',response[0].idVolante);
+
     }else{
-      render(nota(id));  
+      render(nota(id)); 
       sendData()
     }
   })
@@ -134,6 +140,7 @@ function guardaRegistro(datos){
                 if(data.insert=='false'){
                   noty.Error();
                 }else{
+                 
                   link.Main();
                 }
             }
@@ -401,3 +408,5 @@ function actualizaRegistro(datos,tbl,id){
     });
     return update;
 }
+
+
